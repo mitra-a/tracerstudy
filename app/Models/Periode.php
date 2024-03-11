@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Periode extends Model
 {
     use HasFactory;
+    
+    public $incrementing = false;
+    protected $primaryKey = 'kode';
+    protected $table = 'periode';
 }
