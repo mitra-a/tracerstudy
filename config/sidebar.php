@@ -48,8 +48,8 @@ return [
     [
         'title' => 'Admin',
         'icon' => 'bx bx-user-voice',
-        'route' => '',
-        'active' => 'admin.admin.*',
+        'route' => 'admin.akun.index',
+        'active' => 'admin.akun.*',
         'role' => 'admin'
     ],
     [

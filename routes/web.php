@@ -12,6 +12,12 @@ Route::namespace('App\Livewire\Pages')->group(function(){
             Route::get('/tambah', Create::class)->name('create');
             Route::get('/edit/{id}', Update::class)->name('update');
         });
+
+        Route::namespace('Akun')->prefix('akun')->name('akun.')->group(function(){
+            Route::get('/', Index::class)->name('index');
+            Route::get('/tambah', Create::class)->name('create');
+            Route::get('/edit/{id}', Update::class)->name('update');
+        });
     });
 
     Route::get('/', Welcome::class);
