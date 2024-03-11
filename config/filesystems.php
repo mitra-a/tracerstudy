@@ -36,6 +36,13 @@ return [
             'throw' => false,
         ],
 
+        'profile' => [
+            'driver' => 'local',
+            'root' => public_path('berkas/profile'),
+            'url' => env('APP_URL').'/berkas/profile',
+            'visibility' => 'public',
+        ],
+
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),

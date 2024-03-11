@@ -41,8 +41,8 @@ return [
     [
         'title' => 'Alumni',
         'icon' => 'bx bx-user-check',
-        'route' => '',
-        'active' => 'admin.mahasiswa.*',
+        'route' => 'admin.alumni.index',
+        'active' => 'admin.alumni.*',
         'role' => 'admin'
     ],
     [
