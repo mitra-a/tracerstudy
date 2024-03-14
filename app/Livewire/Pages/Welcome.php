@@ -8,6 +8,6 @@ class Welcome extends Component
 {
     public function render()
     {
-        return view('pages.welcome');
+        return view('pages.welcome')->layout('components.layouts.blank');
     }
 }

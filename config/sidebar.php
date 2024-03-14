@@ -5,7 +5,7 @@ return [
     [
         'title' => 'Dashboard',
         'icon' => 'bx bx-home-circle',
-        'route' => '',
+        'route' => 'admin.dashboard',
         'active' => 'admin.dashboard',
         'role' => 'admin'
     ],
@@ -83,5 +83,32 @@ return [
         'route' => '',
         'active' => 'admin.admin.*',
         'role' => 'admin'
+    ],
+
+    //ALUMNI
+    [
+        'title' => 'Dashboard',
+        'icon' => 'bx bx-home-circle',
+        'route' => 'alumni.dashboard',
+        'active' => 'alumni.dashboard',
+        'role' => 'alumni'
+    ],
+    [
+        'title-menu' => 'Profile',
+        'role' => 'alumni'
+    ],
+    [
+        'title' => 'Profile',
+        'icon' => 'bx bx-user',
+        'route' => '',
+        'active' => 'alumni.mahasiswa.*',
+        'role' => 'alumni'
+    ],
+    [
+        'title' => 'Log Out',
+        'icon' => 'bx bx-exit',
+        'route' => '',
+        'active' => 'alumni.admin.*',
+        'role' => 'alumni'
     ],
 ];

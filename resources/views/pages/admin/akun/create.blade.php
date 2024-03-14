@@ -18,7 +18,7 @@
             <div class="card-body">
                 <x-form.input 
                     name="nama"
-                    title="Nama Alumni"
+                    title="Nama"
                     wire:model="nama"
                     placeholder="masukan nama"
                 />

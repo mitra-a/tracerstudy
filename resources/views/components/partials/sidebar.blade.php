@@ -6,7 +6,7 @@
 			</span>
 			<span 
 				class="app-brand-text demo menu-text fw-bolder ms-2 mb-2" 
-				style="font-size: 20px; text-transform: none">Tracer Study <br /> <span class="text-primary">FT UNM</span> </span>
+				style="font-size: 20px; text-transform: none">Tracer Study <br /> <span class="text-primary">JTIK UNM</span> </span>
 		</a>
 		<a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
 			<i class="bx bx-chevron-left bx-sm align-middle"></i>
@@ -15,7 +15,7 @@
 	<div class="menu-inner-shadow"></div>
 	<ul class="menu-inner py-1">
 		@foreach (config('sidebar') as $sidebar)
-			{{-- @if(auth()->user()->role == $sidebar['role']) --}}
+			@if(auth()->user()->role == $sidebar['role'])
 				@if(isset($sidebar['title-menu']))
 					<li class="menu-header small text-uppercase">
 						<span class="menu-header-text">{{ $sidebar['title-menu'] }}</span>
@@ -28,7 +28,7 @@
 						</a>
 					</li>
 				@endif
-			{{-- @endif --}}
+			@endif
 		@endforeach
 	</ul>
 </aside>
