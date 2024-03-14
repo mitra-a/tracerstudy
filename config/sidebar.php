@@ -16,8 +16,8 @@ return [
     [
         'title' => 'Kuesioner',
         'icon' => 'bx bx-book-open',
-        'route' => '',
-        'active' => 'admin.ket-aktif-kuliah.*',
+        'route' => 'admin.kuesioner.index',
+        'active' => 'admin.kuesioner.*',
         'role' => 'admin'
     ],
     [

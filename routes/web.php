@@ -18,6 +18,14 @@ Route::namespace('App\Livewire\Pages')->group(function(){
             Route::get('/tambah', Create::class)->name('create');
             Route::get('/edit/{id}', Update::class)->name('update');
         });
+
+        Route::namespace('Kuesioner')->prefix('kuesioner')->name('kuesioner.')->group(function(){
+            Route::get('/', Index::class)->name('index');
+            Route::get('/tambah', Create::class)->name('create');
+            Route::get('/edit/{id}', Update::class)->name('update');
+            Route::get('/halaman/{id}', Halaman::class)->name('halaman');
+            Route::get('/soal/{id}/{halaman}', Soal::class)->name('soal');
+        });
     });
 
     Route::get('/', Welcome::class);
