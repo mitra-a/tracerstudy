@@ -1,5 +1,6 @@
 <div class="card mb-3">
     <div class="card-body">
+        <span class="badge bg-dark mb-3">{{ str_replace('-', ' ', $row->type) }}</span>
         <h5 class="card-title mb-4">
             {{ $pertanyaan == '' ? 'Masukan Pertanyaan' : $pertanyaan }}
         </h5>
