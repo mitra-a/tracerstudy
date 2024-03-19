@@ -38,6 +38,7 @@ Route::namespace('App\Livewire\Pages')->group(function(){
 
     Route::namespace('Alumni')->middleware(['auth','role:alumni'])->prefix('alumni')->name('alumni.')->group(function(){
         Route::get('/', Dashboard::class)->name('dashboard');
+        Route::get('/jawab-kuesioner/{id}', JawabKuesioner::class)->name('jawab-kuesioner');
     });
 
     Route::get('/', Welcome::class);

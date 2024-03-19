@@ -11,4 +11,8 @@ class KuesionerHalaman extends Model
     use HasFactory, UUID;
 
     protected $table = 'kuesioner_halaman';
+
+    public function soal(){
+        return $this->hasMany(KuesionerSoal::class, 'kuesioner_halaman_id', 'id');
+    }
 }
