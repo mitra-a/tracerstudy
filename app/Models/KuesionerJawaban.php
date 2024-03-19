@@ -11,4 +11,8 @@ class KuesionerJawaban extends Model
     use HasFactory, UUID;
 
     protected $table = 'kuesioner_jawaban';
+
+    public function jawaban_x(){
+        return $this->hasMany(KuesionerJawabanX::class, 'jawaban_id', 'id')->with('jawaban_y');
+    }
 }
