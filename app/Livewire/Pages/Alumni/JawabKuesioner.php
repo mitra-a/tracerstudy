@@ -22,13 +22,16 @@ class JawabKuesioner extends Component
         $this->kuesioner = Kuesioner::findOrFail($id);
         $semua_halaman = $this->semua_halaman;
         
+        if(count($semua_halaman) < 1){
+            return redirect()->route('alumni.dashboard');
+        }
+        
         $halaman = [
             'page_count' => count($semua_halaman),
             'current_page' => 1,
         ];
 
-        if($semua_halaman) $halaman['page'] = $semua_halaman[0];
-
+        $halaman['page'] = $semua_halaman[0];
         $this->halaman = (object) $halaman;
     }
 
@@ -40,7 +43,7 @@ class JawabKuesioner extends Component
     }
 
     public function save(){
-        $halaman = $this->semua_halaman[$this->halaman->current_page - 1];
+        $halaman = $this->semua_halaman;
 
         try{
             KuesionerJawaban::query()
@@ -49,69 +52,71 @@ class JawabKuesioner extends Component
                 ->delete();
 
             $jawaban = $this->jawaban;
-            foreach($halaman->soal as $key => $item){
-                if(!optional($jawaban)[$item->id]){
-                    continue;
-                }
-
-                $new = new KuesionerJawaban();
-                $new->kuesioner_id = $this->id;
-                $new->alumni_id = auth()->user()->id;
-                $new->soal_id = $item->id;
-                $new->type = $item->type;
-
-                //simpan jawaban pilihan-ganda || dropdown || jawaban-text
-                if(in_array($item->type, ['pilihan-ganda','dropdown','jawab-text'])){
-                    $new->jawaban = $jawaban[$item->id];
-                    $new->save();
-                }
-
-                //simpan kotak-centang
-                if($item->type == 'kotak-centang'){
-                    $new->jawaban = '';
-                    $new->save();
-
-                    foreach($jawaban[$item->id] as $keyX => $itemX){
-                        $x = new KuesionerJawabanX();
-                        $x->jawaban_id = $new->id;
-                        $x->jawaban = $itemX;
-                        $x->key = '';
-                        $x->save();
+            foreach($halaman as $halaman){
+                foreach($halaman->soal as $key => $item){
+                    if(!optional($jawaban)[$item->id]){
+                        continue;
                     }
-                }
-                
-                //simpan jawaban petak-kotak-centang
-                if($item->type == 'petak-kotak-centang'){
-                    $new->jawaban = '';
-                    $new->save();
 
-                    foreach($jawaban[$item->id] as $keyX => $itemX){
-                        $x = new KuesionerJawabanX();
-                        $x->jawaban_id = $new->id;
-                        $x->jawaban = '';
-                        $x->key = $keyX;
-                        $x->save();
-                        
-                        foreach($itemX as $itemY){
-                            $y = new KuesionerJawabanY();
-                            $y->jawaban_x_id = $x->id;
-                            $y->jawaban = $itemY;
-                            $y->save();
+                    $new = new KuesionerJawaban();
+                    $new->kuesioner_id = $this->id;
+                    $new->alumni_id = auth()->user()->id;
+                    $new->soal_id = $item->id;
+                    $new->type = $item->type;
+
+                    //simpan jawaban pilihan-ganda || dropdown || jawaban-text
+                    if(in_array($item->type, ['pilihan-ganda','dropdown','jawab-text'])){
+                        $new->jawaban = $jawaban[$item->id];
+                        $new->save();
+                    }
+
+                    //simpan kotak-centang
+                    if($item->type == 'kotak-centang'){
+                        $new->jawaban = '';
+                        $new->save();
+
+                        foreach($jawaban[$item->id] as $keyX => $itemX){
+                            $x = new KuesionerJawabanX();
+                            $x->jawaban_id = $new->id;
+                            $x->jawaban = $itemX;
+                            $x->key = '';
+                            $x->save();
                         }
                     }
-                }
-                
-                //simpan jawaban petak-pilihan-ganda
-                if($item->type == 'petak-pilihan-ganda'){
-                    $new->jawaban = '';
-                    $new->save();
+                    
+                    //simpan jawaban petak-kotak-centang
+                    if($item->type == 'petak-kotak-centang'){
+                        $new->jawaban = '';
+                        $new->save();
 
-                    foreach($jawaban[$item->id] as $keyX => $itemX){
-                        $x = new KuesionerJawabanX();
-                        $x->jawaban_id = $new->id;
-                        $x->key = $keyX;
-                        $x->jawaban = $itemX;
-                        $x->save();
+                        foreach($jawaban[$item->id] as $keyX => $itemX){
+                            $x = new KuesionerJawabanX();
+                            $x->jawaban_id = $new->id;
+                            $x->jawaban = '';
+                            $x->key = $keyX;
+                            $x->save();
+                            
+                            foreach($itemX as $itemY){
+                                $y = new KuesionerJawabanY();
+                                $y->jawaban_x_id = $x->id;
+                                $y->jawaban = $itemY;
+                                $y->save();
+                            }
+                        }
+                    }
+                    
+                    //simpan jawaban petak-pilihan-ganda
+                    if($item->type == 'petak-pilihan-ganda'){
+                        $new->jawaban = '';
+                        $new->save();
+
+                        foreach($jawaban[$item->id] as $keyX => $itemX){
+                            $x = new KuesionerJawabanX();
+                            $x->jawaban_id = $new->id;
+                            $x->key = $keyX;
+                            $x->jawaban = $itemX;
+                            $x->save();
+                        }
                     }
                 }
             }
