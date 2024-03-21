@@ -23,8 +23,8 @@ return [
     [
         'title' => 'Lihat Jawaban',
         'icon' => 'bx bx-book',
-        'route' => '',
-        'active' => 'admin.ket-jurnal.*',
+        'route' => 'admin.lihat-jawaban.index',
+        'active' => 'admin.lihat-jawaban.*',
         'role' => 'admin'
     ],
     [

@@ -34,6 +34,12 @@ Route::namespace('App\Livewire\Pages')->group(function(){
             Route::get('/halaman/{id}', Halaman::class)->name('halaman');
             Route::get('/soal/{id}/{halaman}', Soal::class)->name('soal');
         });
+
+        Route::namespace('LihatJawaban')->prefix('lihat-jawaban')->name('lihat-jawaban.')->group(function(){
+            Route::get('/', Index::class)->name('index');
+            Route::get('/detail/{id}', Detail::class)->name('detail');
+            Route::get('/jawaban/{id}/{user}', Jawaban::class)->name('jawaban');
+        });
     });
 
     Route::namespace('Alumni')->middleware(['auth','role:alumni'])->prefix('alumni')->name('alumni.')->group(function(){
