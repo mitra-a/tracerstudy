@@ -40,6 +40,11 @@ Route::namespace('App\Livewire\Pages')->group(function(){
             Route::get('/detail/{id}', Detail::class)->name('detail');
             Route::get('/jawaban/{id}/{user}', Jawaban::class)->name('jawaban');
         });
+
+        Route::namespace('Laporan')->prefix('laporan')->name('laporan.')->group(function(){
+            Route::get('/', Index::class)->name('index');
+            Route::get('/detail/{id}', Detail::class)->name('detail');
+        });
     });
 
     Route::namespace('Alumni')->middleware(['auth','role:alumni'])->prefix('alumni')->name('alumni.')->group(function(){

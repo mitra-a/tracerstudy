@@ -30,8 +30,8 @@ return [
     [
         'title' => 'Laporan',
         'icon' => 'bx bx-edit',
-        'route' => '',
-        'active' => 'admin.izin-penelitian.*',
+        'route' => 'admin.laporan.index',
+        'active' => 'admin.laporan.*',
         'role' => 'admin'
     ],
     [
