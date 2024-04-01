@@ -73,14 +73,14 @@ return [
     [
         'title' => 'Profile',
         'icon' => 'bx bx-user',
-        'route' => '',
-        'active' => 'admin.mahasiswa.*',
+        'route' => 'admin.profile',
+        'active' => 'admin.profile*',
         'role' => 'admin'
     ],
     [
         'title' => 'Log Out',
         'icon' => 'bx bx-exit',
-        'route' => '',
+        'route' => 'logout',
         'active' => 'admin.admin.*',
         'role' => 'admin'
     ],

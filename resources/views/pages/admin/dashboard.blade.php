@@ -99,7 +99,7 @@
                         @foreach ($arrayData['login'] as $item)
                             <li class="d-flex @if(!$loop->last) mb-4 pb-1 @endif">
                                 <div class="avatar flex-shrink-0 me-3">
-                                    <img src="{{ asset('img/avatar.jpg') }}" alt class="w-px-40 rounded-circle" style="object-fit: cover" />
+                                    <img src="{{ $item->foto ? asset('berkas/profile/' . $item->foto) : asset('img/avatar.jpg') }}" alt class="w-px-40 rounded-circle" style="object-fit: cover" />
                                 </div>
 
                                 <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">

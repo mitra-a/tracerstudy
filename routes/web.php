@@ -12,6 +12,7 @@ Route::namespace('App\Livewire\Pages')->group(function(){
 
     Route::namespace('Admin')->middleware(['auth','role:admin'])->prefix('admin')->name('admin.')->group(function(){
         Route::get('/', Dashboard::class)->name('dashboard');
+        Route::get('/profile', Profile::class)->name('profile');
         Route::get('/prodi', Prodi::class)->name('prodi');
         Route::get('/periode', Periode::class)->name('periode');
 
