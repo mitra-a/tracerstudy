@@ -100,14 +100,14 @@ return [
     [
         'title' => 'Profile',
         'icon' => 'bx bx-user',
-        'route' => '',
-        'active' => 'alumni.mahasiswa.*',
+        'route' => 'alumni.profile',
+        'active' => 'alumni.profile*',
         'role' => 'alumni'
     ],
     [
         'title' => 'Log Out',
         'icon' => 'bx bx-exit',
-        'route' => '',
+        'route' => 'logout',
         'active' => 'alumni.admin.*',
         'role' => 'alumni'
     ],

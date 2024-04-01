@@ -24,4 +24,12 @@ class User extends Authenticatable
         'last_login_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function prodi_data(){
+        return $this->hasOne(Prodi::class, 'kode', 'prodi');
+    }
+
+    public function periode_data(){
+        return $this->hasOne(Periode::class, 'kode', 'periode');
+    }
 }

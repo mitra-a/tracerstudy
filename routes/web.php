@@ -50,6 +50,7 @@ Route::namespace('App\Livewire\Pages')->group(function(){
 
     Route::namespace('Alumni')->middleware(['auth','role:alumni'])->prefix('alumni')->name('alumni.')->group(function(){
         Route::get('/', Dashboard::class)->name('dashboard');
+        Route::get('/profile', Profile::class)->name('profile');
         Route::get('/jawab-kuesioner/{id}', JawabKuesioner::class)->name('dashboard.jawab-kuesioner');
         Route::get('/lihat-jawaban-kuesioner/{id}', LihatJawabanKuesioner::class)->name('dashboard.lihat-jawaban-kuesioner');
     });
