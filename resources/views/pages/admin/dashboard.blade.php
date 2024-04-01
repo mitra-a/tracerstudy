@@ -105,7 +105,7 @@
                                 <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
                                     <div class="me-2">
                                         <h6 class="mb-1">{{ $item->nama }}</h6>
-                                        <small class="text-muted d-block mb-1">{{ $item->last_login_at->diffForHumans()g }}</small>
+                                        <small class="text-muted d-block mb-1">{{ $item->last_login_at->diffForHumans() }}</small>
                                     </div>
                                     <div class="user-progress d-flex align-items-center gap-1">
                                         <span class="badge bg-primary">{{ $item->role }}</span>
