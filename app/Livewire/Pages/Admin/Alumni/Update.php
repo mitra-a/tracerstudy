@@ -59,7 +59,7 @@ class Update extends Component
         $this->validate([
             'nim' => ['required', 'unique:users,nim,'. $this->id],
             'nama' => ['required'],
-            'nomor_telepon' => ['required'],
+            // 'nomor_telepon' => ['required'],
             'prodi' => ['required'],
             'periode' => ['required'],
             'foto' => ['mimes:jpg,jpeg,png','max:1024','nullable'],
@@ -68,8 +68,8 @@ class Update extends Component
             'kabupaten_kota' => ['nullable'],
             'tempat_kerja' => ['nullable'],
             'alamat_kerja' => ['nullable'],
-            'email' => ['required', 'unique:users,email,' . $this->id],
-            'password' => ['nullable'],
+            // 'email' => ['required', 'unique:users,email,' . $this->id],
+            // 'password' => ['nullable'],
         ]);
 
         try {
@@ -84,7 +84,7 @@ class Update extends Component
             $save->kabupaten_kota = $this->kabupaten_kota;
             $save->tempat_kerja = $this->tempat_kerja;
             $save->alamat_kerja = $this->alamat_kerja;
-            $save->email = $this->email;
+            $save->email = $this->email ?? null;
             $save->role = 'alumni';
 
             if($this->password){

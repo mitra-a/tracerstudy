@@ -41,7 +41,7 @@ class Create extends Component
         $this->validate([
             'nim' => ['required', 'unique:users,nim'],
             'nama' => ['required'],
-            'nomor_telepon' => ['required'],
+            // 'nomor_telepon' => ['required'],
             'prodi' => ['required'],
             'periode' => ['required'],
             'foto' => ['mimes:jpg,jpeg,png','max:1024','nullable'],
@@ -50,8 +50,8 @@ class Create extends Component
             'kabupaten_kota' => ['nullable'],
             'tempat_kerja' => ['nullable'],
             'alamat_kerja' => ['nullable'],
-            'email' => ['required', 'unique:users,nim'],
-            'password' => ['required'],
+            // 'email' => ['required', 'unique:users,nim'],
+            // 'password' => ['required'],
         ]);
 
         try {
@@ -66,8 +66,8 @@ class Create extends Component
             $save->kabupaten_kota = $this->kabupaten_kota;
             $save->tempat_kerja = $this->tempat_kerja;
             $save->alamat_kerja = $this->alamat_kerja;
-            $save->email = $this->email;
             $save->role = 'alumni';
+            $save->email = $this->email ?? null;
             $save->password = Hash::make($this->password);
 
             if($this->foto){
@@ -83,8 +83,7 @@ class Create extends Component
             ]);
 
             return redirect()->route('admin.alumni.index');
-        } catch (\Exception $_){
-        }
+        } catch (\Exception $_){ dd($_); }
     }
 
     public function render()

@@ -48,8 +48,8 @@
                         <tr>
                             <td>{{ $row->nim }}</td>
                             <td>{{ $row->nama }}</td>
-                            <td>{{ $row->email }}</td>
-                            <td>{{ $row->nomor_telepon }}</td>
+                            <td>{{ $row->email == '' ? 'Tidak ada akun' : $row->email  }}</td>
+                            <td>{{ $row->nomor_telepon == '' ? '-' : $row->nomor_telepon  }}</td>
                             <td>{{ $row->prodi }}</td>
                             <td>
                                 <div x-data="{ open: false }">
