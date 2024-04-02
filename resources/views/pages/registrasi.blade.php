@@ -13,7 +13,7 @@
 
          @media (min-width: 1200px) {
             .form-container{
-                width: 400px;
+                width: 450px;
             }
          }
     </style>
@@ -48,11 +48,18 @@
                     </div>
                     @endif
     
-                    
                     <form class="mb-3" wire:submit.prevent="login">
+                        <div class="mb-3">
+                            <label for="form-nim" class="form-label">NIM</label>
+                            <input type="text" class="form-control @error('nim') is-invalid @enderror" id="form-nim" wire:model.defer="nim" placeholder="masukan nim" autofocus="">
+                        </div>
                         <div class="mb-3">
                             <label for="form-email" class="form-label">Email</label>
                             <input type="email" class="form-control @error('email') is-invalid @enderror" id="form-email" wire:model.defer="email" placeholder="masukan email" autofocus="">
+                        </div>
+                        <div class="mb-3">
+                            <label for="form-nim" class="form-label">Periode Wisuda</label>
+                            <input type="text" class="form-control @error('periode') is-invalid @enderror" id="form-periode" wire:model.defer="periode" placeholder="masukan periode" autofocus="">
                         </div>
                         <div class="mb-3 form-password-toggle">
                             <div class="d-flex justify-content-between">
@@ -65,10 +72,15 @@
                                 </span>
                             </div>
                         </div>
-                        <div class="mb-3">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="remember-me">
-                                <label class="form-check-label" for="remember-me"> Remember Me </label>
+                        <div class="mb-3 form-password-toggle">
+                            <div class="d-flex justify-content-between">
+                                <label class="form-label" for="form-password">Password</label>
+                            </div>
+                            <div class="input-group input-group-merge">
+                                <input type="password" id="form-password" class="form-control @error('password') is-invalid @enderror" wire:model.defer="password" placeholder="············" aria-describedby="password">
+                                <span class="input-group-text cursor-pointer">
+                                    <i class="bx bx-hide"></i>
+                                </span>
                             </div>
                         </div>
                         <div class="mb-3">
