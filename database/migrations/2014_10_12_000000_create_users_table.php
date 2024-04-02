@@ -31,6 +31,7 @@ return new class extends Migration
             $table->string('tempat_kerja')->nullable();
             $table->string('alamat_kerja')->nullable();
             $table->string('foto')->nullable();
+            $table->boolean('aktif')->default(true);
 
             $table->timestamp('email_verified_at')->nullable();
             $table->timestamp('last_login_at')->nullable();
