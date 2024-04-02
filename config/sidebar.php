@@ -40,10 +40,27 @@ return [
     ],
     [
         'title' => 'Alumni',
+        'route' => '',
         'icon' => 'bx bx-user-check',
-        'route' => 'admin.alumni.index',
         'active' => 'admin.alumni.*',
-        'role' => 'admin'
+        'role' => 'admin',
+        'child' => [
+            [
+                'title' => 'Data Alumni',
+                'route' => 'admin.alumni.index',
+                'active' => ['admin.alumni.index', 'admin.alumni.create', 'admin.alumni.update'],
+            ],
+            [
+                'title' => 'Validasi Akun',
+                'route' => 'admin.alumni.validasi',
+                'active' => 'admin.alumni.validasi',
+            ],
+            [
+                'title' => 'Hapus Akun',
+                'route' => '',
+                'active' => 'admin.alumni.hapus',
+            ],
+        ]
     ],
     [
         'title' => 'Admin',

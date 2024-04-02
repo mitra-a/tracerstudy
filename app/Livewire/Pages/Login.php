@@ -19,7 +19,9 @@ class Login extends Component
         if(Auth::attempt([
             'email' => $this->email,
             'password' => $this->password,
+            'aktif' => 1,
         ])){
+            
             $data = auth()->user();
             $data->last_login_at = Carbon::now()->toDateTimeString();
             $data->last_login_ip = request()->getClientIp();

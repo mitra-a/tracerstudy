@@ -21,12 +21,30 @@
 						<span class="menu-header-text">{{ $sidebar['title-menu'] }}</span>
 					</li>
 				@else
-					<li class="menu-item {{ $sidebar['active'] ? Route::is($sidebar['active']) ? 'active' : '' : '' }}">
-						<a href="{{ $sidebar['route'] ? route($sidebar['route']) : '' }}" class="menu-link">
-							<i class="menu-icon tf-icons {{ $sidebar['icon'] }}"></i>
-							<div data-i18n="Analytics">{{ $sidebar['title'] }}</div>
-						</a>
-					</li>
+					@if(isset($sidebar['child']))
+						<li class="menu-item @if(Route::is($sidebar['active'])) active open @endif" style="">
+							<a href="javascript:void(0);" class="menu-link menu-toggle">
+								<i class="menu-icon tf-icons {{ $sidebar['icon'] }}"></i>
+								<div data-i18n="Analytics">{{ $sidebar['title'] }}</div>
+							</a>
+							<ul class="menu-sub">
+								@foreach($sidebar['child'] as $x)
+								<li class="menu-item @if(Route::is($x['active'])) active @endif">
+									<a href="{{ $x['route'] ? route($x['route']) : '' }}" class="menu-link">
+									<div data-i18n="Account">{{ $x['title'] }}</div>
+									</a>
+								</li>
+								@endforeach
+							</ul>
+						</li>
+					@else
+						<li class="menu-item {{ $sidebar['active'] ? Route::is($sidebar['active']) ? 'active' : '' : '' }}">
+							<a href="{{ $sidebar['route'] ? route($sidebar['route']) : '' }}" class="menu-link">
+								<i class="menu-icon tf-icons {{ $sidebar['icon'] }}"></i>
+								<div data-i18n="Analytics">{{ $sidebar['title'] }}</div>
+							</a>
+						</li>
+					@endif
 				@endif
 			@endif
 		@endforeach
