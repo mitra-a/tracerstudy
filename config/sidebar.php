@@ -57,8 +57,8 @@ return [
             ],
             [
                 'title' => 'Hapus Akun',
-                'route' => '',
-                'active' => 'admin.alumni.hapus',
+                'route' => 'admin.alumni.delete',
+                'active' => 'admin.alumni.delete',
             ],
         ]
     ],

@@ -1,12 +1,23 @@
 <div>
     <div class="d-flex">
         <h4 class="fw-bold py-3 mb-4">
-            <span class="text-muted fw-light">Master Data /</span> Alumni
+            <span class="text-muted fw-light">Master Data /</span> Alumni / Hapus Akun
         </h4>
 
         <div class="ms-auto">
             <a href="{{ route('admin.alumni.create') }}" class="btn btn-primary">Tambah</a>
         </div>
+    </div>
+    
+    <div class="alert alert-dismissible bg-white border-warning border" role="alert">
+        <div class="d-flex">
+          <div>
+            <h6 class="mb-0 text-warning">Peringatan!</h6>
+            <p class="mb-0">Menghapus akun berarti menghapus data <b>jawaban kuesioner</b> dari alumni</p>
+          </div>
+        </div>
+    
+        <a class="btn-close" type="button" data-bs-dismiss="alert" aria-label="close"></a>
     </div>
 
     <x-alert />
@@ -54,7 +65,6 @@
                             <td>
                                 <div x-data="{ open: false }">
                                     <div x-show="!open">
-                                        <a class="bx bx-edit mx-1 text-secondary" href="{{ route('admin.alumni.update', $row->id) }}"></a>
                                         <i class="bx bx-trash mx-1" type="button"  x-on:click="open = !open"></i>  
                                     </div>
 
@@ -65,7 +75,7 @@
                                                 x-on:click="open = !open" 
                                                 wire:click="delete('{{ $row->id }}')" 
                                                 wire:loading.attr="disabled" 
-                                                class="btn btn-danger btn-sm shadow">Hapus</button>
+                                                class="btn btn-danger btn-sm shadow">Hapus Akun</button>
 
                                             <button 
                                                 type="submit" 
