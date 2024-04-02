@@ -41,6 +41,13 @@
                     <h4 class="mb-2">Selamat Datang 👋</h4>
                     <p class="mb-4">Silahkan registrasi akun untuk melanjutkan</p>
     
+                    @if(session()->has('registrasi'))
+                    <div class="alert alert-primary alert-dismissible border-3 bg-white">
+                        Berhasil melakukan registrasi, silahkan masuk untuk melanjutkan.
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    @endif
+
                     @if(session()->has('warning-auth'))
                     <div class="alert alert-warning alert-dismissible border-3 bg-white">
                         Username atau password yang anda masukan tidak ditemukan.

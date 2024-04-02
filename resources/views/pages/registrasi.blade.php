@@ -48,25 +48,88 @@
                     </div>
                     @endif
     
-                    <form class="mb-3" wire:submit.prevent="login">
+                    <form class="mb-3" wire:submit.prevent="save">
                         <div class="mb-3">
                             <label for="form-nim" class="form-label">NIM</label>
-                            <input type="text" class="form-control @error('nim') is-invalid @enderror" id="form-nim" wire:model.defer="nim" placeholder="masukan nim" autofocus="">
+                            <input 
+                                type="text" 
+                                class="form-control @error('nim') is-invalid @enderror" 
+                                id="form-nim" 
+                                wire:model.blur="nim"
+                                placeholder="masukan nim"
+                                autofocus="">
                         </div>
+
+                        @if($alumni)
+                            @if($alumni->email == null || $alumni->email == '')
+                            <table class="table table-striped border border-2" style="font-size: 12px">
+                                <tr>
+                                    <td>NIM</td>
+                                    <td class="p-0" style="width: 1px">:</td>
+                                    <td class="fw-bold">{{ $alumni->nim }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Nama</td>
+                                    <td class="p-0" style="width: 1px">:</td>
+                                    <td class="fw-bold">{{ $alumni->nama }}</td>
+                                </tr>
+                                <tr>
+                                    <td style="white-space: nowrap">Program Studi</td>
+                                    <td class="p-0" style="width: 1px">:</td>
+                                    <td class="fw-bold">{{ $alumni->prodi_data?->nama }}</td>
+                                </tr>
+                            </table>
+                            @else
+                            <div class="alert alert-warning alert-dismissible border-3 bg-white">
+                                Data alumni telah registrasi, silahkan <a href="{{ route('login') }}">masuk</a>.
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                            @endif
+                        @endif
+
+                        @if(!$alumni && $nim)
+                        <div class="alert alert-warning alert-dismissible border-3 bg-white">
+                            Data alumni tidak ditemukan.
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                        @endif
+
                         <div class="mb-3">
                             <label for="form-email" class="form-label">Email</label>
-                            <input type="email" class="form-control @error('email') is-invalid @enderror" id="form-email" wire:model.defer="email" placeholder="masukan email" autofocus="">
+                            <input 
+                                type="email"
+                                class="form-control @error('email') is-invalid @enderror"
+                                id="form-email"
+                                wire:model="email"
+                                placeholder="masukan email">
                         </div>
+
                         <div class="mb-3">
                             <label for="form-nim" class="form-label">Periode Wisuda</label>
-                            <input type="text" class="form-control @error('periode') is-invalid @enderror" id="form-periode" wire:model.defer="periode" placeholder="masukan periode" autofocus="">
+                            <select
+                                type="text"
+                                class="form-control @error('periode') is-invalid @enderror"
+                                id="form-periode"
+                                wire:model="periode"
+                                placeholder="masukan periode">
+                                <option value="">Pilih Periode Wisuda</option>
+                                @foreach ($choice['periode'] as $item)
+                                    <option value="{{ $item['kode'] }}">Periode {{ $item['nama'] }}</option>
+                                @endforeach
+                            </select>
                         </div>
+
                         <div class="mb-3 form-password-toggle">
                             <div class="d-flex justify-content-between">
                                 <label class="form-label" for="form-password">Password</label>
                             </div>
                             <div class="input-group input-group-merge">
-                                <input type="password" id="form-password" class="form-control @error('password') is-invalid @enderror" wire:model.defer="password" placeholder="············" aria-describedby="password">
+                                <input 
+                                    type="password" 
+                                    id="form-password" class="form-control @error('password') is-invalid @enderror"
+                                    wire:model="password"
+                                    placeholder="············" 
+                                    aria-describedby="password">
                                 <span class="input-group-text cursor-pointer">
                                     <i class="bx bx-hide"></i>
                                 </span>
@@ -74,17 +137,22 @@
                         </div>
                         <div class="mb-3 form-password-toggle">
                             <div class="d-flex justify-content-between">
-                                <label class="form-label" for="form-password">Password</label>
+                                <label class="form-label" for="form-password-confirm">Ulangi Password</label>
                             </div>
                             <div class="input-group input-group-merge">
-                                <input type="password" id="form-password" class="form-control @error('password') is-invalid @enderror" wire:model.defer="password" placeholder="············" aria-describedby="password">
+                                <input 
+                                    type="password" 
+                                    id="form-password-confirm" class="form-control @error('password_confirm') is-invalid @enderror"
+                                    wire:model="password_confirm" 
+                                    placeholder="············" 
+                                    aria-describedby="password">
                                 <span class="input-group-text cursor-pointer">
                                     <i class="bx bx-hide"></i>
                                 </span>
                             </div>
                         </div>
                         <div class="mb-3">
-                            <button class="btn btn-primary d-grid w-100" type="submit">Sign in</button>
+                            <button class="btn btn-primary d-grid w-100" type="submit">Registrasi</button>
                         </div>
                     </form>
                 </div>
