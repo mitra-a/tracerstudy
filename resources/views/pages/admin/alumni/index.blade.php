@@ -48,7 +48,7 @@
                         <tr>
                             <td>{{ $row->nim }}</td>
                             <td>{{ $row->nama }}</td>
-                            <td>{{ $row->email == '' ? 'Tidak ada akun' : $row->email  }}</td>
+                            <td>{!! $row->email == '' ? '<span class="badge bg-danger">Tidak ada akun</span>' : $row->email  !!}</td>
                             <td>{{ $row->nomor_telepon == '' ? '-' : $row->nomor_telepon  }}</td>
                             <td>{{ $row->prodi }}</td>
                             <td>

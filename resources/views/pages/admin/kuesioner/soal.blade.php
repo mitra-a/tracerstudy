@@ -11,46 +11,48 @@
 
     <div class="row">
         <div class="col-lg-4">
-            @foreach ([
-                [
-                    'text' => 'Jawab Text',
-                    'icon' => 'bx bx-paste',
-                    'type' => 'jawab-text'
-                ],
-                [
-                    'text' => 'Dropdown',
-                    'icon' => 'bx bx-list-ul',
-                    'type' => 'dropdown'
-                ],
-                [
-                    'text' => 'Pilihan Ganda',
-                    'icon' => 'bx bx-check-circle',
-                    'type' => 'pilihan-ganda'
-                ],
-                [
-                    'text' => 'Kotak Centang',
-                    'icon' => 'bx bx-check-square',
-                    'type' => 'kotak-centang'
-                ],
-                [
-                    'text' => 'Petak Pilihan Ganda',
-                    'icon' => 'bx bx-border-all',
-                    'type' => 'petak-pilihan-ganda'
-                ],
-                [
-                    'text' => 'Petak Kotak Centang',
-                    'icon' => 'bx bx-grid-alt',
-                    'type' => 'petak-kotak-centang'
-                ],
-            ] as $item)
-                <button 
-                    class="btn btn-light w-100 bg-white shadow-sm mb-2 text-start d-flex align-items-center py-3"
-                    wire:click="tambahPertanyaan('{{ $item['type'] }}')"
-                >
-                    <i class="{{ $item['icon'] }} me-2"></i>
-                    {{ $item['text'] }}
-                </button>
-            @endforeach
+            <div class="sticky-top" style="top: 20px">
+                @foreach ([
+                    [
+                        'text' => 'Jawab Text',
+                        'icon' => 'bx bx-paste',
+                        'type' => 'jawab-text'
+                    ],
+                    [
+                        'text' => 'Dropdown',
+                        'icon' => 'bx bx-list-ul',
+                        'type' => 'dropdown'
+                    ],
+                    [
+                        'text' => 'Pilihan Ganda',
+                        'icon' => 'bx bx-check-circle',
+                        'type' => 'pilihan-ganda'
+                    ],
+                    [
+                        'text' => 'Kotak Centang',
+                        'icon' => 'bx bx-check-square',
+                        'type' => 'kotak-centang'
+                    ],
+                    [
+                        'text' => 'Petak Pilihan Ganda',
+                        'icon' => 'bx bx-border-all',
+                        'type' => 'petak-pilihan-ganda'
+                    ],
+                    [
+                        'text' => 'Petak Kotak Centang',
+                        'icon' => 'bx bx-grid-alt',
+                        'type' => 'petak-kotak-centang'
+                    ],
+                ] as $item)
+                    <button 
+                        class="btn btn-light w-100 bg-white shadow-sm mb-2 text-start d-flex align-items-center py-3"
+                        wire:click="tambahPertanyaan('{{ $item['type'] }}')"
+                    >
+                        <i class="{{ $item['icon'] }} me-2"></i>
+                        {{ $item['text'] }}
+                    </button>
+                @endforeach
+            </div>
         </div>
 
         <div class="col">

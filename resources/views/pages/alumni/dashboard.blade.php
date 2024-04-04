@@ -4,7 +4,7 @@
     </h4>
 
     <div class="col-lg-6">
-        @foreach ($kuesioner as $row)
+        @forelse ($kuesioner as $row)
             <div class="card mb-3">
                 <div class="card-body my-2">
                     <div class="d-flex align-items-center">
@@ -29,6 +29,18 @@
                     </div>
                 </div>
             </div>
-        @endforeach
+        @empty
+        <div class="card">
+            <div class="card-body">
+                <div class="empty text-center py-5">
+                    <div class="empty-icon mb-4">
+                        <i class="bx bx-package" style="font-size: 50px"></i>
+                    </div>
+        
+                    <p class="h4">Tidak ada kuesioner</p>
+                  </div>
+            </div>
+        </div>
+        @endforelse
     </div>
 </div>

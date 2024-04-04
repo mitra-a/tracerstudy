@@ -54,7 +54,7 @@
                 <div>
                     <div class="row">
                         <div class="col-lg-6 mt-5">
-                            <div class="form-label">Opsi Pertanyaan</div>
+                            <div class="form-label">Baris</div>
 
                             @foreach ($opsi_x as $index => $item)
                                 <div class="d-flex mb-2">
@@ -84,7 +84,7 @@
                         </div>
 
                         <div class="col-lg-6 mt-5">
-                            <div class="form-label">Opsi Pertanyaan</div>
+                            <div class="form-label">Kolom</div>
                             @foreach ($opsi_y as $index => $item)
                                 <div class="d-flex mb-2">
                                     <input 
