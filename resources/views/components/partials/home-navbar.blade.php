@@ -2,7 +2,10 @@
     <div class="container py-3">
         <div class="d-flex align-items-center">
             <a href="index.html">
-                <h4 class="text-white m-0">TracerStudy | <b>JTIK UNM</b></h5>
+                <div class="d-flex align-items-center">
+                    <img src="{{ asset('logo-white.png') }}" width="40px" class="me-3">
+                    <h4 class="text-white m-0">TracerStudy | <b>JTIK UNM</b></h5>
+                </div>
             </a>
             <div class="ms-auto d-flex align-items-center">
                 <small class="ms-4"><i class="fa fa-map-marker-alt me-3"></i>Jl. Daeng Tata Raya</small>
@@ -23,7 +26,7 @@
     <div class="container">
         <nav class="navbar navbar-expand-lg bg-white navbar-light p-lg-0">
             <a href="index.html" class="navbar-brand d-lg-none">
-                <h1 class="fw-bold m-0">GrowMark</h1>
+                <h1 class="fw-bold m-0">TracerStudy</h1>
             </a>
             <button type="button" class="navbar-toggler me-0" data-bs-toggle="collapse"
                 data-bs-target="#navbarCollapse">
@@ -31,13 +34,17 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav">
-                    <a href="index.html" class="nav-item nav-link active">Home</a>
-                    <a href="about.html" class="nav-item nav-link">Alur Pengisian</a>
-                    <a href="about.html" class="nav-item nav-link">Tentang Kami</a>
-                    <a href="service.html" class="nav-item nav-link">Daftar</a>
+                    <a href="{{ route('welcome') }}" class="nav-item nav-link">Home</a>
+                    <a href="{{ route('welcome') }}#alur-pengisian" class="nav-item nav-link">Alur Pengisian</a>
+                    <a href="{{ route('welcome') }}#tentang-kami" class="nav-item nav-link">Tentang Kami</a>
+                    <a href="{{ route('registrasi') }}" class="nav-item nav-link">Daftar</a>
                 </div>
                 <div class="ms-auto d-none d-lg-block">
-                    <a href="" class="btn btn-primary rounded-pill py-2 px-3">Login / Masuk</a>
+                    @if(auth()->check())
+                        <a href="{{ route(auth()->user()->role . '.dashboard') }}" class="btn btn-primary rounded-pill py-2 px-3">Dashboard</a>
+                    @else
+                        <a href="{{ route('login') }}" class="btn btn-primary rounded-pill py-2 px-3">Login</a>
+                    @endif
                 </div>
             </div>
         </nav>

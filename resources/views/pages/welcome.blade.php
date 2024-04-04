@@ -27,11 +27,24 @@
                                     <p class="fs-4 text-white animated slideInRight" style="line-height: 37px; text-align: justify">
                                         Kami menyambut Anda dalam perjalanan yang tak ternilai dalam menggali potensi dan kesuksesan setelah meninggalkan bangku kuliah. <b>Tracer Study JTIK UNM</b> adalah jendela yang membuka pandangan ke arah masa depan
                                     </p>
-                                    <a 
-                                        href=""
-                                        class="btn btn-primary rounded-pill py-3 px-5 mt-5 animated slideInRight">
-                                        Masuk disini
-                                    </a>
+                                    @if(auth()->check())
+                                        <a 
+                                            href="{{ route(auth()->user()->role . '.dashboard') }}"
+                                            class="btn btn-primary rounded-pill py-3 px-5 mt-5 me-2 animated slideInRight">
+                                            Dashboard
+                                        </a>
+                                    @else
+                                        <a 
+                                            href="{{ route('login') }}"
+                                            class="btn btn-primary rounded-pill py-3 px-5 mt-5 me-2 animated slideInRight">
+                                            Masuk disini
+                                        </a>
+                                        <a 
+                                            href="{{ route('registrasi') }}"
+                                            class="btn btn-light rounded-pill py-3 px-5 mt-5 animated slideInRight">
+                                            Daftar
+                                        </a>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -41,7 +54,7 @@
         </div>
     </div>
 
-    <div class="container-xxl py-5">
+    <div class="container-xxl py-5" id="alur-pengisian">
         <div class="container">
             <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
                 <p class="fs-5 fw-medium text-primary">Tracer Study</p>
@@ -125,7 +138,7 @@
         </div>
     </div>
 
-    <div class="container-xxl about my-5">
+    <div class="container-xxl about my-5" id="tentang-kami">
         <div class="container">
             <div class="row g-0">
                 <div class="col-lg-6">
@@ -176,15 +189,11 @@
         <div class="container py-5">
             <div class="row g-5">
                 <div class="col-lg-5 col-md-6">
-                    <div>
-                        <div class="d-flex justify-content-center align-items-center">
-                            <div class="bg-white rounded px-5">
-                                <img
-                                    src="{{ asset('jtik.png') }}"
-                                    height="160px"
-                                />
-                            </div>
-                        </div>
+                    <div class="d-flex justify-content-center align-items-center h-100">
+                        <img
+                            src="{{ asset('jtik.png') }}"
+                            height="85px"
+                        />
                     </div>
                 </div>
 

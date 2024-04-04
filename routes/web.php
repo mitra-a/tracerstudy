@@ -58,5 +58,5 @@ Route::namespace('App\Livewire\Pages')->group(function(){
         Route::get('/lihat-jawaban-kuesioner/{id}', LihatJawabanKuesioner::class)->name('dashboard.lihat-jawaban-kuesioner');
     });
 
-    Route::get('/', Welcome::class);
+    Route::get('/', Welcome::class)->name('welcome');
 });
