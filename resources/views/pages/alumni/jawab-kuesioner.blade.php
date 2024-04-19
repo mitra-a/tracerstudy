@@ -1,5 +1,10 @@
 <div>
     <div class="row justify-content-center">
+        @push('script')
+        <script>
+            
+        </script>
+        @endpush
 
         <style>
             .form-check-input {
@@ -75,11 +80,24 @@
                             <div class="card-body my-3">
                                 <h5 class="card-title mb-4">{{ $soal->pertanyaan }}</h5>
 
-                                @if ($soal->type == 'jawab-text')
+                                @if (in_array($soal->type,['jawab-text', 'jawab-angka', 'jawab-tanggal', 'jawab-waktu']))
                                     <input
                                         x-on:change="(e) => changeValue('{{ $soal->id }}', e, '{{ $soal->type }}')"
-                                        type="text"
+                                        @switch($soal->type)
+                                            @case('jawab-angka')
+                                                type="number"
+                                                @break
+                                            @case('jawab-tanggal')
+                                                type="date"
+                                                @break
+                                            @case('jawab-waktu')
+                                                type="time"
+                                                @break
+                                            @default
+                                                type="text"
+                                        @endswitch
                                         class="form-control"
+                                        id="form-{{ $soal->id }}"
                                         placeholder="Masukan jawaban anda"
                                         value="{{ optional($jawaban)[$soal->id] }}"
                                     >
@@ -89,6 +107,7 @@
                                     <select 
                                         x-on:change="(e) => changeValue('{{ $soal->id }}', e, '{{ $soal->type }}')"
                                         class="form-control"
+                                        id="form-{{ $soal->id }}"
                                     >
                                         <option value="">- Pilih Jawaban -</option>
                                         @foreach ($soal->opsi_x as $item)
@@ -108,6 +127,7 @@
                                                             {{ optional($jawaban)[$soal->id] == $item ? 'checked' : ''}}
                                                             class="form-check-input me-1"
                                                             type="radio"
+                                                            id="form-{{ $soal->id }}"
                                                             name="{{ $soal->id }}"
                                                             value="{{ $item }}">
                                                         @break
@@ -117,6 +137,7 @@
                                                             {{ in_array($item, optional($jawaban)[$soal->id] ?? []) ? 'checked' : ''}}
                                                             class="form-check-input me-1"
                                                             type="checkbox"
+                                                            id="form-{{ $soal->id }}"
                                                             name="{{ $soal->id }}"
                                                             value="{{ $item }}">
                                                         @break
@@ -150,6 +171,7 @@
                                                                     class="form-check-input me-1"
                                                                     type="radio"
                                                                     name="{{ $soal->id }}.{{ $item }}"
+                                                                    id="form-{{ $soal->id }}-{{ $item }}"
                                                                     value="{{ $item_y }}">
                                                                 @break
                                                             @case('petak-kotak-centang')
@@ -159,6 +181,7 @@
                                                                     class="form-check-input me-1"
                                                                     type="checkbox"
                                                                     name="{{ $soal->id }}.{{ $item }}"
+                                                                    id="form-{{ $soal->id }}-{{ $item }}"
                                                                     value="{{ $item_y }}">
                                                                 @break
                                                         @endswitch

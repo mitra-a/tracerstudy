@@ -19,6 +19,14 @@
                         'type' => 'jawab-text'
                     ],
                     [
+                        'text' => 'Jawab Angka',
+                        'icon' => 'bx bx-copy-alt',
+                        'type' => 'jawab-angka'
+                    ],
+                    [
+                        'divider' => true,
+                    ],
+                    [
                         'text' => 'Dropdown',
                         'icon' => 'bx bx-list-ul',
                         'type' => 'dropdown'
@@ -34,6 +42,9 @@
                         'type' => 'kotak-centang'
                     ],
                     [
+                        'divider' => true,
+                    ],
+                    [
                         'text' => 'Petak Pilihan Ganda',
                         'icon' => 'bx bx-border-all',
                         'type' => 'petak-pilihan-ganda'
@@ -43,14 +54,31 @@
                         'icon' => 'bx bx-grid-alt',
                         'type' => 'petak-kotak-centang'
                     ],
+                    [
+                        'divider' => true,
+                    ],
+                    [
+                        'text' => 'Tanggal',
+                        'icon' => 'bx bx-calendar',
+                        'type' => 'jawab-tanggal'
+                    ],
+                    [
+                        'text' => 'Waktu',
+                        'icon' => 'bx bx-time',
+                        'type' => 'jawab-waktu'
+                    ],
                 ] as $item)
-                    <button 
-                        class="btn btn-light w-100 bg-white shadow-sm mb-2 text-start d-flex align-items-center py-3"
-                        wire:click="tambahPertanyaan('{{ $item['type'] }}')"
-                    >
-                        <i class="{{ $item['icon'] }} me-2"></i>
-                        {{ $item['text'] }}
-                    </button>
+                    @if(isset($item['divider']))
+                        <hr>
+                    @else
+                        <button 
+                            class="btn btn-light w-100 bg-white shadow-sm mb-2 text-start d-flex align-items-center py-3"
+                            wire:click="tambahPertanyaan('{{ $item['type'] }}')"
+                        >
+                            <i class="{{ $item['icon'] }} me-2"></i>
+                            {{ $item['text'] }}
+                        </button>
+                    @endif
                 @endforeach
             </div>
         </div>

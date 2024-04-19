@@ -65,7 +65,7 @@ class JawabKuesioner extends Component
                     $new->type = $item->type;
 
                     //simpan jawaban pilihan-ganda || dropdown || jawaban-text
-                    if(in_array($item->type, ['pilihan-ganda','dropdown','jawab-text'])){
+                    if(in_array($item->type, ['pilihan-ganda','dropdown','jawab-text','jawab-tanggal','jawab-waktu','jawab-angka'])){
                         $new->jawaban = $jawaban[$item->id];
                         $new->save();
                     }
@@ -134,6 +134,7 @@ class JawabKuesioner extends Component
 
         $halaman->page = $semua_halaman[$halaman->current_page - 1];
         $this->halaman = $halaman;
+        $this->js('window.scrollTo({ top: 0, behavior: "smooth" });');
     }
 
     public function previous(){
@@ -143,6 +144,7 @@ class JawabKuesioner extends Component
 
         $halaman->page = $semua_halaman[$halaman->current_page - 1];
         $this->halaman = $halaman;
+        $this->js('window.scrollTo({ top: 0, behavior: "smooth" });');
     }
 
     public function render()

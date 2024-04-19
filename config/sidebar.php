@@ -107,7 +107,14 @@ return [
         'title' => 'Dashboard',
         'icon' => 'bx bx-home-circle',
         'route' => 'alumni.dashboard',
-        'active' => 'alumni.dashboard',
+        'active' => ['alumni.dashboard*'],
+        'role' => 'alumni'
+    ],
+    [
+        'title' => 'Hasil Survey',
+        'icon' => 'bx bx-pie-chart-alt-2',
+        'route' => 'alumni.hasil-survey.index',
+        'active' => ['alumni.hasil-survey.*'],
         'role' => 'alumni'
     ],
     [

@@ -56,6 +56,11 @@ Route::namespace('App\Livewire\Pages')->group(function(){
         Route::get('/profile', Profile::class)->name('profile');
         Route::get('/jawab-kuesioner/{id}', JawabKuesioner::class)->name('dashboard.jawab-kuesioner');
         Route::get('/lihat-jawaban-kuesioner/{id}', LihatJawabanKuesioner::class)->name('dashboard.lihat-jawaban-kuesioner');
+
+        Route::namespace('Laporan')->prefix('hasil-survey')->name('hasil-survey.')->group(function(){
+            Route::get('/', Index::class)->name('index');
+            Route::get('/detail/{id}', Detail::class)->name('detail');
+        });
     });
 
     Route::get('/', Welcome::class)->name('welcome');

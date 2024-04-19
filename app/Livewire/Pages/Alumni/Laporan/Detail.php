@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Pages\Admin\Laporan;
+namespace App\Livewire\Pages\Alumni\Laporan;
 
 use App\Models\Kuesioner;
 use App\Models\KuesionerJawaban;
@@ -28,21 +28,17 @@ class Detail extends Component
         $jawaban = KuesionerJawaban::query()
             ->where('validasi', 1)
             ->whereIn('soal_id', array_column($soal, "id"))
-            // ->with([ 'x', 'alumni' => function($e) use ($request){
-            //         $e->where('periode_wisuda', $request->periode)
-            //             ->where('program_studi', $request->prodi);
-            // }])
-            ->with('jawaban_x')
+            ->with([ 'jawaban_x', 'alumni' => function($e) {
+                    $e->where('prodi', auth()->user()->prodi);
+            }])
             ->get()
             ->toArray();
 
         $jumlahAlumni = KuesionerJawaban::query()
             ->whereIn('soal_id', array_column($soal, "id"))
-            // ->with([ 'x', 'alumni' => function($e) use ($request){
-            //         $e->where('periode_wisuda', $request->periode)
-            //             ->where('program_studi', $request->prodi);
-            // }])
-            ->with('jawaban_x')
+            ->with([ 'jawaban_x', 'alumni' => function($e) {
+                $e->where('prodi', auth()->user()->prodi);
+            }])
             ->groupBy("alumni_id")
             ->get();
 
@@ -158,6 +154,6 @@ class Detail extends Component
 
     public function render()
     {
-        return view('pages.admin.laporan.detail');
+        return view('pages.alumni.laporan.detail');
     }
 }

@@ -16,4 +16,8 @@ class KuesionerJawaban extends Model
     public function jawaban_x(){
         return $this->hasMany(KuesionerJawabanX::class, 'jawaban_id', 'id')->with('jawaban_y');
     }
+
+    public function alumni(){
+        return $this->hasMany(User::class, 'id', 'alumni_id');
+    }
 }
