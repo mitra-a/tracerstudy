@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Pages\Admin;
 
+use App\Models\Kuesioner;
 use App\Models\Pengunjung;
 use App\Models\Periode;
 use App\Models\Prodi;
@@ -15,7 +16,7 @@ class Dashboard extends Component
 
     public function mount(){
         $this->arrayData['alumni'] = User::where('role','alumni')->count();
-        $this->arrayData['prodi'] = Prodi::count();
+        $this->arrayData['prodi'] = Kuesioner::count();
         $this->arrayData['periode'] = Periode::count();
         
         $pengunjung = Pengunjung::selectRaw('sum(jumlah) as jumlah')->get();

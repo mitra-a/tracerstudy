@@ -47,7 +47,7 @@
                     <div class="mb-3">
                         <h1 class="text-primary font-weight-bold">{{ $arrayData['prodi'] }}</h1>
                     </div>
-                    <h5 class="h3 font-weight-bolder mb-3">Program Studi</h5><span class="d-block text-sm text-muted">Jumlah Program Studi <br> dalam Database</span>
+                    <h5 class="h3 font-weight-bolder mb-3">Kuesioner</h5><span class="d-block text-sm text-muted">Jumlah Kuesioner <br> dalam Database</span>
                     </div>
             </div>
         </div>
