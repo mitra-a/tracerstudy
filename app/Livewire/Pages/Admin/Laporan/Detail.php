@@ -26,6 +26,7 @@ class Detail extends Component
             ->toArray();
 
         $jawaban = KuesionerJawaban::query()
+            ->where('validasi', 1)
             ->whereIn('soal_id', array_column($soal, "id"))
             // ->with([ 'x', 'alumni' => function($e) use ($request){
             //         $e->where('periode_wisuda', $request->periode)
