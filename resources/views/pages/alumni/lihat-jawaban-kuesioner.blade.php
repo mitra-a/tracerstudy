@@ -117,11 +117,13 @@
                     </div>
                 @endforeach
 
-                <div class="d-flex justify-content-end">
-                    <button 
-                        wire:click="resetJawaban"
-                        class="btn btn-danger">Reset Jawaban</button>
-                </div>
+                @if(!$this->validasi)
+                    <div class="d-flex justify-content-end">
+                        <button 
+                            wire:click="resetJawaban"
+                            class="btn btn-danger">Reset Jawaban</button>
+                    </div>
+                @endif
             </div>
         </div>
     </div>

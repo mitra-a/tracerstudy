@@ -11,6 +11,7 @@ class LihatJawabanKuesioner extends Component
 {
     public $id;
     public $halaman;
+    public $validasi;
     
     public $kuesioner;
     public $jawaban = [];
@@ -27,6 +28,7 @@ class LihatJawabanKuesioner extends Component
             ->get();
 
         foreach($jawaban as $item){
+            $this->validasi = $item->validasi;
             $value = $item->jawaban;
             if($item->type == 'kotak-centang'){
                 $value = array_column($item->jawaban_x->toArray(), 'jawaban');
@@ -53,7 +55,9 @@ class LihatJawabanKuesioner extends Component
     }
 
     public function resetJawaban(){
-        KuesionerJawaban::where('kuesioner_id', $this->id)->where('alumni_id', auth()->user()->id)->delete();
+        if(!$this->validasi){
+            KuesionerJawaban::where('kuesioner_id', $this->id)->where('alumni_id', auth()->user()->id)->delete();
+        }
         return redirect()->route('alumni.dashboard');
     }
 

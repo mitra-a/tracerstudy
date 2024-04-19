@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('alumni_id');
             $table->string('soal_id');
             $table->string('jawaban');
+            $table->boolean('validasi')->default(false);
             $table->timestamps();
         });
     }
