@@ -30,6 +30,10 @@ class Soal extends Component
             $save->opsi_x = [''];
             $save->opsi_y = [''];
             $save->save();
+
+            $this->js("setTimeout(function(){
+                window.scrollTo({top: document.body.scrollHeight, behavior: 'smooth' })
+            }, 100)");
         } catch(\Exception $_){ }
     }
 

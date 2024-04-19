@@ -1,4 +1,6 @@
 <div>
+    <x-loading />
+
     <div class="d-flex">
         <h4 class="fw-bold py-3 mb-4">
             <span class="text-muted fw-light">Kusioner /</span> Data Kuesioner / Halaman / Soal
@@ -11,7 +13,7 @@
 
     <div class="row">
         <div class="col-lg-4">
-            <div class="sticky-top" style="top: 20px">
+            <div class="sticky-top" style="top: 20px;">
                 @foreach ([
                     [
                         'text' => 'Jawab Text',

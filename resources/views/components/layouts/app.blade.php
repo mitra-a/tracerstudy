@@ -5,6 +5,7 @@
 		@stack('style')
 	</head>
 	<body>
+		<div id="loading-layout"></div>
 		<div class="layout-wrapper layout-content-navbar">
 			<div class="layout-container">
 		        @include('components.partials.sidebar')
