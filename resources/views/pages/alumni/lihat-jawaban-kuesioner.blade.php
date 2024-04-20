@@ -40,7 +40,7 @@
 
                                     @if (in_array($soal->type, ['kotak-centang']))
                                         <ul class="mb-0">
-                                            @foreach (optional($jawaban)[$soal->id] as $item)
+                                            @foreach (optional($jawaban)[$soal->id] ?? [] as $item)
                                                 <li>
                                                     <h4 class="mb-0">{{ $item }}</h4>
                                                 </li>

@@ -30,9 +30,7 @@ class RegistrasiDemo extends Component
     public function updatedNim($value){
         $alumni = User::where('nim', $value)->first();
         if($alumni) {
-            if($alumni->email != null || $alumni->email != ''){
-                $this->alumni = $alumni;
-            }
+            $this->alumni = $alumni;
             return;
         }
         
@@ -76,7 +74,7 @@ class RegistrasiDemo extends Component
             }
 
             return;
-        } catch (\Exception $_){}
+        } catch (\Exception $_){ }
     }
 
     public function render()

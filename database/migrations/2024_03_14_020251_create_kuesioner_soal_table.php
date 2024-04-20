@@ -20,6 +20,7 @@ return new class extends Migration
             $table->text('type');
             $table->text('opsi_x')->nullable();
             $table->text('opsi_y')->nullable();
+            $table->boolean('required')->default(false);
             $table->timestamps();
         });
     }

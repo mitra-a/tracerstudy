@@ -116,13 +116,28 @@
             @endif
         </div>
 
-        <div class="w-100 mt-3 justify-content-end d-flex">
+        <div class="w-100 mt-3 justify-content-end align-items-center d-flex">
             <button 
                 wire:click="$parent.hapusPertanyaan('{{ $row->id }}')"
-                class="btn btn-light border d-flex align-items-center">
-                <i class="bx bx-trash me-2"></i>
-                Hapus Pertanyaan
+                class="btn btn-light border d-flex align-items-center px-2">
+                <i class="bx bx-trash"></i>
             </button>
+
+            <div class="border mx-3" style="height: 35px"></div>
+
+            <div class="d-flex justify-content-between">
+                <div class="form-check form-switch">
+                    <input
+                        wire:click="required"
+                        class="form-check-input" 
+                        type="checkbox" 
+                        role="switch" 
+                        id="form-{{ $row->id }}"
+                        @if($row->required) checked @endif>
+
+                    <label class="form-check-label" for="form-{{ $row->id }}">Wajib diisi</label>
+                </div>
+            </div>
         </div>
     </div>
 </div>

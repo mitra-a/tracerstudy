@@ -21,6 +21,12 @@ class KuesionerSoal extends Component
         $this->opsi_y = $this->row->opsi_y;
     }
 
+    public function required(){
+        $row = $this->row;
+        $row->required = $row->required == 1 ? 0 : 1;
+        $row->save();
+    }
+
     public function updatedPertanyaan(){
         $row = $this->row;
         $row->pertanyaan = $this->pertanyaan;

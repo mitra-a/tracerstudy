@@ -34,13 +34,13 @@
                                 <div class="card-body my-3">
                                     <h5 class="card-title text-muted">{{ $soal->pertanyaan }}</h5>
 
-                                    @if (in_array($soal->type, ['jawab-text', 'dropdown','pilihan-ganda']))
+                                    @if (in_array($soal->type, ['jawab-tanggal','jawab-text', 'dropdown','pilihan-ganda','jawab-angka', 'jawab-waktu']))
                                         <h4 class="mb-0">{{ optional($jawaban)[$soal->id] }}</h4>
                                     @endif
 
                                     @if (in_array($soal->type, ['kotak-centang']))
                                         <ul class="mb-0">
-                                            @foreach (optional($jawaban)[$soal->id] as $item)
+                                            @foreach (optional($jawaban)[$soal->id] ?? [] as $item)
                                                 <li>
                                                     <h4 class="mb-0">{{ $item }}</h4>
                                                 </li>

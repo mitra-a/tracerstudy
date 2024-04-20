@@ -1,11 +1,5 @@
 <div>
     <div class="row justify-content-center">
-        @push('script')
-        <script>
-            
-        </script>
-        @endpush
-
         <style>
             .form-check-input {
                 width: 1.8em !important;
@@ -74,11 +68,16 @@
                             <h4 class="text-muted fw-light mb-0">{{ $halaman->page?->deskripsi }}</h4>
                         </div>
                     </div>
-
+                    
                     @foreach ($halaman->page?->soal as $soal)
-                        <div class="card mb-3">
+                        <div class="card mb-3 @if(in_array($soal->id ,$required)) border border-danger @endif">
                             <div class="card-body my-3">
-                                <h5 class="card-title mb-4">{{ $soal->pertanyaan }}</h5>
+                                <h5 class="card-title mb-4">
+                                    {{ $soal->pertanyaan }}
+                                    @if($soal->required)
+                                        <span class="text-danger">*</span>
+                                    @endif
+                                </h5>
 
                                 @if (in_array($soal->type,['jawab-text', 'jawab-angka', 'jawab-tanggal', 'jawab-waktu']))
                                     <input

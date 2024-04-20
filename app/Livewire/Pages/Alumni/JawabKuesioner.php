@@ -13,6 +13,7 @@ class JawabKuesioner extends Component
 {
     public $id;
     public $halaman;
+    public $required = [];
     
     public $kuesioner;
     public $jawaban = [];
@@ -42,8 +43,34 @@ class JawabKuesioner extends Component
             ->get();
     }
 
+    public function checkRequired(){
+        $check = [];
+        $semua_halaman = $this->semua_halaman;
+        $halaman = $this->halaman;
+
+        foreach($semua_halaman[$halaman->current_page - 1]?->soal as $soal){
+            if($soal->required){
+                if(isset($this->jawaban[$soal->id])){
+                    $this->jawaban[$soal->id] == '' || $this->jawaban[$soal->id] == null
+                    ? $check[] = $soal->id : null;
+                } else {
+                    $check[] = $soal->id;
+                }
+            }
+        }
+
+        $this->required = $check;
+        return $check;
+    }
+
     public function save(){
         $halaman = $this->semua_halaman;
+
+        $check = $this->checkRequired();
+        if($check) {
+            $this->js('window.scrollTo({ top: 0, behavior: "smooth" });');
+            return;
+        }
 
         try{
             KuesionerJawaban::query()
@@ -123,17 +150,19 @@ class JawabKuesioner extends Component
 
             return redirect()->route('alumni.dashboard');
         } catch(\Exception $error){
-            dd($error);
         }
     }
 
     public function next(){
         $semua_halaman = $this->semua_halaman;
         $halaman = $this->halaman;
-        $halaman->current_page++;
+        $check = $this->checkRequired();
 
-        $halaman->page = $semua_halaman[$halaman->current_page - 1];
-        $this->halaman = $halaman;
+        if(!$check){
+            $halaman->current_page++;
+            $halaman->page = $semua_halaman[$halaman->current_page - 1];
+            $this->halaman = $halaman;
+        }
         $this->js('window.scrollTo({ top: 0, behavior: "smooth" });');
     }
 

@@ -60,10 +60,30 @@
                         </div>
 
                         @if($alumni)
-                            <div class="alert alert-warning alert-dismissible border-3 bg-white">
-                                Data alumni telah registrasi, silahkan <a href="{{ route('login') }}">masuk</a>.
-                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                            </div>
+                            @if($alumni->email == null || $alumni->email == '')
+                                <table class="table table-striped border border-2" style="font-size: 12px">
+                                    <tr>
+                                        <td>NIM</td>
+                                        <td class="p-0" style="width: 1px">:</td>
+                                        <td class="fw-bold">{{ $alumni->nim }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Nama</td>
+                                        <td class="p-0" style="width: 1px">:</td>
+                                        <td class="fw-bold">{{ $alumni->nama }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="white-space: nowrap">Program Studi</td>
+                                        <td class="p-0" style="width: 1px">:</td>
+                                        <td class="fw-bold">{{ $alumni->prodi_data?->nama }}</td>
+                                    </tr>
+                                </table>
+                            @else
+                                <div class="alert alert-warning alert-dismissible border-3 bg-white">
+                                    Data alumni telah registrasi, silahkan <a href="{{ route('login') }}">masuk</a>.
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
+                            @endif
                         @endif
 
                         <div class="mb-3">
