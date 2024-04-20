@@ -43,7 +43,7 @@
                                     @if(auth()->check())
                                         <a 
                                             href="{{ route(auth()->user()->role . '.dashboard') }}"
-                                            class="btn btn-primary rounded-pill py-3 px-5 mt-3 mt-md-5 w-md-0 w-100 me-2 animated slideInRight>
+                                            class="btn btn-primary rounded-pill py-3 px-5 mt-3 mt-md-5 w-md-0 w-100 me-2 animated slideInRight">
                                             Dashboard
                                         </a>
                                     @else
