@@ -80,36 +80,38 @@
                                     @endif --}}
 
                                     @if (in_array($soal->type,['petak-pilihan-ganda', 'petak-kotak-centang']))
-                                        <table class="table table-bordered">
-                                            <tr>
-                                                <td></td>
-                                                @foreach ($soal->opsi_y as $item)
-                                                    <td>{{ $item }}</td>
-                                                @endforeach
-                                            </tr>
-
-                                            @foreach ($soal->opsi_x as $item)
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered">
                                                 <tr>
-                                                    <td>{{ $item }}</td>
-                                                    @foreach ($soal->opsi_y as $item_y)
-                                                        <td class="text-center">
-                                                            @switch($soal->type)
-                                                                @case('petak-pilihan-ganda')
-                                                                    @if(optional(optional($jawaban)[$soal->id])[$item] == $item_y)
-                                                                        <span class="bx bx-check text-primary" style="font-size: 30px"></span>
-                                                                    @endif
-                                                                    @break
-                                                                @case('petak-kotak-centang')
-                                                                    @if(in_array($item_y, optional(optional($jawaban)[$soal->id])[$item] ?? []))
-                                                                        <span class="bx bx-check text-primary" style="font-size: 30px"></span>
-                                                                    @endif
-                                                                    @break
-                                                            @endswitch
-                                                        </td>
+                                                    <td></td>
+                                                    @foreach ($soal->opsi_y as $item)
+                                                        <td>{{ $item }}</td>
                                                     @endforeach
                                                 </tr>
-                                            @endforeach
-                                        </table>
+
+                                                @foreach ($soal->opsi_x as $item)
+                                                    <tr>
+                                                        <td>{{ $item }}</td>
+                                                        @foreach ($soal->opsi_y as $item_y)
+                                                            <td class="text-center">
+                                                                @switch($soal->type)
+                                                                    @case('petak-pilihan-ganda')
+                                                                        @if(optional(optional($jawaban)[$soal->id])[$item] == $item_y)
+                                                                            <span class="bx bx-check text-primary" style="font-size: 30px"></span>
+                                                                        @endif
+                                                                        @break
+                                                                    @case('petak-kotak-centang')
+                                                                        @if(in_array($item_y, optional(optional($jawaban)[$soal->id])[$item] ?? []))
+                                                                            <span class="bx bx-check text-primary" style="font-size: 30px"></span>
+                                                                        @endif
+                                                                        @break
+                                                                @endswitch
+                                                            </td>
+                                                        @endforeach
+                                                    </tr>
+                                                @endforeach
+                                            </table>
+                                        </div>
                                     @endif
                                 </div>
                             </div>

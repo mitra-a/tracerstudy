@@ -95,7 +95,7 @@
                                 <img class="img-fluid" src="{{ asset('home/img/icon/icon-6.png') }}" alt="Icon">
                             </div>
                             <h5 class="mb-3">Registrasi </h4>
-                            <p class="mb-0 mx-auto" style="width: 80%">Mengakses halaman registrasi dengan klik tombol Daftar <a href="/">disini</a></p>
+                            <p class="mb-0 mx-auto" style="width: 80%">Mengakses halaman registrasi dengan klik tombol Daftar <a href="{{ route('registrasi') }}">disini</a></p>
                         </div>
                     </div>
                 </div>

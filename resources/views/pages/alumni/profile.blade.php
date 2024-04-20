@@ -28,68 +28,68 @@
                             <tr>
                                 <td width="1px" style="text-wrap: nowrap">
                                     Nama
-                                    <div class="fw-bold">{{ auth()->user()->nama }}</div>
+                                    <div class="fw-bold">{{ auth()->user()->nama ?? '-' }}</div>
                                 </td>
                                 
                             </tr>
                             <tr>
                                 <td width="1px" style="text-wrap: nowrap">
                                     Email
-                                    <div class="fw-bold">{{ auth()->user()->email }}</div>
+                                    <div class="fw-bold">{{ auth()->user()->email ?? '-' }}</div>
                                 </td>
                             </tr>
                             <tr>
                                 <td width="1px" style="text-wrap: nowrap">
                                     Nomor Telepon
-                                    <div class="fw-bold">{{ auth()->user()->nomor_telepon }}</div>
+                                    <div class="fw-bold">{{ auth()->user()->nomor_telepon ?? '-' }}</div>
                                 </td>
                             </tr>
                             <tr>
                                 <td width="1px" style="text-wrap: nowrap">
                                     Email
-                                    <div class="fw-bold">{{ auth()->user()->email }}</div>
+                                    <div class="fw-bold">{{ auth()->user()->email ?? '-' }}</div>
                                 </td>
                             </tr>
                             <tr>
                                 <td width="1px" style="text-wrap: nowrap">
                                     Program Studi
-                                    <div class="fw-bold">{{ auth()->user()->prodi_data->nama }}</div>
+                                    <div class="fw-bold">{{ auth()->user()->prodi_data->nama ?? '-' }}</div>
                                 </td>
                             </tr>
                             <tr>
                                 <td width="1px" style="text-wrap: nowrap">
                                     Periode
-                                    <div class="fw-bold">Periode {{ auth()->user()->periode_data->nama }}</div>
+                                    <div class="fw-bold">Periode {{ auth()->user()->periode_data->nama ?? '-' }}</div>
                                 </td>
                             </tr>
                             <tr>
                                 <td width="1px" style="text-wrap: nowrap">
                                     Alamat
-                                    <div class="fw-bold">{{ auth()->user()->alamat }}</div>
+                                    <div class="fw-bold">{{ auth()->user()->alamat ?? '-' }}</div>
                                 </td>
                             </tr>
                             <tr>
                                 <td width="1px" style="text-wrap: nowrap">
                                     Provinsi
-                                    <div class="fw-bold">{{ auth()->user()->provinsi }}</div>
+                                    <div class="fw-bold">{{ auth()->user()->provinsi ?? '-' }}</div>
                                 </td>
                             </tr>
                             <tr>
                                 <td width="1px" style="text-wrap: nowrap">
                                     Kabupaten/Kota
-                                    <div class="fw-bold">{{ auth()->user()->kabupaten_kota }}</div>
+                                    <div class="fw-bold">{{ auth()->user()->kabupaten_kota ?? '-' }}</div>
                                 </td>
                             </tr>
                             <tr>
                                 <td width="1px" style="text-wrap: nowrap">
                                     Tempat Kerja
-                                    <div class="fw-bold">{{ auth()->user()->tempat_kerja }}</div>
+                                    <div class="fw-bold">{{ auth()->user()->tempat_kerja ?? '-' }}</div>
                                 </td>
                             </tr>
                             <tr>
                                 <td width="1px" style="text-wrap: nowrap">
                                     Alamat Kerja
-                                    <div class="fw-bold">{{ auth()->user()->alamat_kerja }}</div>
+                                    <div class="fw-bold">{{ auth()->user()->alamat_kerja ?? '-' }}</div>
                                 </td>
                             </tr>
                         </table>

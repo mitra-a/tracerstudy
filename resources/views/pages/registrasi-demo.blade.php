@@ -163,6 +163,13 @@
                         <div class="mb-3">
                             <button class="btn btn-primary d-grid w-100" type="submit">Registrasi</button>
                         </div>
+
+                        <p class="text-center">
+                            <span>Sudah mempunyai akun?</span>
+                            <a href="{{ route('login') }}">
+                              <span>masuk disini</span>
+                            </a>
+                        </p>
                     </form>
                 </div>
             </div>

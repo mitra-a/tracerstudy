@@ -5,7 +5,7 @@
 
     <div class="row">
         <div class="col-lg-8">
-            <div class="card">
+            <div class="card mb-3 mb-lg-0">
                 <div class="card-header d-flex justify-content-between">
                     <h5 class="d-none d-lg-block">Data Kuesioner</h5>
         
