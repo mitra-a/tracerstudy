@@ -9,7 +9,12 @@ Route::get('/logout', function(){
 
 Route::namespace('App\Livewire\Pages')->group(function(){
     Route::get('/login', Login::class)->name('login');
-    Route::get('/registrasi', Registrasi::class)->name('registrasi');
+
+    if(env('APP_DEMO') == 'true'){
+        Route::get('/registrasi', RegistrasiDemo::class)->name('registrasi');
+    } else {
+        Route::get('/registrasi', Registrasi::class)->name('registrasi');
+    }
 
     Route::namespace('Admin')->middleware(['auth','role:admin'])->prefix('admin')->name('admin.')->group(function(){
         Route::get('/', Dashboard::class)->name('dashboard');

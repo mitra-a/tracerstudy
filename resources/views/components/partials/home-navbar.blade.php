@@ -26,7 +26,10 @@
     <div class="container">
         <nav class="navbar navbar-expand-lg bg-white navbar-light p-lg-0">
             <a href="index.html" class="navbar-brand d-lg-none">
-                <h1 class="fw-bold m-0">TracerStudy</h1>
+                <div class="d-flex align-items-center">
+                    <img src="{{ asset('logo.png') }}" width="40px" class="me-3">
+                    <h1 class="fw-bold m-0">TracerStudy</h1>
+                </div>
             </a>
             <button type="button" class="navbar-toggler me-0" data-bs-toggle="collapse"
                 data-bs-target="#navbarCollapse">
@@ -39,11 +42,15 @@
                     <a href="{{ route('welcome') }}#tentang-kami" class="nav-item nav-link">Tentang Kami</a>
                     <a href="{{ route('registrasi') }}" class="nav-item nav-link">Daftar</a>
                 </div>
-                <div class="ms-auto d-none d-lg-block">
+                <div class="ms-auto d-block mt-3 mt-lg-0 d-lg-block">
                     @if(auth()->check())
-                        <a href="{{ route(auth()->user()->role . '.dashboard') }}" class="btn btn-primary rounded-pill py-2 px-3">Dashboard</a>
+                        <a 
+                            href="{{ route(auth()->user()->role . '.dashboard') }}" 
+                            class="btn btn-primary rounded-pill py-2 px-3 w-100 w-lg-0">Dashboard</a>
                     @else
-                        <a href="{{ route('login') }}" class="btn btn-primary rounded-pill py-2 px-3">Login</a>
+                        <a 
+                            href="{{ route('login') }}" 
+                            class="btn btn-primary rounded-pill py-2 px-3 w-100 w-lg-0">Login</a>
                     @endif
                 </div>
             </div>

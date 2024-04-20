@@ -2,13 +2,22 @@
     <div class="container-fluid px-0 mb-5">
         <div id="header-carousel" class="carousel slide carousel-fade">
             <div class="carousel-inner">
+                <style>
+                    @media (min-width: 767.98px) { 
+                        .w-md-0{
+                            width: auto !important;
+                        }
+                    }
+                </style>
+
                 <div class="carousel-item active">
                     <div
                         class="position-absolute"
                         style="
                         width:100%;
                         background-image: linear-gradient(-90deg, #00000054, #000000b5);
-                        height:100%;"
+                        height:100%;
+                        z-index: 1040"
                     ></div>
 
                     <img 
@@ -17,31 +26,35 @@
                         src="{{ asset('img/landing-page.jpg') }}" 
                         alt="Image">
                         
-                    <div class="carousel-caption">
+                    <div class="carousel-caption" style="z-index: 1041">
                         <div class="container">
                             <div class="row justify-content-start">
                                 <div class="col-lg-6 text-start">
-                                    <h3 class="display-5 text-white mb-4 animated slideInRight">
+                                    <h3 class="display-5 d-none d-md-block text-white mb-4 animated slideInRight">
                                         Selamat Datang
                                     </h3>
-                                    <p class="fs-4 text-white animated slideInRight" style="line-height: 37px; text-align: justify">
+                                    <p class="fs-4 text-white animated slideInRight d-none d-md-block" style="line-height: 37px; text-align: justify">
                                         Kami menyambut Anda dalam perjalanan yang tak ternilai dalam menggali potensi dan kesuksesan setelah meninggalkan bangku kuliah. <b>Tracer Study JTIK UNM</b> adalah jendela yang membuka pandangan ke arah masa depan
+                                    </p>
+
+                                    <p class="fs-4 text-white animated slideInRight d-block d-md-none" style="line-height: 37px; text-align: left">
+                                        <b>Tracer Study JTIK UNM</b> adalah jendela yang membuka pandangan ke arah masa depan
                                     </p>
                                     @if(auth()->check())
                                         <a 
                                             href="{{ route(auth()->user()->role . '.dashboard') }}"
-                                            class="btn btn-primary rounded-pill py-3 px-5 mt-5 me-2 animated slideInRight">
+                                            class="btn btn-primary rounded-pill py-3 px-5 mt-3 mt-md-5 w-md-0 w-100 me-2 animated slideInRight>
                                             Dashboard
                                         </a>
                                     @else
                                         <a 
                                             href="{{ route('login') }}"
-                                            class="btn btn-primary rounded-pill py-3 px-5 mt-5 me-2 animated slideInRight">
+                                            class="btn btn-primary rounded-pill py-3 px-5 mt-3 mt-md-5 w-md-0 w-100 me-2 animated slideInRight">
                                             Masuk disini
                                         </a>
                                         <a 
                                             href="{{ route('registrasi') }}"
-                                            class="btn btn-light rounded-pill py-3 px-5 mt-5 animated slideInRight">
+                                            class="btn btn-light rounded-pill py-3 px-5 mt-2 mt-md-5 w-md-0 w-100 animated slideInRight">
                                             Daftar
                                         </a>
                                     @endif
