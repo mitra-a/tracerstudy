@@ -52,12 +52,19 @@
                                     <td>
                                         <div class="d-flex justify-content-end">
                                             @if($row['validasi'])
-                                                <a 
-                                                    href="{{ route('alumni.dashboard.lihat-jawaban-kuesioner', $row['id']) }}" 
-                                                    class="btn btn-primary d-flex align-items-center mb-1 text-nowrap btn-sm">
-                                                        <i class="bx bx-copy-alt me-3" style="font-size: 18px"></i>
-                                                        Lihat Jawaban
-                                                </a>
+                                                <div class="d-flex flex-column">
+                                                    <a 
+                                                        href="{{ route('alumni.dashboard.lihat-jawaban-kuesioner', $row['id']) }}" 
+                                                        class="btn btn-primary d-flex align-items-center mb-1 text-nowrap btn-sm">
+                                                            <i class="bx bx-copy-alt me-3" style="font-size: 18px"></i>
+                                                            Lihat Jawaban
+                                                    </a>
+
+                                                    <a href="{{ route('alumni.hasil-survey.detail', $row['id']) }}" class="btn btn-sm btn-dark d-flex align-items-center text-nowrap">
+                                                        <i class="bx bx-pie-chart-alt-2 me-2" style="font-size: 15px"></i>
+                                                        Hasil Survey
+                                                    </a>
+                                                </div>
                                             @elseif($row['selesai'])
                                                 <div class="d-flex flex-column">
                                                     <button
