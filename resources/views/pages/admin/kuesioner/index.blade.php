@@ -20,7 +20,7 @@
                 <button class="btn btn-primary ms-2" wire:click="searchData" wire:loading.attr="disabled">Cari</button>
             </div>
         </div>
-        <div class="table-responsive text-nowrap">
+        <div class="table-responsive">
             <table class="table table-striped">
                 <thead>
                     <tr>
@@ -45,7 +45,7 @@
 
                     @forelse ($rows as $row)
                         <tr>
-                            <td>{{ $row->nama }}</td>
+                            <td class="text-nowrap">{{ $row->nama }}</td>
                             <td>{{ $row->deskripsi }}</td>
                             <td>
                                 @foreach ($row->periode_data as $item)
