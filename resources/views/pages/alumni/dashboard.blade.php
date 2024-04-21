@@ -3,6 +3,15 @@
         <span class="text-muted fw-light">Alumni /</span> Dashboard
     </h4>
 
+    @if($belum_lengkap)
+    <div class="alert bg-white border-2 border-warning">
+        <div>
+            <h6 class="mb-0 text-warning fw-bold">Lengkapi Data 😊</h6>
+            <p class="mb-0">Kami membutuhkan informasi lengkap dari Anda. Mohon lengkapi data pada <a href="{{ route('alumni.profile') }}">menu profile</a></p>
+          </div>
+    </div>
+    @endif
+    
     <div class="row">
         <div class="col-lg-8">
             <div class="card mb-3 mb-lg-0">
