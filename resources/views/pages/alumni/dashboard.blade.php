@@ -6,7 +6,7 @@
     @if($belum_lengkap)
     <div class="alert bg-white border-2 border-warning">
         <div>
-            <h6 class="mb-0 text-warning fw-bold">Lengkapi Data 😊</h6>
+            <h6 class="mb-0 text-warning fw-bold">Lengkapi Data ðŸ˜Š</h6>
             <p class="mb-0">Kami membutuhkan informasi lengkap dari Anda. Mohon lengkapi data pada <a href="{{ route('alumni.profile') }}">menu profile</a></p>
           </div>
     </div>
@@ -23,12 +23,11 @@
                         <button class="btn btn-primary ms-2" wire:click="searchData" wire:loading.attr="disabled">Cari</button>
                     </div>
                 </div>
-                <div class="table-responsive text-nowrap">
+                <div class="table-responsive">
                     <table class="table table-striped">
                         <thead>
                             <tr>
                                 <th>Kuesioner</th>
-                                <th>Deskripsi</th>
                                 <th style="width: 1px;"></th>
                             </tr>
                         </thead>
@@ -46,14 +45,16 @@
         
                             @forelse ($rows as $row)
                                 <tr>
-                                    <td>{{ $row['nama'] }}</td>
-                                    <td>{{ $row['deskripsi'] }}</td>
                                     <td>
-                                        <div class="d-flex">
+                                        <b>{{ $row['nama'] }}</b> <br />
+                                        {{ $row['deskripsi'] }}
+                                    </td>
+                                    <td>
+                                        <div class="d-flex justify-content-end">
                                             @if($row['validasi'])
                                                 <a 
                                                     href="{{ route('alumni.dashboard.lihat-jawaban-kuesioner', $row['id']) }}" 
-                                                    class="btn btn-primary d-flex align-items-center mb-1">
+                                                    class="btn btn-primary d-flex align-items-center mb-1 text-nowrap btn-sm">
                                                         <i class="bx bx-copy-alt me-3" style="font-size: 18px"></i>
                                                         Lihat Jawaban
                                                 </a>
@@ -62,12 +63,12 @@
                                                     <button
                                                         wire:click="validasi('{{ $row['id'] }}')"
                                                         onclick="return confirm('Apakah anda yakin ingin menyimpan jawaban anda? \nJawaban yang tersimpan tidak bisa diubah');"
-                                                        class="btn btn-sm btn-primary d-flex align-items-center mb-1">
+                                                        class="btn btn-sm btn-primary d-flex align-items-center mb-1 text-nowrap">
                                                             <i class="bx bx-check me-2" style="font-size: 15px"></i>
                                                             Validasi Jawaban
                                                     </button>
     
-                                                    <a href="{{ route('alumni.dashboard.lihat-jawaban-kuesioner', $row['id']) }}" class="btn btn-sm btn-dark d-flex align-items-center">
+                                                    <a href="{{ route('alumni.dashboard.lihat-jawaban-kuesioner', $row['id']) }}" class="btn btn-sm btn-dark d-flex align-items-center text-nowrap">
                                                         <i class="bx bx-copy-alt me-2" style="font-size: 15px"></i>
                                                         Lihat Jawaban
                                                     </a>
@@ -75,7 +76,7 @@
                                             @else
                                                 <a 
                                                     href="{{ route('alumni.dashboard.jawab-kuesioner', $row['id']) }}" 
-                                                    class="btn btn-primary">Jawab Kuesioner</a>
+                                                    class="btn btn-primary text-nowrap btn-sm">Jawab Kuesioner</a>
                                             @endif
                                         </div>
                                     </td>
