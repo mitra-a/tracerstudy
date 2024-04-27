@@ -23,7 +23,7 @@
                     <img 
                         style="height: 600px; object-fit: cover; z-index:9"
                         class="w-100" 
-                        src="{{ asset('img/landing-page.jpg') }}" 
+                        src="{{ asset('img/landing-page.webp') }}" 
                         alt="Image">
                         
                     <div class="carousel-caption" style="z-index: 1041">
@@ -204,7 +204,7 @@
                 <div class="col-lg-5 col-md-6">
                     <div class="d-flex justify-content-center align-items-center h-100">
                         <img
-                            src="{{ asset('jtik.png') }}"
+                            src="{{ asset('jtik.webp') }}"
                             height="85px"
                         />
                     </div>
