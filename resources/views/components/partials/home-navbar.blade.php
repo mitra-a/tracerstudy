@@ -3,7 +3,7 @@
         <div class="d-flex align-items-center">
             <a href="index.html">
                 <div class="d-flex align-items-center">
-                    <img src="{{ asset('logo-white.png') }}" width="40px" class="me-3">
+                    <img src="{{ asset('logo-white.png') }}" alt="logo-jtik-unm-white" width="40px" class="me-3">
                     <h4 class="text-white m-0">TracerStudy | <b>JTIK UNM</b></h5>
                 </div>
             </a>
@@ -12,10 +12,8 @@
                 <small class="ms-4"><i class="fa fa-envelope me-3"></i>tik@unm.ac.id</small>
                 <small class="ms-4"><i class="fa fa-phone-alt me-3"></i>+62 853-1122-4040</small>
                 <div class="ms-3 d-flex">
-                    <a class="btn btn-sm-square btn-light text-primary rounded-circle ms-2" href="/"><i
-                            class="fab fa-facebook-f"></i></a>
-                    <a class="btn btn-sm-square btn-light text-primary rounded-circle ms-2" href="/"><i
-                            class="fab fa-instagram"></i></a>
+                    <a class="btn btn-sm-square btn-light text-primary rounded-circle ms-2" href="/" aria-label="Kunjungi halaman facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-sm-square btn-light text-primary rounded-circle ms-2" href="/" aria-label="Kunjungi halaman instagram"><i class="fab fa-instagram"></i></a>
                 </div>
             </div>
         </div>

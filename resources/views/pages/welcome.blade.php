@@ -156,10 +156,13 @@
             <div class="row g-0">
                 <div class="col-lg-6">
                     <div class="h-100 d-flex align-items-center justify-content-center" style="min-height: 300px;">
-                        <button type="button" class="btn-play" data-bs-toggle="modal"
+                        <a href="/" 
+                            aria-label="Kunjungi halaman instagram" 
+                            class="btn-play"
+                            data-bs-toggle="modal"
                             data-src="https://www.youtube.com/embed/0gpS1ShXjpo" data-bs-target="#videoModal">
                             <span></span>
-                        </button>
+                        </a>
                     </div>
                 </div>
                 <div class="col-lg-6 pt-lg-5 wow fadeIn" data-wow-delay="0.5s">
@@ -259,6 +262,9 @@
 
 
     <!-- Back to Top -->
-    <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top"><i
-            class="fas fa-chevron-up"></i></a>
+    <a 
+        href="#"
+        aria-label="Halaman depan"
+        class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top">
+        <i class="fas fa-chevron-up"></i></a>
 </div>
