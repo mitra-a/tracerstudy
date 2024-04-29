@@ -15,7 +15,7 @@
     rel="stylesheet">
 
 <!-- Icon Font Stylesheet -->
-<link href="{{ asset('home/icon/css/all.min.css') }}" rel="stylesheet">
+<link href="{{ asset('home/icon/css/only.min.css') }}" rel="stylesheet">
 
 <!-- Libraries Stylesheet -->
 <link href="{{ asset('home/lib/animate/animate.min.css') }}" rel="stylesheet">
