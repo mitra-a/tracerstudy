@@ -35,7 +35,7 @@
                         z-index: 1040"
                     ></div>
 
-                    <img 
+                    <img loading="lazy" 
                         style="object-fit: cover; z-index:9"
                         class="w-100 image-hero d-none d-md-block"
                         src="{{ asset('img/landing-page.webp') }}"
@@ -57,7 +57,7 @@
                                         <b>Tracer Study JTIK UNM</b> adalah jendela yang membuka pandangan ke arah masa depan
                                     </p>
 
-                                    <img 
+                                    <img loading="lazy" 
                                         style="object-fit: cover; height: 250px"
                                         class="w-100 animated slideInRight rounded position-relative d-block d-md-none"
                                         src="{{ asset('img/landing-page-mobile.webp') }}"
@@ -103,7 +103,7 @@
                         <div class="service-text rounded p-5">
                             <div class="btn-square bg-light rounded-circle mx-auto mb-4"
                                 style="width: 64px; height: 64px;">
-                                <img class="img-fluid" src="{{ asset('home/img/icon/icon-5.png') }}" alt="Icon">
+                                <img loading="lazy" class="img-fluid" src="{{ asset('home/img/icon/icon-5.png') }}" alt="Icon">
                             </div>
                             <h5 class="mb-3">Akses Tracer Study</h4>
                             <p class="mb-0 text-center mx-auto" style="width: 80%">Akses halaman tracer study JTIK UNM pada tautan <a href="{{ env('APP_URL') }}">{{ env('APP_URL') }}</a></p>
@@ -115,7 +115,7 @@
                         <div class="service-text rounded p-5">
                             <div class="btn-square bg-light rounded-circle mx-auto mb-4"
                                 style="width: 64px; height: 64px;">
-                                <img class="img-fluid" src="{{ asset('home/img/icon/icon-6.png') }}" alt="Icon">
+                                <img loading="lazy" class="img-fluid" src="{{ asset('home/img/icon/icon-6.png') }}" alt="Icon">
                             </div>
                             <h5 class="mb-3">Registrasi </h4>
                             <p class="mb-0 mx-auto" style="width: 80%">Mengakses halaman registrasi dengan klik tombol Daftar <a href="{{ route('registrasi') }}">disini</a></p>
@@ -127,7 +127,7 @@
                         <div class="service-text rounded p-5">
                             <div class="btn-square bg-light rounded-circle mx-auto mb-4"
                                 style="width: 64px; height: 64px;">
-                                <img class="img-fluid" src="{{ asset('home/img/icon/icon-2.png') }}" alt="Icon">
+                                <img loading="lazy" class="img-fluid" src="{{ asset('home/img/icon/icon-2.png') }}" alt="Icon">
                             </div>
                             <h5 class="mb-3">Mengisi Data</h4>
                             <p class="mb-0 mx-auto" style="width: 80%">Mengisi data pada halaman registrasi berupa nim, email dan password</p>
@@ -139,7 +139,7 @@
                         <div class="service-text rounded p-5">
                             <div class="btn-square bg-light rounded-circle mx-auto mb-4"
                                 style="width: 64px; height: 64px;">
-                                <img class="img-fluid" src="{{ asset('home/img/icon/icon-6.png') }}" alt="Icon">
+                                <img loading="lazy" class="img-fluid" src="{{ asset('home/img/icon/icon-6.png') }}" alt="Icon">
                             </div>
                             <h5 class="mb-3">Login</h4>
                             <p class="mb-0 mx-auto" style="width: 80%">Masuk atau login pada halaman <a href="{{ route('login') }}">login</a>, masukan email dan password</p>
@@ -151,7 +151,7 @@
                         <div class="service-text rounded p-5">
                             <div class="btn-square bg-light rounded-circle mx-auto mb-4"
                                 style="width: 64px; height: 64px;">
-                                <img class="img-fluid" src="{{ asset('home/img/icon/icon-2.png') }}" alt="Icon">
+                                <img loading="lazy" class="img-fluid" src="{{ asset('home/img/icon/icon-2.png') }}" alt="Icon">
                             </div>
                             <h5 class="mb-3">Melengkapi Data</h4>
                             <p class="mb-0 mx-auto" style="width: 80%">Melengkapi data profile Alumni pada menu alumni setelah registrasi</p>
@@ -163,7 +163,7 @@
                         <div class="service-text rounded p-5">
                             <div class="btn-square bg-light rounded-circle mx-auto mb-4"
                                 style="width: 64px; height: 64px;">
-                                <img class="img-fluid" src="{{ asset('home/img/icon/icon-10.png') }}" alt="Icon">
+                                <img loading="lazy" class="img-fluid" src="{{ asset('home/img/icon/icon-10.png') }}" alt="Icon">
                             </div>
                             <h5 class="mb-3">Mengisi Kuesioner</h4>
                             <p class="mb-0 mx-auto" style="width: 80%">Mengisi kuesioner yang terdapat pada dashboard alumni</p>
@@ -230,6 +230,7 @@
                 <div class="col-lg-5 col-md-6">
                     <div class="d-flex justify-content-center align-items-center h-100">
                         <img
+                            loading="lazy"
                             src="{{ asset('jtik.webp') }}"
                             height="85px"
                         />

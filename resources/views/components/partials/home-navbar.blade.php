@@ -3,7 +3,7 @@
         <div class="d-flex align-items-center">
             <a href="index.html">
                 <div class="d-flex align-items-center">
-                    <img src="{{ asset('logo-white.webp') }}" alt="logo-jtik-unm-white" width="40px" class="me-3">
+                    <img loading="lazy" src="{{ asset('logo-white.webp') }}" alt="logo-jtik-unm-white" width="40px" class="me-3">
                     <h4 class="text-white m-0">TracerStudy | <b>JTIK UNM</b></h5>
                 </div>
             </a>
@@ -26,6 +26,7 @@
             <a href="index.html" class="navbar-brand d-lg-none">
                 <div class="d-flex align-items-center">
                     <img 
+                        loading="lazy"
                         alt="logo-jtik-unm" 
                         src="{{ asset('logo.webp') }}" 
                         width="40px" 
