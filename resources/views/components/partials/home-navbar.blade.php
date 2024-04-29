@@ -30,7 +30,7 @@
                         src="{{ asset('logo.webp') }}" 
                         width="40px" 
                         class="me-3">
-                    <h1 class="fw-bold m-0">TracerStudy</h1>
+                    {{-- <h1 class="fw-bold m-0">TracerStudy</h1> --}}
                 </div>
             </a>
             <a href="/" 

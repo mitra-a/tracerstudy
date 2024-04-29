@@ -3,6 +3,13 @@
         <div id="header-carousel" class="carousel slide carousel-fade">
             <div class="carousel-inner">
                 <style>
+                    @media (max-width: 768px){
+                        #header-carousel .carousel-item {
+                            position: relative;
+                            min-height: 580px;
+                            background-color: white;
+                        }
+                    }
                     @media (min-width: 767.98px) { 
                         .w-md-0{
                             width: auto !important;
@@ -20,7 +27,7 @@
 
                 <div class="carousel-item active">
                     <div
-                        class="position-absolute"
+                        class="position-absolute d-none d-md-block"
                         style="
                         width:100%;
                         background-image: linear-gradient(-90deg, #00000054, #000000b5);
@@ -30,10 +37,7 @@
 
                     <img 
                         style="object-fit: cover; z-index:9"
-                        class="w-100 image-hero" 
-                        srcset="{{ asset('img/landing-page-mobile.webp') }} 120w,
-                            {{ asset('img/landing-page.webp') }}"
-                        sizes="(max-width: 710px) 120px"
+                        class="w-100 image-hero d-none d-md-block"
                         src="{{ asset('img/landing-page.webp') }}"
                         alt="Image">
                         
@@ -44,13 +48,21 @@
                                     <h3 class="display-5 d-none d-md-block text-white mb-4 animated slideInRight">
                                         Selamat Datang
                                     </h3>
+
                                     <p class="fs-4 text-white animated slideInRight d-none d-md-block" style="line-height: 37px; text-align: justify">
                                         Kami menyambut Anda dalam perjalanan yang tak ternilai dalam menggali potensi dan kesuksesan setelah meninggalkan bangku kuliah. <b>Tracer Study JTIK UNM</b> adalah jendela yang membuka pandangan ke arah masa depan
                                     </p>
 
-                                    <p class="fs-4 text-white animated slideInRight d-block d-md-none" style="line-height: 37px; text-align: left">
+                                    <p class="fs-4 text-dark animated slideInRight d-block d-md-none" style="line-height: 37px; text-align: left">
                                         <b>Tracer Study JTIK UNM</b> adalah jendela yang membuka pandangan ke arah masa depan
                                     </p>
+
+                                    <img 
+                                        style="object-fit: cover; height: 250px"
+                                        class="w-100 animated slideInRight rounded position-relative d-block d-md-none"
+                                        src="{{ asset('img/landing-page-mobile.webp') }}"
+                                        alt="Image">
+
                                     @if(auth()->check())
                                         <a 
                                             href="{{ route(auth()->user()->role . '.dashboard') }}"
@@ -78,11 +90,11 @@
         </div>
     </div>
 
-    <div class="container-xxl py-5" id="alur-pengisian">
+    <div class="container-xxl py-0 py-md-5" id="alur-pengisian">
         <div class="container">
-            <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
+            <div class="text-center mx-auto wow fadeInUp d-none d-md-block" data-wow-delay="0.1s" style="max-width: 500px;">
                 <p class="fs-5 fw-medium text-primary">Tracer Study</p>
-                <h1 class="display-5 mb-5">Alur Pengisian <br> Tracer Study</h1>
+                <h1 class="display-5 mb-5 d-md-block d-none">Alur Pengisian <br> Tracer Study</h1>
             </div>
 
             <div class="row g-4">
