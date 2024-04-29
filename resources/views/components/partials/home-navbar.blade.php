@@ -3,7 +3,7 @@
         <div class="d-flex align-items-center">
             <a href="index.html">
                 <div class="d-flex align-items-center">
-                    <img src="{{ asset('logo-white.png') }}" alt="logo-jtik-unm-white" width="40px" class="me-3">
+                    <img src="{{ asset('logo-white.webp') }}" alt="logo-jtik-unm-white" width="40px" class="me-3">
                     <h4 class="text-white m-0">TracerStudy | <b>JTIK UNM</b></h5>
                 </div>
             </a>
@@ -25,14 +25,20 @@
         <nav class="navbar navbar-expand-lg bg-white navbar-light p-lg-0">
             <a href="index.html" class="navbar-brand d-lg-none">
                 <div class="d-flex align-items-center">
-                    <img src="{{ asset('logo.png') }}" width="40px" class="me-3">
+                    <img 
+                        alt="logo-jtik-unm" 
+                        src="{{ asset('logo.webp') }}" 
+                        width="40px" 
+                        class="me-3">
                     <h1 class="fw-bold m-0">TracerStudy</h1>
                 </div>
             </a>
-            <button type="button" class="navbar-toggler me-0" data-bs-toggle="collapse"
+            <a href="/" 
+                aria-label="Toggler Hamburger"
+                class="navbar-toggler me-0" data-bs-toggle="collapse"
                 data-bs-target="#navbarCollapse">
                 <span class="navbar-toggler-icon"></span>
-            </button>
+            </a>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav">
                     <a href="{{ route('welcome') }}" class="nav-item nav-link">Home</a>

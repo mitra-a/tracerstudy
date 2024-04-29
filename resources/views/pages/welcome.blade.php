@@ -7,6 +7,14 @@
                         .w-md-0{
                             width: auto !important;
                         }
+
+                        .image-hero{
+                            height: auto;
+                        }
+                    }
+
+                    .image-hero{
+                        height: 600px;
                     }
                 </style>
 
@@ -21,9 +29,12 @@
                     ></div>
 
                     <img 
-                        style="height: 600px; object-fit: cover; z-index:9"
-                        class="w-100" 
-                        src="{{ asset('img/landing-page.webp') }}" 
+                        style="object-fit: cover; z-index:9"
+                        class="w-100 image-hero" 
+                        srcset="{{ asset('img/landing-page-mobile.webp') }} 120w,
+                            {{ asset('img/landing-page.webp') }}"
+                        sizes="(max-width: 710px) 120px"
+                        src="{{ asset('img/landing-page.webp') }}"
                         alt="Image">
                         
                     <div class="carousel-caption" style="z-index: 1041">
