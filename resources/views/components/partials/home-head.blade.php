@@ -12,17 +12,17 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link
     href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&family=Roboto:wght@500;700&display=swap"
-    rel="stylesheet" disabled>
+    rel="stylesheet">
 
 <!-- Icon Font Stylesheet -->
-<link href="{{ asset('home/icon/css/all.min.css') }}" disabled rel="stylesheet">
+<link href="{{ asset('home/icon/css/all.min.css') }}" rel="stylesheet">
 
 <!-- Libraries Stylesheet -->
 <link href="{{ asset('home/lib/animate/animate.min.css') }}" rel="stylesheet">
 <link href="{{ asset('home/lib/lightbox/css/lightbox.min.css') }}" rel="stylesheet">
 
 <!-- Customized Bootstrap Stylesheet -->
-<link href="{{ asset('home/css/bootstrap.min.css') }}" rel="stylesheet" disabled>
+<link href="{{ asset('home/css/bootstrap.min.css') }}" rel="stylesheet">
 
 <!-- Template Stylesheet -->
 <link href="{{ asset('home/css/style.css') }}" rel="stylesheet">
