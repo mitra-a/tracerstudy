@@ -12,7 +12,6 @@ class Jawaban extends Component
 {
     public $id;
     public $user_id;
-    public $halaman;
     
     public $kuesioner;
     public $user;
@@ -24,38 +23,6 @@ class Jawaban extends Component
 
         $this->kuesioner = Kuesioner::findOrFail($id);
         $this->user = User::findOrFail($user);
-        $this->halaman = KuesionerHalaman::where('kuesioner_id', $id)->with('soal')->get();
-
-        $jawaban_value = [];
-        $jawaban = KuesionerJawaban::where('kuesioner_id', $id)
-            ->where('alumni_id', $this->user_id)
-            ->with('jawaban_x')
-            ->get();
-
-        foreach($jawaban as $item){
-            $value = $item->jawaban;
-            if($item->type == 'kotak-centang'){
-                $value = array_column($item->jawaban_x->toArray(), 'jawaban');
-            }
-
-            if($item->type == 'petak-pilihan-ganda'){
-                $value = [];
-                foreach($item->jawaban_x as $x){
-                    $value[$x->key] = $x->jawaban;
-                }
-            }
-
-            if($item->type == 'petak-kotak-centang'){
-                $value = [];
-                foreach($item->jawaban_x as $x){
-                    $value[$x->key] = array_column($x->jawaban_y->toArray(), 'jawaban');
-                }
-            }
-
-            $jawaban_value[$item->soal_id] = $value;
-        }
-
-        $this->jawaban = $jawaban_value;
     }
     
     public function render()
