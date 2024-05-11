@@ -13,12 +13,13 @@ Route::namespace('App\Livewire\Pages')->group(function(){
     if(env('APP_DEMO') == 'true'){
         Route::get('/registrasi', RegistrasiDemo::class)->name('registrasi');
     } else {
-        Route::get('/registrasi', Registrasi::class)->name('registrasi');
+        Route::get('/registrasi', RegistrasiDemo::class)->name('registrasi');
     }
 
     Route::namespace('Admin')->middleware(['auth','role:admin'])->prefix('admin')->name('admin.')->group(function(){
         Route::get('/', Dashboard::class)->name('dashboard');
         Route::get('/profile', Profile::class)->name('profile');
+        Route::get('/jurusan', Jurusan::class)->name('jurusan');
         Route::get('/prodi', Prodi::class)->name('prodi');
         Route::get('/periode', Periode::class)->name('periode');
 

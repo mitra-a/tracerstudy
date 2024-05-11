@@ -34,7 +34,7 @@
                             <span class="app-brand-logo demo me-3">
 								<img src="{{ asset('logo.png') }}" height="50px">
                             </span>
-                            <span class="app-brand-text demo text-body fw-bolder text-center" style="text-transform:initial">Tracerstudy <br> <span class="text-primary">JTIK UNM</span></span>
+                            <span class="app-brand-text demo text-body fw-bolder text-center" style="text-transform:initial">Tracerstudy <br> <span class="text-primary">FT UNM</span></span>
                         </a>
                     </div>
 

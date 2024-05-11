@@ -3,14 +3,13 @@
         <div class="d-flex align-items-center">
             <a href="index.html">
                 <div class="d-flex align-items-center">
-                    <img loading="lazy" src="{{ asset('logo-white.webp') }}" alt="logo-jtik-unm-white" width="40px" class="me-3">
-                    <h4 class="text-white m-0">TracerStudy | <b>JTIK UNM</b></h5>
+                    <img loading="lazy" src="{{ asset('logo-white.webp') }}" alt="logo-FT-unm-white" width="40px" class="me-3">
+                    <h4 class="text-white m-0">TracerStudy | <b>FT UNM</b></h5>
                 </div>
             </a>
             <div class="ms-auto d-flex align-items-center">
                 <small class="ms-4"><i class="fa fa-map-marker-alt me-3"></i>Jl. Daeng Tata Raya</small>
-                <small class="ms-4"><i class="fa fa-envelope me-3"></i>tik@unm.ac.id</small>
-                <small class="ms-4"><i class="fa fa-phone-alt me-3"></i>+62 853-1122-4040</small>
+                <small class="ms-4"><i class="fa fa-envelope me-3"></i>ft@unm.ac.id</small>
                 <div class="ms-3 d-flex">
                     <a class="btn btn-sm-square btn-light text-primary rounded-circle ms-2" href="/" aria-label="Kunjungi halaman facebook"><i class="fab fa-facebook-f"></i></a>
                     <a class="btn btn-sm-square btn-light text-primary rounded-circle ms-2" href="/" aria-label="Kunjungi halaman instagram"><i class="fab fa-instagram"></i></a>
@@ -27,7 +26,7 @@
                 <div class="d-flex align-items-center">
                     <img 
                         loading="lazy"
-                        alt="logo-jtik-unm" 
+                        alt="logo-FT-unm" 
                         src="{{ asset('logo.webp') }}" 
                         width="40px" 
                         class="me-3">

@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Pages;
 
+use App\Models\Jurusan;
 use App\Models\Periode;
 use App\Models\Prodi;
 use App\Models\User;
@@ -10,6 +11,7 @@ use Livewire\Component;
 class RegistrasiDemo extends Component
 {
     public $choice = [
+        'jurusan' => [],
         'periode' => [],
     ];
 
@@ -20,11 +22,13 @@ class RegistrasiDemo extends Component
     public $password;
     public $password_confirm;
     public $periode;
+    public $jurusan;
     public $prodi;
 
     public function mount(){
         $this->choice['periode'] = Periode::all()->toArray();
-        $this->choice['prodi'] = Prodi::all()->toArray();
+        $this->choice['jurusan'] = Jurusan::all()->toArray();
+        $this->choice['prodi'] = [];
     }
 
     public function updatedNim($value){
@@ -37,10 +41,15 @@ class RegistrasiDemo extends Component
         $this->alumni = null;
     }
 
+    public function updatedJurusan($value){
+        $this->choice['prodi'] =  Prodi::where('jurusan', $value)->get()->toArray();
+    }
+
     public function save(){
         $this->validate([
             'nim' => ['required'],
             'nama' => ['required'],
+            'jurusan' => ['required'],
             'prodi' => ['required'],
             'email' => ['required', 'unique:users,email'],
             'password' => ['required'],
@@ -64,6 +73,7 @@ class RegistrasiDemo extends Component
                 $new->nim = $this->nim;
                 $new->nama = $this->nama;
                 $new->prodi = $this->prodi;
+                $new->jurusan = $this->jurusan;
                 $new->periode = $this->periode;
                 $new->email = $this->email;
                 $new->password = bcrypt($this->password);
@@ -74,7 +84,7 @@ class RegistrasiDemo extends Component
             }
 
             return;
-        } catch (\Exception $_){ }
+        } catch (\Exception $_){ dd($_); }
     }
 
     public function render()

@@ -1,7 +1,7 @@
 <div>
     <div class="d-flex">
         <h4 class="fw-bold py-3 mb-4">
-            <span class="text-muted fw-light">Master Data /</span> Program Studi
+            <span class="text-muted fw-light">Master Data /</span> Jurusan
         </h4>
     </div>
 
@@ -9,7 +9,7 @@
 
     <div class="card">
         <div class="card-header d-flex justify-content-between">
-            <h5 class="d-none d-lg-block">Data Program Studi</h5>
+            <h5 class="d-none d-lg-block">Data Jurusan</h5>
 
             <div class="d-flex">
                 <input type="text" wire:model="search" class="form-control" placeholder="Search....">
@@ -21,7 +21,6 @@
                 <thead>
                     <tr>
                         <th>Kode</th>
-                        <th>Jurusan</th>
                         <th>Program Studi</th>
                         <th style="width: 1px;"></th>
                     </tr>
@@ -34,18 +33,6 @@
                                 type="text" 
                                 class="form-control @error('add_input.kode') is-invalid @enderror" 
                                 placeholder="Kode" />
-                        </td>
-                        <td>
-                            <select 
-                                wire:model="add_input.jurusan"
-                                type="text" 
-                                class="form-control @error('add_input.jurusan') is-invalid @enderror" 
-                                placeholder="Jurusan">
-                                <option value="">- Pilih Jurusan -</option>
-                                @foreach ($jurusan as $item)
-                                    <option value="{{ $item['kode'] }}">{{ $item['nama'] }}</option>
-                                @endforeach
-                            </select>
                         </td>
                         <td>
                             <input 
@@ -85,18 +72,6 @@
                                         placeholder="Kode" />
                                 </td>
                                 <td>
-                                    <select 
-                                        wire:model="edit_input.jurusan"
-                                        type="text" 
-                                        class="form-control @error('edit_input.jurusan') is-invalid @enderror" 
-                                        placeholder="Jurusan">
-                                        <option value="">- Pilih Jurusan -</option>
-                                        @foreach ($jurusan as $item)
-                                            <option value="{{ $item['kode'] }}">{{ $item['nama'] }}</option>
-                                        @endforeach
-                                    </select>
-                                </td>
-                                <td>
                                     <input 
                                         wire:model="edit_input.prodi"
                                         type="text" 
@@ -114,7 +89,6 @@
                         @else
                             <tr>
                                 <td>{{ $row->kode }}</td>
-                                <td>{{ $row->jurusan_data?->nama }}</td>
                                 <td>{{ $row->nama }}</td>
                                 <td>
                                     <div x-data="{ open: false }">

@@ -18,13 +18,14 @@ return new class extends Migration
             $table->string('email')->nullable()->unique();
             $table->string('password');
             $table->string('nomor_telepon')->nullable();
-
+            
             $table->string('role');
-
+            
             $table->string('alamat')->nullable();
             $table->string('provinsi')->nullable();
             $table->string('kabupaten_kota')->nullable();
-
+            
+            $table->string('jurusan')->nullable();
             $table->string('prodi')->nullable();
             $table->string('periode')->nullable();
 

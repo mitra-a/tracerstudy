@@ -4,37 +4,29 @@ namespace App\Livewire\Pages\Admin;
 
 use App\Livewire\Traits\WithCachedRows;
 use App\Livewire\Traits\WithPerPagePagination;
-use App\Models\Jurusan;
-use App\Models\Prodi as ModelsProdi;
+use App\Models\Jurusan as ModelsJurusan;
 use Livewire\Component;
 
-class Prodi extends Component
+class Jurusan extends Component
 {
     use WithCachedRows;
     use WithPerPagePagination;
 
     public $search = '';
-    public $jurusan = [];
 
     public $add_input = [
         'jurusan' => '',
-        'prodi' => '',
-        'kode' => '',
+        'kode' => ''
     ];
 
     public $edit_input = [
         'row_id' => '',
         'jurusan' => '',
-        'prodi' => '',
         'kode' => ''
     ];
 
-    public function mount(){
-        $this->jurusan = Jurusan::all()->toArray();
-    }
-
     public function delete($id){
-        $delete = ModelsProdi::findOrFail($id);
+        $delete = ModelsJurusan::findOrFail($id);
         $delete->delete();
 
         session()->flash('message', [
@@ -57,8 +49,7 @@ class Prodi extends Component
             $this->edit_input['row_id'] = $id;
 
             if($search !== false){
-                $this->edit_input['jurusan'] = $data[$search]['jurusan'];
-                $this->edit_input['prodi'] = $data[$search]['nama'];
+                $this->edit_input['jurusan'] = $data[$search]['nama'];
                 $this->edit_input['kode'] = $data[$search]['kode'];
             }
 
@@ -66,13 +57,12 @@ class Prodi extends Component
         }
 
         $this->validate([
-            'edit_input.prodi' => ['required'],
+            'edit_input.jurusan' => ['required'],
         ]);
 
         try {
-            $edit = ModelsProdi::findOrFail($this->edit_input['row_id']);
-            $edit->jurusan = $this->edit_input['jurusan'];
-            $edit->nama = $this->edit_input['prodi'];
+            $edit = ModelsJurusan::findOrFail($this->edit_input['row_id']);
+            $edit->nama = $this->edit_input['jurusan'];
             $edit->save();
 
             session()->flash('message', [
@@ -90,15 +80,13 @@ class Prodi extends Component
     public function add(){
         $this->validate([
             'add_input.kode' => ['required'],
-            'add_input.prodi' => ['required'],
             'add_input.jurusan' => ['required'],
         ]);
 
         try {
-            $add = new ModelsProdi();
+            $add = new ModelsJurusan();
             $add->kode = $this->add_input['kode'];
-            $add->jurusan = $this->add_input['jurusan'];
-            $add->nama = $this->add_input['prodi'];
+            $add->nama = $this->add_input['jurusan'];
             $add->save();
 
             session()->flash('message', [
@@ -112,7 +100,7 @@ class Prodi extends Component
     }
     
     public function getRowsQueryProperty(){
-        return ModelsProdi::when($this->search, function($query, $value){
+        return ModelsJurusan::when($this->search, function($query, $value){
             $query->where('nama', 'LIKE', '%' . $value . '%')
                 ->orWhere('kode', 'LIKE', '%' . $value . '%');
         });
@@ -126,7 +114,7 @@ class Prodi extends Component
 
     public function render()
     {
-        return view('pages.admin.prodi', [
+        return view('pages.admin.jurusan', [
             'rows' => $this->rows
         ]);
     }

@@ -70,6 +70,13 @@ return [
         'role' => 'admin'
     ],
     [
+        'title' => 'Jurusan',
+        'icon' => 'bx bx-notepad',
+        'route' => 'admin.jurusan',
+        'active' => 'admin.jurusan',
+        'role' => 'admin'
+    ],
+    [
         'title' => 'Program Studi',
         'icon' => 'bx bx-copy',
         'route' => 'admin.prodi',

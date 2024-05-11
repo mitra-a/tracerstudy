@@ -47,7 +47,7 @@
                     <div class="mb-3">
                         <h1 class="text-primary font-weight-bold">{{ $arrayData['prodi'] }}</h1>
                     </div>
-                    <h5 class="h3 font-weight-bolder mb-3">Kuesioner</h5><span class="d-block text-sm text-muted">Jumlah Kuesioner <br> dalam Database</span>
+                    <h5 class="h3 font-weight-bolder mb-3">Program Studi</h5><span class="d-block text-sm text-muted">Jumlah Prodi<br> dalam Database</span>
                     </div>
             </div>
         </div>
@@ -55,9 +55,9 @@
             <div class="card">
                 <div class="card-body text-center">
                     <div class="mb-3">
-                        <h1 class="text-primary font-weight-bold">{{ $arrayData['periode'] }}</h1>
+                        <h1 class="text-primary font-weight-bold">{{ $arrayData['jurusan'] }}</h1>
                     </div>
-                    <h5 class="h3 font-weight-bolder mb-3">Periode Wisuda</h5><span class="d-block text-sm text-muted">Jumlah Periode Wisuda <br> dalam Database</span>
+                    <h5 class="h3 font-weight-bolder mb-3">Jurusan</h5><span class="d-block text-sm text-muted">Jumlah Jurusan <br> dalam Database</span>
                     </div>
             </div>
         </div>
