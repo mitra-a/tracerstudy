@@ -127,25 +127,7 @@
                 </div>
             </div>
 
-            <div>
-                @foreach ($data as $soal)
-                    <div>
-                        <div class="card mb-3">
-                            <div class="card-body">
-                                <h5 class="card-title text-muted">{{ $soal['pertanyaan'] }}</h5>
-                                <div
-                                    class="chart-data"
-                                    id="soal-{{ $soal['id'] }}"
-                                    label="{{ json_encode($soal['label']) }}"
-                                    data="{{ json_encode($soal['data']) }}"
-                                    type="{{ $soal['type'] }}"
-                                >
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
-            </div>
+            <livewire:components.kuesioner-chart :$id :prodi="auth()->user()->prodi"/>
         </div>
     </div>
 </div>
