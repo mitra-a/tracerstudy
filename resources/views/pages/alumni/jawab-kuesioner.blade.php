@@ -109,36 +109,39 @@
                                         id="form-{{ $soal->id }}"
                                     >
                                         <option value="">- Pilih Jawaban -</option>
-                                        @foreach ($soal->opsi_x as $item)
-                                            <option {{ optional($jawaban)[$soal->id] == $item ? 'selected' : ''}}>{{ $item }}</option>
+                                        @foreach ($soal->opsi_x as $index => $item)
+                                            <option 
+                                                {{ optional($jawaban)[$soal->id] == $index ? 'selected' : ''}}
+                                                value="{{ $index }}"
+                                                >{{ $item }}</option>
                                         @endforeach
                                     </select>
                                 @endif
 
                                 @if (in_array($soal->type,['pilihan-ganda', 'kotak-centang']))
                                     <div class="list-group">
-                                        @foreach ($soal->opsi_x as $item)
+                                        @foreach ($soal->opsi_x as $index => $item)
                                             <label class="list-group-item align-items-center d-flex">
                                                 @switch($soal->type)
                                                     @case('pilihan-ganda')
                                                         <input
                                                             x-on:change="(e) => changeValue('{{ $soal->id }}', e, '{{ $soal->type }}')"
-                                                            {{ optional($jawaban)[$soal->id] == $item ? 'checked' : ''}}
+                                                            {{ optional($jawaban)[$soal->id] == $index ? 'checked' : ''}}
                                                             class="form-check-input me-1"
                                                             type="radio"
                                                             id="form-{{ $soal->id }}"
                                                             name="{{ $soal->id }}"
-                                                            value="{{ $item }}">
+                                                            value="{{ $index }}">
                                                         @break
                                                     @case('kotak-centang')
                                                         <input
                                                             x-on:change="(e) => changeValue('{{ $soal->id }}', e, '{{ $soal->type }}')"
-                                                            {{ in_array($item, optional($jawaban)[$soal->id] ?? []) ? 'checked' : ''}}
+                                                            {{ in_array($index, optional($jawaban)[$soal->id] ?? []) ? 'checked' : ''}}
                                                             class="form-check-input me-1"
                                                             type="checkbox"
                                                             id="form-{{ $soal->id }}"
                                                             name="{{ $soal->id }}"
-                                                            value="{{ $item }}">
+                                                            value="{{ $index }}">
                                                         @break
                                                 @endswitch
                                                 
@@ -158,31 +161,31 @@
                                                 @endforeach
                                             </tr>
     
-                                            @foreach ($soal->opsi_x as $item)
+                                            @foreach ($soal->opsi_x as $index => $item)
                                                 <tr>
                                                     <td>{{ $item }}</td>
-                                                    @foreach ($soal->opsi_y as $item_y)
+                                                    @foreach ($soal->opsi_y as $index_y => $item_y)
                                                         <td class="text-center">
                                                             @switch($soal->type)
                                                                 @case('petak-pilihan-ganda')
                                                                     <input
-                                                                        x-on:change="(e) => changeValue('{{ $soal->id }}', e, '{{ $soal->type }}', '{{ $item }}')"
-                                                                        {{  optional(optional($jawaban)[$soal->id])[$item] == $item_y ? 'checked' : ''}}
+                                                                        x-on:change="(e) => changeValue('{{ $soal->id }}', e, '{{ $soal->type }}', '{{ $index }}')"
+                                                                        {{  optional(optional($jawaban)[$soal->id])[$index] == $index_y ? 'checked' : ''}}
                                                                         class="form-check-input me-1"
                                                                         type="radio"
-                                                                        name="{{ $soal->id }}.{{ $item }}"
-                                                                        id="form-{{ $soal->id }}-{{ $item }}"
-                                                                        value="{{ $item_y }}">
+                                                                        name="{{ $soal->id }}.{{ $index }}"
+                                                                        id="form-{{ $soal->id }}-{{ $index }}"
+                                                                        value="{{ $index_y }}">
                                                                     @break
                                                                 @case('petak-kotak-centang')
                                                                     <input
-                                                                        x-on:change="(e) => changeValue('{{ $soal->id }}', e, '{{ $soal->type }}', '{{ $item }}')"
-                                                                        {{  in_array($item_y, optional(optional($jawaban)[$soal->id])[$item] ?? []) ? 'checked' : ''}}
+                                                                        x-on:change="(e) => changeValue('{{ $soal->id }}', e, '{{ $soal->type }}', '{{ $index }}')"
+                                                                        {{  in_array($index_y, optional(optional($jawaban)[$soal->id])[$index] ?? []) ? 'checked' : ''}}
                                                                         class="form-check-input me-1"
                                                                         type="checkbox"
-                                                                        name="{{ $soal->id }}.{{ $item }}"
-                                                                        id="form-{{ $soal->id }}-{{ $item }}"
-                                                                        value="{{ $item_y }}">
+                                                                        name="{{ $soal->id }}.{{ $index }}"
+                                                                        id="form-{{ $soal->id }}-{{ $index }}"
+                                                                        value="{{ $index_y }}">
                                                                     @break
                                                             @endswitch
                                                         </td>
