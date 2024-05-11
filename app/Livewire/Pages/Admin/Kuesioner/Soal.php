@@ -6,6 +6,7 @@ use App\Livewire\Traits\WithCachedRows;
 use App\Livewire\Traits\WithPerPagePagination;
 use App\Models\KuesionerSoal;
 use Livewire\Component;
+use Illuminate\Support\Str;
 
 class Soal extends Component
 {
@@ -27,8 +28,8 @@ class Soal extends Component
             $save->kuesioner_halaman_id = $this->halaman_id;
             $save->pertanyaan = '';
             $save->type = $e;
-            $save->opsi_x = [''];
-            $save->opsi_y = [''];
+            $save->opsi_x = [(string) Str::orderedUuid() => ''];
+            $save->opsi_y = [(string) Str::orderedUuid() => ''];
             $save->save();
 
             $this->js("setTimeout(function(){

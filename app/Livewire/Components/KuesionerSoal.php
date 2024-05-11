@@ -3,6 +3,7 @@
 namespace App\Livewire\Components;
 
 use Livewire\Component;
+use Illuminate\Support\Str;
 
 class KuesionerSoal extends Component
 {
@@ -46,7 +47,7 @@ class KuesionerSoal extends Component
     }
 
     public function tambahOpsi($type){
-        $this->{'opsi_'.$type}[] = '';
+        $this->{'opsi_'.$type}[(string) Str::orderedUuid()] = '';
         $this->{'updatedOpsi' . strtoupper($type)}();
     }
 

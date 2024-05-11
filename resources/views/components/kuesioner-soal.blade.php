@@ -13,14 +13,14 @@
                     class="form-control" 
                     placeholder="masukan pertanyaan">
             </div>
-
+            
             {{-- DROPDOWN, PILIHAN GANDA, KOTAK CENTANG --}}
             @if(in_array($row->type, array('dropdown', 'pilihan-ganda', 'kotak-centang')))
                 <div>
                     <div class="col-lg-7 mt-5">
                         <div class="form-label">Opsi Pertanyaan</div>
 
-                        @foreach ($opsi_x as $index => $item)
+                        @foreach (is_array($opsi_x) ? $opsi_x : [] as $index => $item)
                             <div class="d-flex mb-2">
                                 <input 
                                     wire:model.blur="opsi_x.{{ $index }}"
