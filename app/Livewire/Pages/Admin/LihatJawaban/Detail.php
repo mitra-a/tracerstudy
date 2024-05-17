@@ -25,6 +25,7 @@ class Detail extends Component
         return KuesionerJawaban::where('kuesioner_id', $this->id)
         ->select('users.*')
         ->where('validasi', 1)
+        ->whereNotNull('users.id')
         ->leftJoin('users', 'users.id', 'kuesioner_jawaban.alumni_id')
         ->groupBy('alumni_id')
         ->when($this->search, function($query, $value){

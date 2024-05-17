@@ -183,7 +183,7 @@
                             aria-label="Kunjungi halaman instagram" 
                             class="btn-play"
                             data-bs-toggle="modal"
-                            data-src="https://www.youtube.com/embed/0gpS1ShXjpo" data-bs-target="#videoModal">
+                            data-src="https://www.youtube.com/embed/K-p5qyPEwLk" data-bs-target="#videoModal">
                             <span></span>
                         </a>
                     </div>
@@ -191,11 +191,11 @@
                 <div class="col-lg-6 pt-lg-5 wow fadeIn" data-wow-delay="0.5s">
                     <div class="bg-white rounded-top p-5 mt-lg-5">
                         <p class="fs-5 fw-medium text-primary">Tentang Kami</p>
-                        <h1 class="display-6 mb-4">Jurusan Teknik Informatika & Komputer FT UNM</h1>
+                        <h1 class="display-6 mb-4">Fakultas Teknik Universitas Negeri Makassar</h1>
                         <p class="mb-4" style="text-align: justify">
-                            Jurusan Teknik Informatika dan Komputer di bawah naungan Fakultas Teknik Universitas negeri Makassar atas dasar Permenristekdikti Nomor 15 Tahun 2019 tentang Organisasi Tata Kelola Universitas Negeri Makassar dan Surat keputusan Rektor Nomor 669/UN36/KP/2020  tentang pembentukan Jurusan Teknik Informatika dan Komputer Fakultas Teknik Universitas Negeri Makassar. Jurusan ini merupakan jurusan pertama dengan nomenklatur Jurusan Teknik Informatika dan Komputer  dalam lingkungan Fakultas Teknik UNM.
+                            Sejarah Fakultas Teknik yang sebelum konversi IKIP menjadi Universitas Negeri Makassar (UNM) dikenal dengan nama Fakultas Keguruan Teknik (FKT) IKIP Yogyakarta Cabang Makassar, fakultas ini didirikan pada tanggal 1 September 1964.. Ketika itu FKT membuka 2 jurusan yaitu jurusan Teknik Mesin dan jurusan Teknik Sipil. Pada tanggal 5 Januari 1965 FKT IKIP Yogyakarta Cabang Makassar berubah menjadi FKT IKIP Makassar. Pada tahun 1978 FKT telah mengembangkan 4 jurusan yaitu jurusan Teknik Mesin, jurusan Teknik Sipil, jurusan Teknik Elektro dan jurusan Teknik Arsitektur. Pada tahun 1983, FKT berubah menjadi Fakultas Pendidikan Teknologi dan Kejuruan (FPTK) dengan memiliki 6 jurusan, yaitu: jurusan Pendidikan Teknik Elektro, jurusan Pendidikan Teknik Elektronika, jurusan Pendidikan Teknik Mesin, jurusan Pendidikan Teknik Otomotif, jurusan Pendidikan Teknik Sipil dan Perencanaan, dan jurusan PKK.
                         </p>
-                        <a class="btn btn-primary rounded-pill py-3 px-5 mt-4" href="https://tik.ft.unm.ac.id/">
+                        <a class="btn btn-primary rounded-pill py-3 px-5 mt-4" href="https://ft.unm.ac.id/">
                             Explore More
                         </a>
                     </div>
@@ -209,7 +209,7 @@
         <div class="modal-dialog">
             <div class="modal-content rounded-0">
                 <div class="modal-header">
-                    <h3 class="modal-title" id="exampleModalLabel">Profile Jurusan Teknik Informatika & Komputer FT UNM</h3>
+                    <h3 class="modal-title" id="exampleModalLabel">Universitas Negeri Makassar</h3>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -231,8 +231,8 @@
                     <div class="d-flex justify-content-center align-items-center h-100">
                         <img
                             loading="lazy"
-                            src="{{ asset('jtik.webp') }}"
-                            height="85px"
+                            src="{{ asset('logo-white.webp') }}"
+                            height="150px"
                         />
                     </div>
                 </div>
@@ -240,14 +240,14 @@
                 <div class="col-lg-3 col-md-6">
                     <h4 class="text-white mb-4">Kontak Kami</h4>
                     <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>Jl. Daeng Tata Raya (90224)</p>
-                    <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+62 853-1122-4040</p>
-                    <p class="mb-2"><i class="fa fa-envelope me-3"></i>tik@unm.ac.id</p>
+                    <p class="mb-2"><i class="fab fa-instagram me-3"></i>@ftunm_official</p>
+                    <p class="mb-2"><i class="fa fa-envelope me-3"></i>ft@unm.ac.id</p>
                    
                 </div>
                 <div class="col-lg-4 col-md-6">
                     {{-- <h4 class="text-white mb-4"></h4> --}}
                     <p>
-                        <b>Jurusan Teknik Informatika dan Komputer</b> <br>
+                        <b>Fakultas Teknik</b> <br>
                         <b>Universitas Negeri Makassar</b> <br>
                         Kampus Parang Tambung Makassar <br>
                     </p>
@@ -274,11 +274,11 @@
                 <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
                     &copy; <a class="fw-medium text-light" href="#">Tracer Study</a>, Universitas Negeri Makassar.
                 </div>
-                <div class="col-md-6 text-center text-md-end">
+                {{-- <div class="col-md-6 text-center text-md-end">
                     <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
                     Designed By <a class="fw-medium text-light" href="https://htmlcodex.com">HTML Codex</a>
                     Distributed By <a class="fw-medium text-light" href="https://themewagon.com">ThemeWagon</a>
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>

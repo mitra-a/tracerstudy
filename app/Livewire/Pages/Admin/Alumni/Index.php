@@ -41,6 +41,8 @@ class Index extends Component
             return $this->applyPagination($this->rowsQuery);
         });
     }
+
+    public function searchData($value = false){ if($value) $this->search = null; }
     
     public function render()
     {

@@ -1,7 +1,7 @@
 <div>
     <div class="d-flex">
         <h4 class="fw-bold py-3 mb-4">
-            <span class="text-muted fw-light">Master Data /</span> Program Studi
+            <span class="text-muted fw-light">Master Data /</span> Jurusan
         </h4>
     </div>
 
@@ -9,7 +9,7 @@
 
     <div class="card">
         <div class="card-header d-flex justify-content-between">
-            <h5 class="d-none d-lg-block">Data Program Studi</h5>
+            <h5 class="d-none d-lg-block">Data Jurusan</h5>
 
             <div class="d-flex">
                 <input type="text" wire:model="search" class="form-control" placeholder="Search....">
@@ -21,9 +21,6 @@
                 <thead>
                     <tr>
                         <th>Kode</th>
-                        @if(env('APP_WITH_JURUSAN'))
-                            <th>Jurusan</th>
-                        @endif
                         <th>Program Studi</th>
                         <th style="width: 1px;"></th>
                     </tr>
@@ -37,20 +34,6 @@
                                 class="form-control @error('add_input.kode') is-invalid @enderror" 
                                 placeholder="Kode" />
                         </td>
-                        @if(env('APP_WITH_JURUSAN'))
-                        <td>
-                            <select 
-                                wire:model="add_input.jurusan"
-                                type="text" 
-                                class="form-control @error('add_input.jurusan') is-invalid @enderror" 
-                                placeholder="Jurusan">
-                                <option value="">- Pilih Jurusan -</option>
-                                @foreach ($jurusan as $item)
-                                    <option value="{{ $item['kode'] }}">{{ $item['nama'] }}</option>
-                                @endforeach
-                            </select>
-                        </td>
-                        @endif
                         <td>
                             <input 
                                 wire:model="add_input.prodi"
@@ -88,22 +71,6 @@
                                         class="form-control" 
                                         placeholder="Kode" />
                                 </td>
-                                
-                                @if(env('APP_WITH_JURUSAN'))
-                                <td>
-                                    <select 
-                                        wire:model="edit_input.jurusan"
-                                        type="text" 
-                                        class="form-control @error('edit_input.jurusan') is-invalid @enderror" 
-                                        placeholder="Jurusan">
-                                        <option value="">- Pilih Jurusan -</option>
-                                        @foreach ($jurusan as $item)
-                                            <option value="{{ $item['kode'] }}">{{ $item['nama'] }}</option>
-                                        @endforeach
-                                    </select>
-                                </td>
-                                @endif
-
                                 <td>
                                     <input 
                                         wire:model="edit_input.prodi"
@@ -122,9 +89,6 @@
                         @else
                             <tr>
                                 <td>{{ $row->kode }}</td>
-                                @if(env('APP_WITH_JURUSAN'))
-                                    <td>{{ $row->jurusan_data?->nama }}</td>
-                                @endif
                                 <td>{{ $row->nama }}</td>
                                 <td>
                                     <div x-data="{ open: false }">

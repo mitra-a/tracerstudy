@@ -86,24 +86,52 @@
                             @endif
                         @endif
 
-                        <div class="mb-3">
-                            <label for="form-nama" class="form-label">Nama</label>
-                            <input 
-                                type="nama"
-                                class="form-control @error('nama') is-invalid @enderror"
-                                id="form-nama"
-                                wire:model="nama"
-                                placeholder="masukan nama">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="mb-3">
+                                    <label for="form-nama" class="form-label">Nama</label>
+                                    <input 
+                                        type="nama"
+                                        class="form-control @error('nama') is-invalid @enderror"
+                                        id="form-nama"
+                                        wire:model="nama"
+                                        placeholder="masukan nama">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="mb-3">
+                                    <label for="form-email" class="form-label">Email</label>
+                                    <input 
+                                        type="email"
+                                        class="form-control @error('email') is-invalid @enderror"
+                                        id="form-email"
+                                        wire:model="email"
+                                        placeholder="masukan email">
+                                </div>
+                            </div>
                         </div>
 
                         <div class="mb-3">
-                            <label for="form-email" class="form-label">Email</label>
-                            <input 
-                                type="email"
-                                class="form-control @error('email') is-invalid @enderror"
-                                id="form-email"
-                                wire:model="email"
-                                placeholder="masukan email">
+                            <label for="form-nim" class="form-label">Jurusan</label>
+                            <div class="d-flex align-items-center">
+                                <select
+                                    type="text"
+                                    class="form-control @error('jurusan') is-invalid @enderror"
+                                    id="form-jurusan"
+                                    wire:model.blur="jurusan"
+                                    placeholder="masukan jurusan">
+                                    <option value="">Pilih Jurusan</option>
+                                    @foreach ($choice['jurusan'] as $item)
+                                        <option value="{{ $item['kode'] }}">{{ $item['nama'] }}</option>
+                                    @endforeach
+                                </select>
+
+                                <div
+                                    wire:loading
+                                    class="spinner-border text-primary ms-3" role="status">
+                                    <span class="visually-hidden">Loading...</span>
+                                </div> 
+                            </div>
                         </div>
 
                         <div class="row">
