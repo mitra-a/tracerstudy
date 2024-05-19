@@ -75,11 +75,6 @@
                                             class="btn btn-primary rounded-pill py-3 px-5 mt-3 mt-md-5 w-md-0 w-100 me-2 animated slideInRight">
                                             Masuk disini
                                         </a>
-                                        <a 
-                                            href="{{ route('registrasi') }}"
-                                            class="btn btn-light rounded-pill py-3 px-5 mt-2 mt-md-5 w-md-0 w-100 animated slideInRight">
-                                            Daftar
-                                        </a>
                                     @endif
                                 </div>
                             </div>

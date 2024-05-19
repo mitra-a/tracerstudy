@@ -16,6 +16,8 @@ return new class extends Migration
             $table->string('kuesioner_id');
             $table->string('nama');
             $table->string('deskripsi');
+
+            $table->integer('order');
             $table->timestamps();
         });
     }

@@ -3,7 +3,7 @@
 
     <div class="d-flex">
         <h4 class="fw-bold py-3 mb-4">
-            <span class="text-muted fw-light">Kusioner /</span> Data Kuesioner / Halaman / Soal
+            <span class="text-muted fw-light">Kuesioner /</span> Data Kuesioner / Halaman / Soal
         </h4>
 
         <div class="ms-auto">

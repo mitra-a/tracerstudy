@@ -5,6 +5,7 @@ namespace App\Livewire\Pages\Admin\Kuesioner;
 use App\Livewire\Traits\WithCachedRows;
 use App\Livewire\Traits\WithPerPagePagination;
 use App\Models\KuesionerHalaman;
+use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 
 class Halaman extends Component
@@ -28,6 +29,21 @@ class Halaman extends Component
 
     public function mount($id){
         $this->id = $id;
+    }
+
+    public function updateHalamanOrder($data){
+        $usecase = '';
+        $wherein = '';
+
+        foreach($data as $index => $d){
+            $wherein .= "'".$d['value']."'";
+            if($index + 1 < count($data)) $wherein .= ",";
+            $usecase .= 'WHEN "' . $d['value'] . '" THEN "' . $d['order'] . '" ';
+        }
+
+        KuesionerHalaman::whereIn('id',array_column($data, 'value'))->update([
+            'order' => DB::raw('CASE id ' . $usecase . ' END')
+        ]);
     }
 
     public function delete($id){
@@ -109,7 +125,9 @@ class Halaman extends Component
     }
     
     public function getRowsQueryProperty(){
-        return KuesionerHalaman::where('kuesioner_id', $this->id)->when($this->search, function($query, $value){
+        return KuesionerHalaman::where('kuesioner_id', $this->id)
+            ->orderBy('order')
+            ->when($this->search, function($query, $value){
             $query->where('nama', 'LIKE', '%' . $value . '%')
                 ->orWhere('deskripsi', 'LIKE', '%' . $value . '%');
         });

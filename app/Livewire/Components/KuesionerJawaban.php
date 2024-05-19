@@ -27,7 +27,7 @@ class KuesionerJawaban extends Component
         $this->auth_back = $auth_back;
         $this->user_id = $user_id;
         $this->kuesioner = $id;
-        $this->halaman = KuesionerHalaman::where('kuesioner_id', $id)->with('soal')->get();
+        $this->halaman = KuesionerHalaman::where('kuesioner_id', $id)->orderBy('order')->with('soal')->get();
 
         $jawaban_value = [];
         $jawaban = ModelsKuesionerJawaban::where('kuesioner_id', $id)

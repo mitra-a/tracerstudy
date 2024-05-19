@@ -39,7 +39,7 @@ class JawabKuesioner extends Component
     public function getSemuaHalamanProperty(){
         return KuesionerHalaman::where('kuesioner_id', $this->id)
             ->with('soal')
-            ->orderBy('created_at', 'ASC')
+            ->orderBy('order')
             ->get();
     }
 
@@ -90,6 +90,7 @@ class JawabKuesioner extends Component
                     $new->alumni_id = auth()->user()->id;
                     $new->soal_id = $item->id;
                     $new->type = $item->type;
+                    $new->validasi = true;
 
                     //simpan jawaban pilihan-ganda || dropdown || jawaban-text
                     if(in_array($item->type, ['pilihan-ganda','dropdown','jawab-text','jawab-tanggal','jawab-waktu','jawab-angka'])){

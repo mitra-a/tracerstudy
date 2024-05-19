@@ -9,3 +9,5 @@
 <script src="{{ asset('js/dashboards-analytics.js') }}"></script>
 
 <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+@livewireScripts
