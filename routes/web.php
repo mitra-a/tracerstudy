@@ -7,7 +7,9 @@ Route::get('/logout', function(){
     return redirect()->route('login');
 })->name('logout');
 
+
 Route::namespace('App\Livewire\Pages')->group(function(){
+    Route::get('/sertifikat/{id}', Sertifikat::class)->name('sertifikat');
     Route::get('/login', Login::class)->name('login');
 
     if(env('APP_DEMO') == 'true'){
@@ -61,6 +63,8 @@ Route::namespace('App\Livewire\Pages')->group(function(){
         Route::get('/profile', Profile::class)->name('profile');
         Route::get('/jawab-kuesioner/{id}', JawabKuesioner::class)->name('dashboard.jawab-kuesioner');
         Route::get('/lihat-jawaban-kuesioner/{id}', LihatJawabanKuesioner::class)->name('dashboard.lihat-jawaban-kuesioner');
+
+        Route::get('/sertifikat/{id}', Sertifikat::class)->name('dashboard.sertifikat');
 
         Route::namespace('Laporan')->prefix('hasil-survey')->name('hasil-survey.')->group(function(){
             Route::get('/', Index::class)->name('index');

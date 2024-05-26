@@ -60,9 +60,9 @@
                                                             Lihat Jawaban
                                                     </a>
 
-                                                    <a href="{{ route('alumni.hasil-survey.detail', $row['id']) }}" class="btn btn-sm btn-dark d-flex align-items-center text-nowrap">
-                                                        <i class="bx bx-pie-chart-alt-2 me-2" style="font-size: 15px"></i>
-                                                        Hasil Survey
+                                                    <a href="{{ route('alumni.dashboard.sertifikat', $row['id']) }}" class="btn btn-sm btn-dark d-flex align-items-center text-nowrap">
+                                                        <i class="bx bx-file me-2" style="font-size: 15px"></i>
+                                                        Unduh Sertifikat
                                                     </a>
                                                 </div>
                                             @elseif($row['selesai'])
