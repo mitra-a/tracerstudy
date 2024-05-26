@@ -4,12 +4,14 @@ namespace App\Livewire\Pages;
 
 use App\Models\Kuesioner;
 use App\Models\KuesionerJawaban;
+use App\Models\User;
 use chillerlan\QRCode\QRCode;
 use Livewire\Component;
 
 class Sertifikat extends Component
 {
     public $id;
+    public $akun;
     public $kuesioner;
     public $tanggal_jawab;
     public $waktu_jawab;
@@ -23,6 +25,7 @@ class Sertifikat extends Component
         $id_alumni = $string[1];
 
         $this->id = $id;
+        $this->akun = User::findOrFail($id_alumni);
         $this->kuesioner = Kuesioner::findOrFail($id);
         $jawaban = KuesionerJawaban::where('kuesioner_id', $id)->where('alumni_id', $id_alumni)->where('validasi',1)->get();
         

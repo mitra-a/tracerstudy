@@ -46,18 +46,18 @@
                                 <td style="width: 1px">Nama</td>
                                 <td style="width: 1px" class="p-0">: </td>
                                 <td>
-                                    <b>{{ auth()->user()->nama }}</b>
+                                    <b>{{ $akun->nama }}</b>
                                 </td>
                             </tr>
                             <tr>
                                 <td>NIM</td>
                                 <td class="p-0">: </td>
-                                <td>{{ auth()->user()->nim }} </td>
+                                <td>{{ $akun->nim }} </td>
                             </tr>
                             <tr>
                                 <td style="white-space: nowrap">Program Studi</td>
                                 <td class="p-0">: </td>
-                                <td>{{ auth()->user()->prodi_data->nama }}</td>
+                                <td>{{ $akun->prodi_data->nama }}</td>
                             </tr>
                         </tbody>
                     </table>
