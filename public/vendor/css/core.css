@@ -2000,6 +2000,11 @@ progress {
   color: var(--bs-table-striped-color);
 }
 
+.table-striped > tbody > tr:nth-of-type(even) > * {
+  --bs-table-accent-bg: "#fff";
+  color: var(--bs-table-striped-color);
+}
+
 .table-active {
   --bs-table-accent-bg: var(--bs-table-active-bg);
   color: var(--bs-table-active-color);

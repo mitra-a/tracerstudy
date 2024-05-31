@@ -6,6 +6,7 @@ use App\Livewire\Traits\WithCachedRows;
 use App\Livewire\Traits\WithPerPagePagination;
 use App\Models\KuesionerHalaman;
 use Illuminate\Support\Facades\DB;
+use Livewire\Attributes\On;
 use Livewire\Component;
 
 class Halaman extends Component
@@ -31,6 +32,7 @@ class Halaman extends Component
         $this->id = $id;
     }
 
+    #[On('update-halaman-order')]
     public function updateHalamanOrder($data){
         $usecase = '';
         $wherein = '';
@@ -107,11 +109,14 @@ class Halaman extends Component
             'add_input.deskripsi' => ['required'],
         ]);
 
+        $lastOrder = KuesionerHalaman::where('kuesioner_id', $this->id)->orderBy('order','DESC')->first();
+
         try {
             $add = new KuesionerHalaman();
             $add->kuesioner_id = $this->id;
             $add->nama = $this->add_input['nama'];
             $add->deskripsi = $this->add_input['deskripsi'];
+            $add->order = $lastOrder ? $lastOrder->order + 1 : 1;
             $add->save();
 
             session()->flash('message', [

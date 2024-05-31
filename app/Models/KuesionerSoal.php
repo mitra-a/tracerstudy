@@ -12,8 +12,15 @@ class KuesionerSoal extends Model
 
     protected $table = 'kuesioner_soal';
 
-    protected $casts = [
-        'opsi_x' => 'array',
-        'opsi_y' => 'array',
-    ];
+    public function opsi_x(){
+        return $this->hasMany(KuesionerSoalOpsi::class, 'soal_id', 'id')
+            ->where('type', 'x')
+            ->orderBy('order');
+    }
+
+    public function opsi_y(){
+        return $this->hasMany(KuesionerSoalOpsi::class, 'soal_id', 'id')
+            ->where('type', 'y')
+            ->orderBy('order');
+    }
 }

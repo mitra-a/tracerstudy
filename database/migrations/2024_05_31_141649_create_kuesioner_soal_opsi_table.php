@@ -11,15 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('kuesioner_soal', function (Blueprint $table) {
+        Schema::create('kuesioner_soal_opsi', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->string('kuesioner_id');
-            $table->string('kuesioner_halaman_id');
-
-            $table->string('pertanyaan');
-            $table->text('type');
-            $table->boolean('required')->default(false);
-
+            $table->string('soal_id');
+            $table->string('type');
+            $table->string('opsi');
             $table->integer('order')->nullable();
             $table->timestamps();
         });
@@ -30,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('kuesioner_soal');
+        Schema::dropIfExists('kuesioner_soal_opsi');
     }
 };

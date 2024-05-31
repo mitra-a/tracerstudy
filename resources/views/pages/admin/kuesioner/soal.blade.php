@@ -1,4 +1,47 @@
 <div>
+    @push('script')
+        <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+        <script>
+            let SoalElement = document.querySelector('[wire\\:sortable]')
+            var sortable = new Sortable(SoalElement, {
+                handle: "[wire\\:sortable\\.handle]",
+                onEnd: () => {
+                    setTimeout(() => {
+                        let items = []
+                        SoalElement.querySelectorAll('[wire\\:sortable\\.item]').forEach((el, index) => {
+                            items.push({ order: index + 1, value: el.getAttribute('wire:sortable.item')})
+                        })
+    
+                        Livewire.dispatch(SoalElement.getAttribute('wire:sortable'), { data: items })
+                    }, 1);
+                }
+            });
+
+            function renderSortableOpsi(){
+                let OpsiElement = document.querySelectorAll('[wire\\:sortable\\.opsi]')
+                OpsiElement.forEach((newEl, index) => {
+                    if(newEl.getAttribute('render-done') == 1) return;
+                    newEl.setAttribute('render-done', 1);
+                    var sortable = new Sortable(newEl, {
+                        handle: "[wire\\:sortable\\.handle\\.opsi]",
+                        onEnd: () => {
+                            setTimeout(() => {
+                                let items = []
+                                newEl.querySelectorAll('[wire\\:sortable\\.item\\.opsi]').forEach((el, index) => {
+                                    items.push({ order: index + 1, value: el.getAttribute('wire:sortable.item.opsi')})
+                                })
+                                
+                                Livewire.dispatch('update-opsi-order', { data: items, type: newEl.getAttribute('type') })
+                            }, 1);
+                        }
+                    });
+                })
+            }
+
+            renderSortableOpsi();
+        </script>
+    @endpush
+
     <x-loading />
 
     <div class="d-flex">
@@ -86,9 +129,17 @@
         </div>
 
         <div class="col">
-            @forelse ($rows as $row)
-               <livewire:components.kuesioner-soal :$row :key="$row->id" />
-            @empty
+            <div wire:sortable="update-soal-order">
+                @foreach ($rows as $row)
+                    @if(true)
+                    <div wire:sortable.item="{{ $row->id }}" wire:key="{{$row->id}}">
+                        <livewire:components.kuesioner-soal :$row :key="$row->id" />
+                    </div>
+                    @endif
+                @endforeach
+            </div>
+
+            @if(count($rows) < 1)
                 <div class="card">
                     <div class="card-body">
                         <div class="empty text-center py-5">
@@ -104,7 +155,7 @@
                           </div>
                     </div>
                 </div>
-            @endforelse
+            @endif
         </div>
     </div>
 
