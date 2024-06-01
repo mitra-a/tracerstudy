@@ -23,4 +23,9 @@ class KuesionerSoal extends Model
             ->where('type', 'y')
             ->orderBy('order');
     }
+
+    public function opsi(){
+        return $this->hasMany(KuesionerSoalOpsi::class, 'soal_id', 'id')
+            ->orderBy('order');
+    }
 }

@@ -30,7 +30,7 @@
                         class="position-absolute d-none d-md-block"
                         style="
                         width:100%;
-                        background-image: linear-gradient(-90deg, #00000054, #000000b5);
+                        background-image: linear-gradient(-90deg, #00000054, #0000003d);
                         height:100%;
                         z-index: 1040"
                     ></div>
@@ -105,31 +105,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="service-item position-relative h-100">
-                        <div class="service-text rounded p-5">
-                            <div class="btn-square bg-light rounded-circle mx-auto mb-4"
-                                style="width: 64px; height: 64px;">
-                                <img loading="lazy" class="img-fluid" src="{{ asset('home/img/icon/icon-6.png') }}" alt="Icon">
-                            </div>
-                            <h5 class="mb-3">Registrasi </h4>
-                            <p class="mb-0 mx-auto" style="width: 80%">Mengakses halaman registrasi dengan klik tombol Daftar <a href="{{ route('registrasi') }}">disini</a></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                    <div class="service-item position-relative h-100">
-                        <div class="service-text rounded p-5">
-                            <div class="btn-square bg-light rounded-circle mx-auto mb-4"
-                                style="width: 64px; height: 64px;">
-                                <img loading="lazy" class="img-fluid" src="{{ asset('home/img/icon/icon-2.png') }}" alt="Icon">
-                            </div>
-                            <h5 class="mb-3">Mengisi Data</h4>
-                            <p class="mb-0 mx-auto" style="width: 80%">Mengisi data pada halaman registrasi berupa nim, email dan password</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
                     <div class="service-item position-relative h-100">
                         <div class="service-text rounded p-5">
                             <div class="btn-square bg-light rounded-circle mx-auto mb-4"
@@ -141,19 +117,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="service-item position-relative h-100">
-                        <div class="service-text rounded p-5">
-                            <div class="btn-square bg-light rounded-circle mx-auto mb-4"
-                                style="width: 64px; height: 64px;">
-                                <img loading="lazy" class="img-fluid" src="{{ asset('home/img/icon/icon-2.png') }}" alt="Icon">
-                            </div>
-                            <h5 class="mb-3">Melengkapi Data</h4>
-                            <p class="mb-0 mx-auto" style="width: 80%">Melengkapi data profile Alumni pada menu alumni setelah registrasi</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
                     <div class="service-item position-relative h-100">
                         <div class="service-text rounded p-5">
                             <div class="btn-square bg-light rounded-circle mx-auto mb-4"
@@ -175,10 +139,10 @@
                 <div class="col-lg-6">
                     <div class="h-100 d-flex align-items-center justify-content-center" style="min-height: 300px;">
                         <a href="/" 
-                            aria-label="Kunjungi halaman instagram" 
+                            aria-label="Vidio Profile" 
                             class="btn-play"
                             data-bs-toggle="modal"
-                            data-src="https://www.youtube.com/embed/K-p5qyPEwLk" data-bs-target="#videoModal">
+                            data-src="https://www.youtube.com/embed/0gpS1ShXjpo" data-bs-target="#videoModal">
                             <span></span>
                         </a>
                     </div>
@@ -186,11 +150,11 @@
                 <div class="col-lg-6 pt-lg-5 wow fadeIn" data-wow-delay="0.5s">
                     <div class="bg-white rounded-top p-5 mt-lg-5">
                         <p class="fs-5 fw-medium text-primary">Tentang Kami</p>
-                        <h1 class="display-6 mb-4">Fakultas Teknik Universitas Negeri Makassar</h1>
+                        <h1 class="display-6 mb-4">Jurusan Teknik Informatika dan Komputer Universitas Negeri Makassar</h1>
                         <p class="mb-4" style="text-align: justify">
-                            Sejarah Fakultas Teknik yang sebelum konversi IKIP menjadi Universitas Negeri Makassar (UNM) dikenal dengan nama Fakultas Keguruan Teknik (FKT) IKIP Yogyakarta Cabang Makassar, fakultas ini didirikan pada tanggal 1 September 1964.. Ketika itu FKT membuka 2 jurusan yaitu jurusan Teknik Mesin dan jurusan Teknik Sipil. Pada tanggal 5 Januari 1965 FKT IKIP Yogyakarta Cabang Makassar berubah menjadi FKT IKIP Makassar. Pada tahun 1978 FKT telah mengembangkan 4 jurusan yaitu jurusan Teknik Mesin, jurusan Teknik Sipil, jurusan Teknik Elektro dan jurusan Teknik Arsitektur. Pada tahun 1983, FKT berubah menjadi Fakultas Pendidikan Teknologi dan Kejuruan (FPTK) dengan memiliki 6 jurusan, yaitu: jurusan Pendidikan Teknik Elektro, jurusan Pendidikan Teknik Elektronika, jurusan Pendidikan Teknik Mesin, jurusan Pendidikan Teknik Otomotif, jurusan Pendidikan Teknik Sipil dan Perencanaan, dan jurusan PKK.
+                            Jurusan Teknik Informatika dan Komputer di bawah naungan Fakultas Teknik Universitas negeri Makassar atas dasar Permenristekdikti Nomor 15 Tahun 2019 tentang Organisasi Tata Kelola Universitas Negeri Makassar dan Surat keputusan Rektor Nomor 669/UN36/KP/2020  tentang pembentukan Jurusan Teknik Informatika dan Komputer Fakultas Teknik Universitas Negeri Makassar. Jurusan ini merupakan jurusan pertama dengan nomenklatur Jurusan Teknik Informatika dan Komputer  dalam lingkungan Fakultas Teknik UNM. Jurusan Teknik Informatika dan Komputer (JTIK) berada dalam lingkungan Fakultas Teknik bersama  6 Jurusan lainnya.  Kampus JTIK FT UNM berada dalam kompleks Fakultas Teknik Universitas Negeri Makassar berlokasi di Kampus UNM Parangtambung. JTIK merupakan salah satu jurusan yang memiliki mahasiswa terbanyak dalam lingkup Fakultas Teknik UNM.
                         </p>
-                        <a class="btn btn-primary rounded-pill py-3 px-5 mt-4" href="https://ft.unm.ac.id/">
+                        <a class="btn btn-primary rounded-pill py-3 px-5 mt-4" href="https://jtik.ft.unm.ac.id/index.php/profil">
                             Explore More
                         </a>
                     </div>
@@ -204,7 +168,7 @@
         <div class="modal-dialog">
             <div class="modal-content rounded-0">
                 <div class="modal-header">
-                    <h3 class="modal-title" id="exampleModalLabel">Universitas Negeri Makassar</h3>
+                    <h3 class="modal-title" id="exampleModalLabel">Jurusan Teknik Informatika dan Komputer | UNM</h3>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -235,15 +199,18 @@
                 <div class="col-lg-3 col-md-6">
                     <h4 class="text-white mb-4">Kontak Kami</h4>
                     <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>Jl. Daeng Tata Raya (90224)</p>
-                    <p class="mb-2"><i class="fab fa-instagram me-3"></i>@ftunm_official</p>
-                    <p class="mb-2"><i class="fa fa-envelope me-3"></i>ft@unm.ac.id</p>
+                    <p class="mb-2"><i class="fab fa-instagram me-3"></i>@jtikunm_official</p>
+                    <p class="mb-2"><i class="fa fa-envelope me-3"></i>jtik@unm.ac.id</p>
+                    <p class="mb-2"><i class="fas fa-phone"></i><b>Telp:</b> 0853-1122-4040 <br> <b>Fax:</b> (0411) 861507
+                    </p>
                    
                 </div>
                 <div class="col-lg-4 col-md-6">
                     {{-- <h4 class="text-white mb-4"></h4> --}}
                     <p>
-                        <b>Fakultas Teknik</b> <br>
                         <b>Universitas Negeri Makassar</b> <br>
+                        <b>Fakultas Teknik</b> <br>
+                        Jurusan Teknik Informatika dan Komputer <br>
                         Kampus Parang Tambung Makassar <br>
                     </p>
 

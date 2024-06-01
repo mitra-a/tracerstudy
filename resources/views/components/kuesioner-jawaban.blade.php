@@ -18,14 +18,14 @@
                         @endif
 
                         @if (in_array($soal->type, ['dropdown','pilihan-ganda']))
-                            <h4 class="mb-0">{{ optional($soal->opsi_x)[optional($jawaban)[$soal->id]] }}</h4>
+                            <h4 class="mb-0">{{optional($opsi)[optional($jawaban)[$soal->id]] ?? ''}}</h4>
                         @endif
 
                         @if (in_array($soal->type, ['kotak-centang']))
                             <ul class="mb-0">
                                 @foreach (optional($jawaban)[$soal->id] ?? [] as $item)
                                     <li>
-                                        <h4 class="mb-0">{{ optional($soal->opsi_x)[$item] }}</h4>
+                                        <h4 class="mb-0">{{ optional($opsi)[$item] ?? '' }}</h4>
                                     </li>
                                 @endforeach
                             </ul>
@@ -37,23 +37,23 @@
                                     <tr>
                                         <td></td>
                                         @foreach ($soal->opsi_y as $item)
-                                            <td>{{ $item }}</td>
+                                            <td>{{ $item['opsi'] }}</td>
                                         @endforeach
                                     </tr>
 
-                                    @foreach ($soal->opsi_x as $index => $item)
+                                    @foreach ($soal->opsi_x as $item)
                                         <tr>
-                                            <td>{{ $item }}</td>
-                                            @foreach ($soal->opsi_y as $index_y => $item_y)
+                                            <td>{{ $item['opsi'] }}</td>
+                                            @foreach ($soal->opsi_y as $item_y)
                                                 <td class="text-center">
                                                     @switch($soal->type)
                                                         @case('petak-pilihan-ganda')
-                                                            @if(optional(optional($jawaban)[$soal->id])[$index] == $index_y)
+                                                            @if(optional(optional($jawaban)[$soal->id])[$item['id']] == $item_y['id'])
                                                                 <span class="bx bx-check text-primary" style="font-size: 30px"></span>
                                                             @endif
                                                             @break
                                                         @case('petak-kotak-centang')
-                                                            @if(in_array($index_y, optional(optional($jawaban)[$soal->id])[$index] ?? []))
+                                                            @if(in_array($item_y['id'], optional(optional($jawaban)[$soal->id])[$item['id']] ?? []))
                                                                 <span class="bx bx-check text-primary" style="font-size: 30px"></span>
                                                             @endif
                                                             @break

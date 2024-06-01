@@ -111,9 +111,9 @@
                                         <option value="">- Pilih Jawaban -</option>
                                         @foreach ($soal->opsi_x as $index => $item)
                                             <option 
-                                                {{ optional($jawaban)[$soal->id] == $index ? 'selected' : ''}}
-                                                value="{{ $index }}"
-                                                >{{ $item }}</option>
+                                                {{ optional($jawaban)[$soal->id] == $item['id'] ? 'selected' : ''}}
+                                                value="{{ $item['id'] }}"
+                                                >{{ $item['opsi'] }}</option>
                                         @endforeach
                                     </select>
                                 @endif
@@ -126,26 +126,26 @@
                                                     @case('pilihan-ganda')
                                                         <input
                                                             x-on:change="(e) => changeValue('{{ $soal->id }}', e, '{{ $soal->type }}')"
-                                                            {{ optional($jawaban)[$soal->id] == $index ? 'checked' : ''}}
+                                                            {{ optional($jawaban)[$soal->id] == $item['id'] ? 'checked' : ''}}
                                                             class="form-check-input me-1"
                                                             type="radio"
                                                             id="form-{{ $soal->id }}"
                                                             name="{{ $soal->id }}"
-                                                            value="{{ $index }}">
+                                                            value="{{ $item['id'] }}">
                                                         @break
                                                     @case('kotak-centang')
                                                         <input
                                                             x-on:change="(e) => changeValue('{{ $soal->id }}', e, '{{ $soal->type }}')"
-                                                            {{ in_array($index, optional($jawaban)[$soal->id] ?? []) ? 'checked' : ''}}
+                                                            {{ in_array($item['id'], optional($jawaban)[$soal->id] ?? []) ? 'checked' : ''}}
                                                             class="form-check-input me-1"
                                                             type="checkbox"
                                                             id="form-{{ $soal->id }}"
                                                             name="{{ $soal->id }}"
-                                                            value="{{ $index }}">
+                                                            value="{{ $item['id'] }}">
                                                         @break
                                                 @endswitch
                                                 
-                                                <span class="ms-2">{{ $item }}</span>
+                                                <span class="ms-2">{{ $item['opsi'] }}</span>
                                             </label>
                                         @endforeach
                                     </div>
@@ -157,35 +157,35 @@
                                             <tr>
                                                 <td></td>
                                                 @foreach ($soal->opsi_y as $item)
-                                                    <td>{{ $item }}</td>
+                                                    <td>{{ $item['opsi'] }}</td>
                                                 @endforeach
                                             </tr>
     
-                                            @foreach ($soal->opsi_x as $index => $item)
+                                            @foreach ($soal->opsi_x as $item)
                                                 <tr>
-                                                    <td>{{ $item }}</td>
-                                                    @foreach ($soal->opsi_y as $index_y => $item_y)
+                                                    <td>{{ $item['opsi'] }}</td>
+                                                    @foreach ($soal->opsi_y as $item_y)
                                                         <td class="text-center">
                                                             @switch($soal->type)
                                                                 @case('petak-pilihan-ganda')
                                                                     <input
-                                                                        x-on:change="(e) => changeValue('{{ $soal->id }}', e, '{{ $soal->type }}', '{{ $index }}')"
-                                                                        {{  optional(optional($jawaban)[$soal->id])[$index] == $index_y ? 'checked' : ''}}
+                                                                        x-on:change="(e) => changeValue('{{ $soal->id }}', e, '{{ $soal->type }}', '{{ $item['id'] }}')"
+                                                                        {{  optional(optional($jawaban)[$soal->id])[$item['id']] == $item_y['id'] ? 'checked' : ''}}
                                                                         class="form-check-input me-1"
                                                                         type="radio"
-                                                                        name="{{ $soal->id }}.{{ $index }}"
-                                                                        id="form-{{ $soal->id }}-{{ $index }}"
-                                                                        value="{{ $index_y }}">
+                                                                        name="{{ $soal->id }}.{{ $item['id'] }}"
+                                                                        id="form-{{ $soal->id }}-{{ $item['id'] }}"
+                                                                        value="{{ $item_y['id'] }}">
                                                                     @break
                                                                 @case('petak-kotak-centang')
                                                                     <input
-                                                                        x-on:change="(e) => changeValue('{{ $soal->id }}', e, '{{ $soal->type }}', '{{ $index }}')"
-                                                                        {{  in_array($index_y, optional(optional($jawaban)[$soal->id])[$index] ?? []) ? 'checked' : ''}}
+                                                                        x-on:change="(e) => changeValue('{{ $soal->id }}', e, '{{ $soal->type }}', '{{ $item['id'] }}')"
+                                                                        {{  in_array($item_y['id'], optional(optional($jawaban)[$soal->id])[$item['id']] ?? []) ? 'checked' : ''}}
                                                                         class="form-check-input me-1"
                                                                         type="checkbox"
-                                                                        name="{{ $soal->id }}.{{ $index }}"
-                                                                        id="form-{{ $soal->id }}-{{ $index }}"
-                                                                        value="{{ $index_y }}">
+                                                                        name="{{ $soal->id }}.{{ $item['id'] }}"
+                                                                        id="form-{{ $soal->id }}-{{ $item['id'] }}"
+                                                                        value="{{ $item_y['id'] }}">
                                                                     @break
                                                             @endswitch
                                                         </td>

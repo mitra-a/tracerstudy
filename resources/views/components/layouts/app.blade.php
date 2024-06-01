@@ -23,6 +23,7 @@
 		</div>
 
 		<div class="layout-overlay layout-menu-toggle"></div>
+		@include('components.partials.script')
 		@stack('script')
 	</body>
 </html>

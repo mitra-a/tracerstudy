@@ -15,7 +15,7 @@ class KuesionerChart extends Component
         $this->id = $id;
 
         $soal = KuesionerSoal::where('kuesioner_id', $id)
-            // ->with('detail')
+            ->with(['opsi_x', 'opsi_y'])
             ->get()
             ->toArray();
 
@@ -56,14 +56,14 @@ class KuesionerChart extends Component
             ];
 
             if($data['type'] == 'dropdown' || $data['type'] == 'pilihan-ganda'){
-                foreach($s["opsi_x"] as $index => $detail){
+                foreach($s["opsi_x"] as $detail){
                     $count = 0;
                     foreach($jawaban as $item){
                         if($item["type"] != 'dropdown' && $item["type"] != 'pilihan-ganda') continue;
-                        $count += $item["jawaban"] == $index ? 1 : 0;
+                        $count += $item["jawaban"] == $detail['id'] ? 1 : 0;
                     }
                     
-                    $data["label"][] = $detail;
+                    $data["label"][] = $detail['opsi'];
                     $data["data"][] = $count;
                 }
             }
@@ -74,11 +74,11 @@ class KuesionerChart extends Component
                     foreach($jawaban as $item){
                         if($item["type"] != 'kotak-centang') continue;
                         foreach($item["jawaban_x"] as $x){
-                            $count += $x["jawaban"] == $index ? 1 : 0;
+                            $count += $x["jawaban"] == $detail['id'] ? 1 : 0;
                         }
                     } 
                     
-                    $data["label"][] = $detail;
+                    $data["label"][] = $detail['opsi'];
                     $data["data"][] = $count;
                 }
             }
@@ -90,26 +90,26 @@ class KuesionerChart extends Component
                 $labelY = $s["opsi_y"];
                 $labelX = $s["opsi_x"];
 
-                foreach($labelX as $indexX => $x){
+                foreach($labelX as $x){
                     $index = 0;
-                    foreach($labelY as $indexY => $y){
+                    foreach($labelY as $y){
                         $count = 0;
                         foreach($jawaban as $item){
                             if($item["type"] != 'petak-pilihan-ganda') continue;
                             foreach($item["jawaban_x"] as $itemX){
-                                if($itemX["key"] == $indexX && $itemX["jawaban"] == $indexY){
+                                if($itemX["key"] == $x['id'] && $itemX["jawaban"] == $y['id']){
                                     $count += 1;
                                 }
                             }
                         }
                         
-                        $data["data"][$index]["name"] = $y;
+                        $data["data"][$index]["name"] = $y['opsi'];
                         $data["data"][$index]["data"][] = $count;
                         $index++;
                     }
                 }
 
-                $data["label"] = array_values($labelX);
+                $data["label"] = array_column($labelX, 'opsi');
             }
 
             if($data['type'] == 'petak-kotak-centang'){
@@ -127,20 +127,20 @@ class KuesionerChart extends Component
                             if($item["type"] != 'petak-kotak-centang') continue;
                             foreach($item["jawaban_x"] as $itemX){
                                 foreach($itemX["jawaban_y"] as $itemY){
-                                    if($itemX["key"] == $indexX && $itemY["jawaban"] == $indexY){
+                                    if($itemX["key"] == $x['id'] && $itemY["jawaban"] == $y['id']){
                                         $count += 1;
                                     }
                                 }
                             }
                         }
 
-                        $data["data"][$index]["name"] = $y;
+                        $data["data"][$index]["name"] = $y['opsi'];
                         $data["data"][$index]["data"][] = $count;
                         $index++;
                     }
                 }
 
-                $data["label"] = array_values($labelX);
+                $data["label"] = array_column($labelX, 'opsi');
             }
             
             $hasil[] = $data;

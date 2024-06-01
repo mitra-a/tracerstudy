@@ -4,6 +4,7 @@ namespace App\Livewire\Components;
 
 use App\Models\KuesionerHalaman;
 use App\Models\KuesionerJawaban as ModelsKuesionerJawaban;
+use App\Models\KuesionerSoalOpsi;
 use Livewire\Component;
 
 class KuesionerJawaban extends Component
@@ -11,6 +12,7 @@ class KuesionerJawaban extends Component
     public $user_id;
     public $halaman;
     public $validasi;
+    public $opsi;
     
     public $reset_answer;
     public $auth_back;
@@ -28,6 +30,16 @@ class KuesionerJawaban extends Component
         $this->user_id = $user_id;
         $this->kuesioner = $id;
         $this->halaman = KuesionerHalaman::where('kuesioner_id', $id)->orderBy('order')->with('soal')->get();
+
+        $soalID = [];
+        foreach($this->halaman as $item){
+            foreach($item->soal as $soalItem){
+                $soalID[] = $soalItem->id;
+            }
+        }
+
+        $opsi = KuesionerSoalOpsi::whereIn('soal_id',$soalID)->get(['opsi','id'])->keyBy('id')->toArray();
+        $this->opsi = array_column($opsi, 'opsi', 'id');
 
         $jawaban_value = [];
         $jawaban = ModelsKuesionerJawaban::where('kuesioner_id', $id)

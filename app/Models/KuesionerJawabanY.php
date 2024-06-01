@@ -10,4 +10,8 @@ class KuesionerJawabanY extends Model
     use HasFactory;
 
     protected $table = 'kuesioner_jawaban_y';
+
+    public function opsi(){
+        return $this->hasOne(KuesionerSoalOpsi::class, 'id', 'jawaban');
+    }
 }

@@ -15,4 +15,8 @@ class KuesionerJawabanX extends Model
     public function jawaban_y(){
         return $this->hasMany(KuesionerJawabanY::class, 'jawaban_x_id', 'id');
     }
+
+    public function opsi(){
+        return $this->hasOne(KuesionerSoalOpsi::class, 'id', 'jawaban');
+    }
 }

@@ -3,7 +3,7 @@
     @push('script')
         <script src="{{ asset('vendor/libs/apex-charts/apexcharts.js') }}"></script>
         <script>
-            let chartDOM = document.querySelectorAll('.chart-data');
+            let chartSoalDOM = document.querySelectorAll('.chart-data');
             
             function getOptions(i, type){
                 if(type == 'petak-kotak-centang' || type == 'petak-pilihan-ganda'){
@@ -37,7 +37,7 @@
                     },
                 };
             }
-            chartDOM.forEach((i) => {
+            chartSoalDOM.forEach((i) => {
                 let type = i.getAttribute('type');
                 var chart = new ApexCharts(i, getOptions(i, type));
                 chart.render();
