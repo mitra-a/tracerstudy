@@ -1,11 +1,31 @@
 <div>
+    @teleport('#loading-layout')
+    <div
+        wire:loading 
+        wire:target="import"
+    >
+        <div
+            class="position-fixed w-100 h-100 d-flex align-items-center justify-content-center"
+            style="z-index: 2024; background-color: #43597185"
+        >
+            <div class="spinner-border spinner-border-lg text-white me-3" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div> 
+        </div>
+    </div>
+    @endteleport
+
     <div class="d-flex">
         <h4 class="fw-bold py-3 mb-4">
             <span class="text-muted fw-light">Master Data /</span> Alumni
         </h4>
 
         <div class="ms-auto">
-            <a href="{{ route('admin.alumni.create') }}" class="btn btn-primary">Tambah</a>
+            <button 
+                class="btn btn-dark" 
+                wire:confirm="Anda akan melakukan import data dari IDS, proses akan memerlukan waktu apakah anda ingin melanjutkan?"
+                wire:click="import"
+                type="button">Import Data IDS</button>
         </div>
     </div>
 

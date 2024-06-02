@@ -8,16 +8,16 @@ use Livewire\Component;
 
 class Login extends Component
 {
-    public $email, $password, $tahun = 'semua';
+    public $username, $password, $tahun = 'semua';
 
     public function login(){
         $this->validate([
-            'email' => ['required'],
+            'username' => ['required'],
             'password' => ['required'],
         ]);
 
         if(Auth::attempt([
-            'email' => $this->email,
+            'nim' => $this->username,
             'password' => $this->password,
             'aktif' => 1,
         ])){

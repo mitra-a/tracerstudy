@@ -21,6 +21,7 @@ class Update extends Component
         'periode' => [],
     ];
 
+    public $data;
     public $nim;
     public $nama;
     public $nomor_telepon;
@@ -41,6 +42,7 @@ class Update extends Component
 
         $this->id = $id;
         $data = User::findOrFail($id);
+        $this->data = $data;
 
         $this->nim = $data->nim;
         $this->nama = $data->nama;
@@ -57,35 +59,36 @@ class Update extends Component
 
     public function save(){
         $this->validate([
-            'nim' => ['required', 'unique:users,nim,'. $this->id],
-            'nama' => ['required'],
+            // 'nim' => ['required', 'unique:users,nim,'. $this->id],
+            // 'nama' => ['required'],
             // 'nomor_telepon' => ['required'],
-            'prodi' => ['required'],
-            'periode' => ['required'],
+            // 'prodi' => ['required'],
+            // 'periode' => ['required'],
             'foto' => ['mimes:jpg,jpeg,png','max:1024','nullable'],
-            'alamat' => ['nullable'],
-            'provinsi' => ['nullable'],
-            'kabupaten_kota' => ['nullable'],
-            'tempat_kerja' => ['nullable'],
-            'alamat_kerja' => ['nullable'],
+            // 'alamat' => ['nullable'],
+            // 'provinsi' => ['nullable'],
+            // 'kabupaten_kota' => ['nullable'],
+            // 'tempat_kerja' => ['nullable'],
+            // 'alamat_kerja' => ['nullable'],
             // 'email' => ['required', 'unique:users,email,' . $this->id],
-            // 'password' => ['nullable'],
+            'password' => 'nullable',
+            'password_confirm' => 'nullable|same:password'
         ]);
 
         try {
             $save = User::findOrFail($this->id);
-            $save->nim = $this->nim;
-            $save->nama = $this->nama;
-            $save->nomor_telepon = $this->nomor_telepon;
-            $save->prodi = $this->prodi;
+            // $save->nim = $this->nim;
+            // $save->nama = $this->nama;
+            // $save->nomor_telepon = $this->nomor_telepon;
+            // $save->prodi = $this->prodi;
             $save->periode = $this->periode;
-            $save->alamat = $this->alamat;
-            $save->provinsi = $this->provinsi;
-            $save->kabupaten_kota = $this->kabupaten_kota;
-            $save->tempat_kerja = $this->tempat_kerja;
-            $save->alamat_kerja = $this->alamat_kerja;
-            $save->email = $this->email ?? null;
-            $save->role = 'alumni';
+            // $save->alamat = $this->alamat;
+            // $save->provinsi = $this->provinsi;
+            // $save->kabupaten_kota = $this->kabupaten_kota;
+            // $save->tempat_kerja = $this->tempat_kerja;
+            // $save->alamat_kerja = $this->alamat_kerja;
+            // $save->email = $this->email ?? null;
+            // $save->role = 'alumni';
 
             if($this->password){
                 $save->password = Hash::make($this->password);

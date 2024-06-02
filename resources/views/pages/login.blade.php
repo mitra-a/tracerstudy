@@ -58,8 +58,8 @@
                     
                     <form class="mb-3" wire:submit.prevent="login">
                         <div class="mb-3">
-                            <label for="form-email" class="form-label">Email</label>
-                            <input type="email" class="form-control @error('email') is-invalid @enderror" id="form-email" wire:model.defer="email" placeholder="masukan email" autofocus="">
+                            <label for="form-username" class="form-label">Username</label>
+                            <input type="username" class="form-control @error('username') is-invalid @enderror" id="form-username" wire:model.defer="username" placeholder="masukan username" autofocus="">
                         </div>
                         <div class="mb-3 form-password-toggle">
                             <div class="d-flex justify-content-between">

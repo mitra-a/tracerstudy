@@ -40,27 +40,10 @@ return [
     ],
     [
         'title' => 'Alumni',
-        'route' => '',
+        'route' => 'admin.alumni.index',
         'icon' => 'bx bx-user-check',
         'active' => 'admin.alumni.*',
         'role' => 'admin',
-        'child' => [
-            [
-                'title' => 'Data Alumni',
-                'route' => 'admin.alumni.index',
-                'active' => ['admin.alumni.index', 'admin.alumni.create', 'admin.alumni.update'],
-            ],
-            [
-                'title' => 'Validasi Akun',
-                'route' => 'admin.alumni.validasi',
-                'active' => 'admin.alumni.validasi',
-            ],
-            [
-                'title' => 'Hapus Akun',
-                'route' => 'admin.alumni.delete',
-                'active' => 'admin.alumni.delete',
-            ],
-        ]
     ],
     [
         'title' => 'Admin',
@@ -76,13 +59,13 @@ return [
         'active' => 'admin.prodi',
         'role' => 'admin'
     ],
-    [
-        'title' => 'Periode Wisuda',
-        'icon' => 'bx bx-archive',
-        'route' => 'admin.periode',
-        'active' => 'admin.periode',
-        'role' => 'admin'
-    ],
+    // [
+    //     'title' => 'Periode Wisuda',
+    //     'icon' => 'bx bx-archive',
+    //     'route' => 'admin.periode',
+    //     'active' => 'admin.periode',
+    //     'role' => 'admin'
+    // ],
     [
         'title-menu' => 'Profile',
         'role' => 'admin'

@@ -52,7 +52,7 @@ class Profile extends Component
 
     public function save(){
         $this->validate([
-            'nama' => ['required'],
+            // 'nama' => ['required'],
             'gambar' => ['mimes:jpg,jpeg,png','max:1024','nullable'],
             'password' => 'nullable',
             'password_confirm' => 'nullable|same:password'
@@ -60,15 +60,15 @@ class Profile extends Component
 
         try {
             $save = User::findOrFail(auth()->user()->id);
-            $save->nama = $this->nama;
-            $save->nomor_telepon = $this->nomor_telepon;
-            $save->prodi = $this->prodi;
-            $save->periode = $this->periode;
-            $save->alamat = $this->alamat;
-            $save->provinsi = $this->provinsi;
-            $save->kabupaten_kota = $this->kabupaten_kota;
-            $save->tempat_kerja = $this->tempat_kerja;
-            $save->alamat_kerja = $this->alamat_kerja;
+            // $save->nama = $this->nama;
+            // $save->nomor_telepon = $this->nomor_telepon;
+            // $save->prodi = $this->prodi;
+            // $save->periode = $this->periode;
+            // $save->alamat = $this->alamat;
+            // $save->provinsi = $this->provinsi;
+            // $save->kabupaten_kota = $this->kabupaten_kota;
+            // $save->tempat_kerja = $this->tempat_kerja;
+            // $save->alamat_kerja = $this->alamat_kerja;
 
             if($this->password) $save->password = bcrypt($this->password);
 

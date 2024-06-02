@@ -10,139 +10,128 @@
     </div>
 
     <form wire:submit.prevent="save">
-        <div class="card mb-3">
-            <div class="card-header d-flex justify-content-between">
-                <h5>Alumni</h5>
+        <div class="row">
+            <div class="col-lg-5">
+                <div class="card mb-3">
+                    <div class="card-header d-flex justify-content-between">
+                        <h5>Profile</h5>
+                    </div>
+            
+                    <div class="card-body d-flex flex-column align-items-center p-0">
+                        <img src="{{ $data->foto ? asset('berkas/profile/' . $data->foto) : asset('img/avatar.jpg') }}" class="rounded mb-3" style="height: 150px; width: 150px; object-fit:cover">
+                        
+                        <div class="table-responsive w-100">
+                            <table class="table table-striped">
+                                <tr>
+                                    <td width="1px">
+                                        Nama
+                                        <div class="fw-bold">{{ $data->nama ?? '-' }}</div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="1px">
+                                        Nomor Telepon
+                                        <div class="fw-bold">{{ $data->nomor_telepon ?? '-' }}</div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="1px">
+                                        Program Studi
+                                        <div class="fw-bold">{{ $data->prodi_data->nama ?? '-' }}</div>
+                                    </td>
+                                </tr>
+                                @if($data->periode_data)
+                                <tr>
+                                    <td width="1px">
+                                        Periode
+                                        <div class="fw-bold">Periode {{ $data->periode_data->nama ?? '-' }}</div>
+                                    </td>
+                                </tr>
+                                @endif
+                                <tr>
+                                    <td width="1px">
+                                        Alamat
+                                        <div class="fw-bold">{{ $data->alamat ?? '-' }}</div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <div class="card-body">
-                <x-form.input 
-                    name="nim"
-                    title="NIM"
-                    wire:model="nim"
-                    placeholder="masukan nim"
-                />
-                
-                <x-form.input 
-                    name="nama"
-                    title="Nama Alumni"
-                    wire:model="nama"
-                    placeholder="masukan nama"
-                />
-                
-                <x-form.input 
-                    name="nomor_telepon"
-                    title="Nomor Telepon"
-                    wire:model="nomor_telepon"
-                    placeholder="masukan nomor telepon"
-                />
-                
-                <x-form.select 
-                    name="prodi"
-                    title="Program Studi"
-                    wire:model="prodi"
+            <div class="col-lg-7">
+                <div 
+                    class="card mb-3"
+                    x-data="{ uploading: false, progress: 0 }"
+                    x-on:livewire-upload-start="uploading = true"
+                    x-on:livewire-upload-finish="uploading = false"
+                    x-on:livewire-upload-error="uploading = false"
+                    x-on:livewire-upload-progress="progress = $event.detail.progress"
                 >
-                    <option value="">- Pilih Program Studi -</option>
-                    @foreach ($choice['prodi'] as $item)
-                        <option value="{{ $item['kode'] }}">{{ $item['nama'] }}</option>
-                    @endforeach
-                </x-form.select>
-                
-                <x-form.select 
-                    name="periode"
-                    title="Periode Wisuda"
-                    wire:model="periode"
-                >
-                    <option value="">- Pilih Periode Wisuda -</option>
-                    @foreach ($choice['periode'] as $item)
-                        <option value="{{ $item['kode'] }}">Periode {{ $item['nama'] }}</option>
-                    @endforeach
-                </x-form.select>
+                    <div class="card-header d-flex justify-content-between">
+                        <h5>Edit Profile</h5>
+                    </div>
+            
+                    <div class="card-body">
+                        {{-- <x-form.select 
+                            name="periode"
+                            title="Periode Wisuda"
+                            wire:model="periode"
+                        >
+                            <option value="">- Pilih Periode Wisuda -</option>
+                            @foreach ($choice['periode'] as $item)
+                                <option value="{{ $item['kode'] }}">Periode {{ $item['nama'] }}</option>
+                            @endforeach
+                        </x-form.select> --}}
 
-                <x-form.input 
-                    name="foto"
-                    title="Foto Profile"
-                    wire:model="foto"
-                    note="File Anda harus berekstensi <text class='text-danger'>.jpg .png .jpeg</text> dan dibawah 1mb"
-                    type="file"
-                />
-            </div>
-        </div>
+                        <x-form.input 
+                            name="gambar"
+                            title="Gambar"
+                            wire:model="gambar"
+                            type="file"
+                            note="File Anda harus berekstensi <text class='text-danger'>.jpg .png .jpeg</text> dan dibawah 1mb"
+                            placeholder="masukan nim"
+                        />
+                        
+                        <div x-show="uploading" class="w-100">
+                            <progress max="100" x-bind:value="progress" class="w-100"></progress>
+                        </div>
+                    </div>
+                </div>
 
-        <div class="card mb-3">
-            <div class="card-header d-flex justify-content-between">
-                <h5>Alamat</h5>
-            </div>
+                <div class="card mb-3">
+                    <div class="card-header d-flex justify-content-between">
+                        <h5>Akun Profile</h5>
+                    </div>
+            
+                    <div class="card-body">
+                        @if(\Hash::check(env('IDS_DEFAULT_PASSWORD'), $data->password))
+                        <div class="alert alert-danger">
+                            Password yang digunakan masih menggunakan password default <br> <b>ubah password sekarang</b>
+                        </div>
+                        @endif
 
-            <div class="card-body">
-                <x-form.input 
-                    name="alamat"
-                    title="Alamat"
-                    wire:model="alamat"
-                    placeholder="masukan alamat"
-                />
-                
-                <x-form.input 
-                    name="provinsi"
-                    title="Provinsi"
-                    wire:model="provinsi"
-                    placeholder="masukan provinsi"
-                />
-                
-                <x-form.input 
-                    name="kabupaten_kota"
-                    title="Kabupaten/Kota"
-                    wire:model="kabupaten_kota"
-                    placeholder="masukan kabupaten/kota"
-                />
-            </div>
-        </div>
+                        <x-form.input 
+                            name="password"
+                            title="Password"
+                            wire:model="password"
+                            type="password"
+                            placeholder="masukan password"
+                        />
 
-        <div class="card mb-3">
-            <div class="card-header d-flex justify-content-between">
-                <h5>Tempat Kerja</h5>
-            </div>
-
-            <div class="card-body">
-                <x-form.input 
-                    name="tempat_kerja"
-                    title="Tempat Kerja"
-                    wire:model="tempat_kerja"
-                    placeholder="masukan tempat kerja"
-                />
-                
-                <x-form.input 
-                    name="alamat_kerja"
-                    title="Alamat Kerja"
-                    wire:model="alamat_kerja"
-                    placeholder="masukan alamat kerja"
-                />
-            </div>
-        </div>
-
-        <div class="card mb-3">
-            <div class="card-header d-flex justify-content-between">
-                <h5>Akun</h5>
-            </div>
-
-            <div class="card-body">
-                <x-form.input 
-                    name="email"
-                    title="Email"
-                    wire:model="email"
-                    placeholder="masukan email"
-                />
-                
-                <x-form.input 
-                    name="password"
-                    title="Password"
-                    wire:model="password"
-                    placeholder="masukan password"
-                    type="password"
-                />
-
-                <div class="card-footer pt-0 justify-content-end d-flex">
-                    <button type="submit" class="btn btn-primary">Simpan</button>
+                        <x-form.input 
+                            name="password_confirm"
+                            title="Password Ulang"
+                            wire:model="password_confirm"
+                            type="password"
+                            placeholder="masukan password ulang"
+                        />
+                    </div>
+                    
+                    <div class="card-footer pt-0 justify-content-end d-flex">
+                        <button type="submit" class="btn btn-primary" wire:loading.attr="disabled">Simpan</button>
+                    </div>
                 </div>
             </div>
         </div>
