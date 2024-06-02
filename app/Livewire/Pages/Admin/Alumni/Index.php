@@ -31,7 +31,6 @@ class Index extends Component
         $response_json = $response->json();
         $response_json = $response_json['data'];
 
-        $password = bcrypt(env('IDS_DEFAULT_PASSWORD'));
         foreach($response_json as $item){
             if(!isset($prodi[$item['kd_prodi']])){
                 $new = new ModelsProdi;
@@ -51,7 +50,7 @@ class Index extends Component
                 'alamat' => $item['alamat_asal_mhs'],
                 'nomor_telepon' => $item['no_hp_mhs'],
                 'role' => 'alumni',
-                'password' => $password,
+                'password' => bcrypt($item['nim']),
             ];
 
             User::create($data);

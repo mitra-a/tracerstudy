@@ -17,7 +17,7 @@ class Dashboard extends Component
     public $belum_lengkap;
 
     public function mount(){
-        if(Hash::check(env('IDS_DEFAULT_PASSWORD'), auth()->user()->password)) 
+        if(Hash::check(auth()->user()->nim, auth()->user()->password)) 
         $this->belum_lengkap = true;
 
         $periode = auth()->user()->periode;

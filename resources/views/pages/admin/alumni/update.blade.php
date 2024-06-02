@@ -106,7 +106,7 @@
                     </div>
             
                     <div class="card-body">
-                        @if(\Hash::check(env('IDS_DEFAULT_PASSWORD'), $data->password))
+                        @if(\Hash::check($data->nim, $data->password))
                         <div class="alert alert-danger">
                             Password yang digunakan masih menggunakan password default <br> <b>ubah password sekarang</b>
                         </div>
