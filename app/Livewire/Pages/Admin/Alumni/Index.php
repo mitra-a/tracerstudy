@@ -20,7 +20,7 @@ class Index extends Component
 
     public function import(){
         ini_set('max_execution_time', '300000');
-        set_time_limit(300000);
+        set_time_limit(0);
 
         $prodi = ModelsProdi::all()->keyBy('kode')->toArray();
         User::where('role', 'alumni')->delete();
