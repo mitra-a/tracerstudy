@@ -22,7 +22,7 @@ class Update extends Component
 
     public $nama;
     public $foto;
-    public $email;
+    public $username;
     public $password;
 
     public function mount($id){
@@ -30,21 +30,21 @@ class Update extends Component
         $data = User::findOrFail($id);
 
         $this->nama = $data->nama;
-        $this->email = $data->email;
+        $this->username = $data->username;
     }
 
     public function save(){
         $this->validate([
             'nama' => ['required'],
             'foto' => ['mimes:jpg,jpeg,png','max:1024','nullable'],
-            'email' => ['required', 'unique:users,email,' . $this->id],
+            'username' => ['required', 'unique:users,username,' . $this->id],
             'password' => ['nullable'],
         ]);
 
         try {
             $save = User::findOrFail($this->id);
             $save->nama = $this->nama;
-            $save->email = $this->email;
+            $save->username = $this->username;
             
             if($this->password){
                 $save->password = Hash::make($this->password);

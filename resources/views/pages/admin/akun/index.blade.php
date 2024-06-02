@@ -25,7 +25,7 @@
                 <thead>
                     <tr>
                         <th>Nama</th>
-                        <th>Email</th>
+                        <th>Username</th>
                         <th style="width: 1px;"></th>
                     </tr>
                 </thead>
@@ -44,7 +44,7 @@
                     @forelse ($rows as $row)
                         <tr>
                             <td>{{ $row->nama }}</td>
-                            <td>{{ $row->email }}</td>
+                            <td>{{ $row->username }}</td>
                             <td>
                                 <div x-data="{ open: false }">
                                     <div x-show="!open">

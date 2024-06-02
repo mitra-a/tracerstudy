@@ -25,14 +25,14 @@ class Update extends Component
     public $periode = [];
 
     public function mount($id){
-        $this->choice['periode'] = Periode::all()->toArray();
+        // $this->choice['periode'] = Periode::all()->toArray();
 
         $this->id = $id;
         $data = Kuesioner::findOrFail($id);
 
         $this->nama = $data->nama;
         $this->deskripsi = $data->deskripsi;
-        $this->periode = $data->periode;
+        // $this->periode = $data->periode;
 
     }
 
@@ -40,14 +40,14 @@ class Update extends Component
         $this->validate([
             'nama' => ['required'],
             'deskripsi' => ['required'],
-            'periode' => ['required'],
+            // 'periode' => ['required'],
         ]);
 
         try {
             $save = Kuesioner::findOrFail($this->id);
             $save->nama = $this->nama;
             $save->deskripsi = $this->deskripsi;
-            $save->periode = $this->periode;
+            // $save->periode = $this->periode;
             $save->save();
 
             session()->flash('message', [

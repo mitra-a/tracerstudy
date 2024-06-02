@@ -26,7 +26,7 @@
                     <tr>
                         <th>Kuesioner</th>
                         <th>Deskripsi</th>
-                        <th>Periode</th>
+                        {{-- <th>Periode</th> --}}
                         <th>Halaman</th>
                         <th style="width: 1px;"></th>
                     </tr>
@@ -47,11 +47,11 @@
                         <tr>
                             <td class="text-nowrap">{{ $row->nama }}</td>
                             <td>{{ $row->deskripsi }}</td>
-                            <td>
+                            {{-- <td>
                                 @foreach ($row->periode_data as $item)
                                     <span class="badge bg-primary">Periode {{ $item['nama'] }}</span>
                                 @endforeach
-                            </td>
+                            </td> --}}
                             <td>
                                 <div class="d-flex">
                                     <a href="{{ route('admin.kuesioner.halaman', $row->id) }}" class="btn btn-sm btn-dark d-flex align-items-center">
@@ -62,7 +62,7 @@
                             </td>
                             <td>
                                 <div x-data="{ open: false }">
-                                    <div x-show="!open">
+                                    <div x-show="!open" class="d-flex">
                                         <a class="bx bx-edit mx-1 text-secondary" href="{{ route('admin.kuesioner.update', $row->id) }}"></a>
                                         <i class="bx bx-trash mx-1" type="button"  x-on:click="open = !open"></i>
                                     </div>

@@ -30,7 +30,7 @@
                     placeholder="masukan deskripsi"
                 />
 
-                <div>
+                {{-- <div>
                     <label class="form-label">Periode Wisuda</label>
                     <div class="demo-inline-spacing mt-3">
                         <div class="list-group @error('periode') border border-danger @enderror">
@@ -50,7 +50,7 @@
                             @endforelse
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
             <div class="card-footer pt-0 justify-content-end d-flex">
                 <button type="submit" class="btn btn-primary">Simpan</button>

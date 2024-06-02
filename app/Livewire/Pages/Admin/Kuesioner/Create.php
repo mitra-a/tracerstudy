@@ -23,21 +23,21 @@ class Create extends Component
     public $periode = [];
 
     public function mount(){
-        $this->choice['periode'] = Periode::all()->toArray();
+        // $this->choice['periode'] = Periode::all()->toArray();
     }
 
     public function save(){
         $this->validate([
             'nama' => ['required'],
             'deskripsi' => ['required'],
-            'periode' => ['required'],
+            // 'periode' => ['required'],
         ]);
 
         try {
             $save = new Kuesioner();
             $save->nama = $this->nama;
             $save->deskripsi = $this->deskripsi;
-            $save->periode = $this->periode;
+            $save->periode = '';
             $save->save();
 
             session()->flash('message', [

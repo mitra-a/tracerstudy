@@ -40,10 +40,10 @@
 
             <div class="card-body">
                 <x-form.input 
-                    name="email"
-                    title="Email"
-                    wire:model="email"
-                    placeholder="masukan email"
+                    name="username"
+                    title="Username"
+                    wire:model="username"
+                    placeholder="masukan username"
                 />
                 
                 <x-form.input 

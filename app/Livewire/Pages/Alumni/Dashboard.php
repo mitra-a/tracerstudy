@@ -5,6 +5,7 @@ namespace App\Livewire\Pages\Alumni;
 use App\Models\Kuesioner;
 use App\Models\KuesionerJawaban;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
 
 class Dashboard extends Component
@@ -16,13 +17,8 @@ class Dashboard extends Component
     public $belum_lengkap;
 
     public function mount(){
-        if(
-            auth()->user()->nomor_telepon == '' ||
-            auth()->user()->alamat == '' ||
-            auth()->user()->provinsi == '' ||
-            auth()->user()->kabupaten_kota == '' ||
-            auth()->user()->prodi == ''
-        ) $this->belum_lengkap = true;
+        if(Hash::check(env('IDS_DEFAULT_PASSWORD'), auth()->user()->password)) 
+        $this->belum_lengkap = true;
 
         $periode = auth()->user()->periode;
         $this->kuesioner = Kuesioner::where('periode', 'LIKE', '%'. $periode .'%')->get()->toArray();

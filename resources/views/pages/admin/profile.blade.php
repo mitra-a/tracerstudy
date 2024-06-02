@@ -75,11 +75,11 @@
             
                     <div class="card-body">
                         <x-form.input 
-                            name="email"
-                            title="Email"
-                            type="email"
-                            value="{{ auth()->user()->email }}"
-                            placeholder="masukan email"
+                            name="username"
+                            title="Username"
+                            type="username"
+                            value="{{ auth()->user()->username }}"
+                            placeholder="masukan username"
                             readonly
                         />
 
