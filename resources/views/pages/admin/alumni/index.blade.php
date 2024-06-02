@@ -70,7 +70,7 @@
                             <td>{{ $row->nama }}</td>
                             {{-- <td>{!! $row->email == '' ? '<span class="badge bg-danger">Tidak ada akun</span>' : $row->email  !!}</td> --}}
                             <td>{{ $row->nomor_telepon == '' ? '-' : $row->nomor_telepon  }}</td>
-                            <td>{{ $row->prodi_data->nama }}</td>
+                            <td>{{ $row->prodi_data?->nama }}</td>
                             <td>
                                 <div x-data="{ open: false }">
                                     <div x-show="!open">
