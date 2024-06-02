@@ -82,12 +82,12 @@
                             <button class="btn btn-primary d-grid w-100" type="submit">Sign in</button>
                         </div>
 
-                        <p class="text-center">
+                        {{-- <p class="text-center">
                             <span>Belum memiliki akun?</span>
                             <a href="{{ route('registrasi') }}">
                               <span>Buat akun disini</span>
                             </a>
-                        </p>
+                        </p> --}}
                     </form>
                 </div>
             </div>
