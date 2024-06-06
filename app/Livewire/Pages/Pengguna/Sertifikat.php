@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Pages\Alumni;
+namespace App\Livewire\Pages\Pengguna;
 
 use App\Models\Kuesioner;
 use App\Models\KuesionerJawaban;
@@ -50,6 +50,6 @@ class Sertifikat extends Component
 
     public function render()
     {
-        return view('pages.alumni.sertifikat')->layout('components.layouts.print');
+        return view('pages.pengguna.sertifikat')->layout('components.layouts.print');
     }
 }

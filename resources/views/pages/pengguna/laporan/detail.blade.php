@@ -114,7 +114,7 @@
                 </h4>
         
                 <div class="ms-auto">
-                    <a href="{{ route('alumni.hasil-survey.index', $id) }}" class="btn btn-light border">Kembali</a>
+                    <a href="{{ route('pengguna.hasil-survey.index', $id) }}" class="btn btn-light border">Kembali</a>
                 </div>
             </div>
 
@@ -122,12 +122,12 @@
                 <div class="d-flex">
                   <div>
                     <h5 class="mb-2 text-primary">Data Hasil Survey</h5>
-                    <p class="mb-0">Data Hasil Survey yang ditampilkan merupakan data hasil survey dari program studi <b>{{ auth()->user()->prodi_data->nama }}</b> </p>
+                    <p class="mb-0">Data Hasil Survey yang ditampilkan merupakan data hasil survey dari program studi <b>{{ session('login')?->prodi_data->nama }}</b> </p>
                   </div>
                 </div>
             </div>
 
-            <livewire:components.kuesioner-chart :$id :prodi="auth()->user()->prodi"/>
+            <livewire:components.kuesioner-chart :$id :prodi="session('login')?->prodi"/>
         </div>
     </div>
 </div>

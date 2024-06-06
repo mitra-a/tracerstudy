@@ -89,33 +89,33 @@ return [
     [
         'title' => 'Dashboard',
         'icon' => 'bx bx-home-circle',
-        'route' => 'alumni.dashboard',
-        'active' => ['alumni.dashboard*'],
-        'role' => 'alumni'
+        'route' => 'pengguna.dashboard',
+        'active' => ['pengguna.dashboard*'],
+        'role' => 'pengguna'
     ],
     [
         'title' => 'Hasil Survey',
         'icon' => 'bx bx-pie-chart-alt-2',
-        'route' => 'alumni.hasil-survey.index',
-        'active' => ['alumni.hasil-survey.*'],
-        'role' => 'alumni'
+        'route' => 'pengguna.hasil-survey.index',
+        'active' => ['pengguna.hasil-survey.*'],
+        'role' => 'pengguna'
     ],
     [
         'title-menu' => 'Profile',
-        'role' => 'alumni'
+        'role' => 'pengguna'
     ],
     [
         'title' => 'Profile',
         'icon' => 'bx bx-user',
-        'route' => 'alumni.profile',
-        'active' => 'alumni.profile*',
-        'role' => 'alumni'
+        'route' => 'pengguna.profile',
+        'active' => 'pengguna.profile*',
+        'role' => 'pengguna'
     ],
     [
         'title' => 'Log Out',
         'icon' => 'bx bx-exit',
         'route' => 'logout',
-        'active' => 'alumni.admin.*',
-        'role' => 'alumni'
+        'active' => 'pengguna.admin.*',
+        'role' => 'pengguna'
     ],
 ];

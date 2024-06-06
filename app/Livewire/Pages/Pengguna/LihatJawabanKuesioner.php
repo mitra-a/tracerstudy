@@ -1,20 +1,17 @@
 <?php
 
-namespace App\Livewire\Pages\Alumni\Laporan;
+namespace App\Livewire\Pages\Pengguna;
 
 use App\Models\Kuesioner;
+use App\Models\KuesionerHalaman;
 use App\Models\KuesionerJawaban;
-use App\Models\KuesionerSoal;
 use Livewire\Component;
 
-class Detail extends Component
+class LihatJawabanKuesioner extends Component
 {
     public $id;
-    public $user_id;
-    public $halaman;
-    
     public $kuesioner;
-    public $data;
+    public $jawaban = [];
 
     public function mount($id){
         $this->id = $id;
@@ -23,6 +20,6 @@ class Detail extends Component
 
     public function render()
     {
-        return view('pages.alumni.laporan.detail');
+        return view('pages.pengguna.lihat-jawaban-kuesioner');
     }
 }

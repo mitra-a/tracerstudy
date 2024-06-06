@@ -15,7 +15,7 @@
 	<div class="menu-inner-shadow"></div>
 	<ul class="menu-inner py-1">
 		@foreach (config('sidebar') as $sidebar)
-			@if(auth()->user()->role == $sidebar['role'])
+			@if(session('login')?->role == $sidebar['role'])
 				@if(isset($sidebar['title-menu']))
 					<li class="menu-header small text-uppercase">
 						<span class="menu-header-text">{{ $sidebar['title-menu'] }}</span>

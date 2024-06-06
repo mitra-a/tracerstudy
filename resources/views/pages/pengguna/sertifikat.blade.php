@@ -95,20 +95,20 @@
 				<td>Nama</td>
 				<td>: </td>
 				<td>
-					<b>{{ auth()->user()->nama }}</b>
+					<b>{{ session('login')?->nama }}</b>
 				</td>
 			</tr>
 			<tr>
 				<td></td>
 				<td>NIM</td>
 				<td>: </td>
-				<td>{{ auth()->user()->nim }} </td>
+				<td>{{ session('login')?->nim }} </td>
 			</tr>
 			<tr>
 				<td></td>
 				<td>Program Studi</td>
 				<td>: </td>
-				<td>{{ auth()->user()->prodi_data->nama }}</td>
+				<td>{{ session('login')?->prodi_data->nama }}</td>
 			</tr>
 		</tbody>
 	</table>

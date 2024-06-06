@@ -7,7 +7,7 @@
     <div class="alert bg-white border-2 border-danger">
         <div>
             <h6 class="mb-0 text-danger fw-bold">Ubah Password 😊</h6>
-            <p class="mb-0">Password yang anda gunakan masih <b>default</b> segera lakukan pengubahan data pada <a href="{{ route('alumni.profile') }}">menu profile</a></p>
+            <p class="mb-0">Password yang anda gunakan masih <b>default</b> segera lakukan pengubahan data pada <a href="{{ route('pengguna.profile') }}">menu profile</a></p>
           </div>
     </div>
     @endif
@@ -54,13 +54,13 @@
                                             @if($row['validasi'])
                                                 <div class="d-flex flex-column">
                                                     <a 
-                                                        href="{{ route('alumni.dashboard.lihat-jawaban-kuesioner', $row['id']) }}" 
+                                                        href="{{ route('pengguna.dashboard.lihat-jawaban-kuesioner', $row['id']) }}" 
                                                         class="btn btn-primary d-flex align-items-center mb-1 text-nowrap btn-sm">
                                                             <i class="bx bx-copy-alt me-3" style="font-size: 18px"></i>
                                                             Lihat Jawaban
                                                     </a>
 
-                                                    <a href="{{ route('alumni.dashboard.sertifikat', $row['id']) }}" class="btn btn-sm btn-dark d-flex align-items-center text-nowrap">
+                                                    <a href="{{ route('pengguna.dashboard.sertifikat', $row['id']) }}" class="btn btn-sm btn-dark d-flex align-items-center text-nowrap">
                                                         <i class="bx bx-file me-2" style="font-size: 15px"></i>
                                                         Unduh Sertifikat
                                                     </a>
@@ -75,14 +75,14 @@
                                                             Validasi Jawaban
                                                     </button>
     
-                                                    <a href="{{ route('alumni.dashboard.lihat-jawaban-kuesioner', $row['id']) }}" class="btn btn-sm btn-dark d-flex align-items-center text-nowrap">
+                                                    <a href="{{ route('pengguna.dashboard.lihat-jawaban-kuesioner', $row['id']) }}" class="btn btn-sm btn-dark d-flex align-items-center text-nowrap">
                                                         <i class="bx bx-copy-alt me-2" style="font-size: 15px"></i>
                                                         Lihat Jawaban
                                                     </a>
                                                 </div>
                                             @else
                                                 <a 
-                                                    href="{{ route('alumni.dashboard.jawab-kuesioner', $row['id']) }}" 
+                                                    href="{{ route('pengguna.dashboard.jawab-kuesioner', $row['id']) }}" 
                                                     class="btn btn-primary text-nowrap btn-sm">Jawab Kuesioner</a>
                                             @endif
                                         </div>
@@ -120,9 +120,9 @@
     
                             <div>
                                 @if($row->selesai)
-                                    <a href="{{ route('alumni.dashboard.lihat-jawaban-kuesioner', $row->id) }}" class="btn btn-success">Lihat Jawaban</a>
+                                    <a href="{{ route('pengguna.dashboard.lihat-jawaban-kuesioner', $row->id) }}" class="btn btn-success">Lihat Jawaban</a>
                                 @else
-                                    <a href="{{ route('alumni.dashboard.jawab-kuesioner', $row->id) }}" class="btn btn-primary">Jawab Kuesioner</a>
+                                    <a href="{{ route('pengguna.dashboard.jawab-kuesioner', $row->id) }}" class="btn btn-primary">Jawab Kuesioner</a>
                                 @endif
                             </div>
                         </div>

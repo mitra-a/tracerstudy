@@ -14,7 +14,7 @@
                 </h4>
         
                 <div class="ms-auto">
-                    <a href="{{ route('alumni.dashboard') }}" class="btn btn-light border">Kembali</a>
+                    <a href="{{ route('pengguna.dashboard') }}" class="btn btn-light border">Kembali</a>
                 </div>
             </div>
 

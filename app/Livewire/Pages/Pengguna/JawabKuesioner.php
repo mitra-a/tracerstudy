@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Pages\Alumni;
+namespace App\Livewire\Pages\Pengguna;
 
 use App\Models\Kuesioner;
 use App\Models\KuesionerHalaman;
@@ -179,6 +179,6 @@ class JawabKuesioner extends Component
 
     public function render()
     {
-        return view('pages.alumni.jawab-kuesioner');
+        return view('pages.pengguna.jawab-kuesioner');
     }
 }

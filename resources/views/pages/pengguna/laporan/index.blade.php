@@ -43,7 +43,7 @@
                             <td>{{ $row['deskripsi'] }}</td>
                             <td>
                                 <div class="d-flex">
-                                    <a href="{{ route('alumni.hasil-survey.detail', $row['id']) }}" class="btn btn-sm btn-primary d-flex align-items-center">
+                                    <a href="{{ route('pengguna.hasil-survey.detail', $row['id']) }}" class="btn btn-sm btn-primary d-flex align-items-center">
                                         <i class="bx bx-clipboard me-2" style="font-size: 15px"></i>
                                         Hasil Survey
                                     </a>

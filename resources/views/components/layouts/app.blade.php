@@ -6,11 +6,13 @@
 	</head>
 	<body>
 		<div id="loading-layout"></div>
-		<div class="layout-wrapper layout-content-navbar">
+		<div class="layout-wrapper layout-content-navbar @if(session('login')->role != 'admin') layout-without-menu @endif">
 			<div class="layout-container">
-		        @include('components.partials.sidebar')
+				@if(session('login')->role == 'admin')
+					@include('components.partials.sidebar')
+				@endif
 				
-                <div class="layout-page">
+                <div class="layout-page mx-auto	">
 					@include('components.partials.navbar')
 
 					<div class="container-xxl flex-grow-1 container-p-y">

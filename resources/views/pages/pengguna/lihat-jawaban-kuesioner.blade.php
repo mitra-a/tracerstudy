@@ -15,11 +15,11 @@
                 </h4>
         
                 <div class="ms-auto">
-                    <a href="{{ route('alumni.dashboard') }}" class="btn btn-light border">Kembali</a>
+                    <a href="{{ route('pengguna.dashboard') }}" class="btn btn-light border">Kembali</a>
                 </div>
             </div>
 
-            <livewire:components.kuesioner-jawaban :$id :user_id="auth()->user()->id" />
+            <livewire:components.kuesioner-jawaban :$id :user_id="session('login')?->id" />
         </div>
     </div>
 </div>

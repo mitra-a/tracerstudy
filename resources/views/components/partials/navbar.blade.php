@@ -15,7 +15,7 @@
 			<li class="nav-item navbar-dropdown dropdown-user dropdown">
 				<a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
 					<div class="avatar avatar-online">
-						<img src="{{ auth()->user()->foto ? asset('berkas/profile/' . auth()->user()->foto) : asset('img/avatar.jpg') }}" alt class="w-px-40 rounded-circle" style="object-fit: cover" />
+						<img src="{{ optional(session('login'))->foto ? asset('berkas/profile/' . session('login')?->foto) : asset('img/avatar.jpg') }}" alt class="w-px-40 rounded-circle" style="object-fit: cover" />
 					</div>
 				</a>
 				<ul class="dropdown-menu dropdown-menu-end">
@@ -24,12 +24,12 @@
 							<div class="d-flex">
 								<div class="flex-shrink-0 me-3">
 									<div class="avatar avatar-online">
-										<img src="{{ auth()->user()->foto ? asset('berkas/profile/' . auth()->user()->foto) : asset('img/avatar.jpg') }}" alt class="w-px-40 rounded-circle" style="object-fit: cover" />
+										<img src="{{ optional(session('login'))?->foto ? asset('berkas/profile/' . session('login')?->foto) : asset('img/avatar.jpg') }}" alt class="w-px-40 rounded-circle" style="object-fit: cover" />
 									</div>
 								</div>
 								<div class="flex-grow-1">
-									<span class="fw-semibold d-block"> {{ auth()->user()->nama }} </span>
-									<small class="text-muted"> {{ auth()->user()->role }} </small>
+									<span class="fw-semibold d-block"> {{ session('login')?->nama }} </span>
+									<small class="text-muted"> {{ session('login')?->role }} </small>
 								</div>
 							</div>
 						</a>
@@ -38,7 +38,7 @@
 						<div class="dropdown-divider"></div>
 					</li>
 					<li>
-						<a class="dropdown-item" href="{{ route(auth()->user()->role . '.profile') }}">
+						<a class="dropdown-item" href="{{ route(session('login')?->role . '.profile') }}">
 							<i class="bx bx-user me-2"></i>
 							<span class="align-middle">My Profile</span>
 						</a>

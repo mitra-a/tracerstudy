@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Pages\Alumni;
+namespace App\Livewire\Pages\Pengguna;
 
 use App\Models\Kuesioner;
 use App\Models\KuesionerJawaban;
@@ -17,14 +17,11 @@ class Dashboard extends Component
     public $belum_lengkap;
 
     public function mount(){
-        if(Hash::check(auth()->user()->nim, auth()->user()->password)) 
         $this->belum_lengkap = true;
-
-        $periode = auth()->user()->periode;
-        $this->kuesioner = Kuesioner::where('periode', 'LIKE', '%'. $periode .'%')->get()->toArray();
+        $this->kuesioner = Kuesioner::get()->toArray();
 
         foreach($this->kuesioner as $index => $item){
-            $check = KuesionerJawaban::where('alumni_id', auth()->user()->id)->where('kuesioner_id', $item['id'])->first();
+            $check = KuesionerJawaban::where('kuesioner_id', $item['id'])->first();
 
             $this->kuesioner[$index]['selesai'] = $check ? true : false;
             $this->kuesioner[$index]['validasi'] = $check ? ($check->validasi ? true : false) : false;
@@ -68,6 +65,6 @@ class Dashboard extends Component
             return false;
         });
         $this->rows = $result;
-        return view('pages.alumni.dashboard');
+        return view('pages.pengguna.dashboard');
     }
 }

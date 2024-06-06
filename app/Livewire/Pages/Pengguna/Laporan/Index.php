@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Pages\Alumni\Laporan;
+namespace App\Livewire\Pages\Pengguna\Laporan;
 
 use App\Livewire\Traits\WithCachedRows;
 use App\Livewire\Traits\WithPerPagePagination;
@@ -18,8 +18,7 @@ class Index extends Component
     public $rows;
     
     public function mount(){
-        $periode = auth()->user()->periode;
-        $kuesionerSudahJawab = KuesionerJawaban::where('alumni_id', auth()->user()->id)->groupBy('kuesioner_id')->where('validasi', 1)->get('kuesioner_id')->toArray();
+        $kuesionerSudahJawab = KuesionerJawaban::where('alumni_id', session('login')->id)->groupBy('kuesioner_id')->where('validasi', 1)->get('kuesioner_id')->toArray();
         $kuesionerSudahJawab = array_column($kuesionerSudahJawab, 'kuesioner_id');
 
         $this->kuesioner = Kuesioner::whereIn('id', $kuesionerSudahJawab)->get()->toArray();
@@ -38,6 +37,6 @@ class Index extends Component
             return false;
         });
         $this->rows = $result;
-        return view('pages.alumni.laporan.index');
+        return view('pages.pengguna.laporan.index');
     }
 }

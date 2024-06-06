@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/logout', function(){
+    session()->forget('login');
     Auth()->logout();
     return redirect()->route('login');
 })->name('logout');
@@ -18,7 +19,7 @@ Route::namespace('App\Livewire\Pages')->group(function(){
         Route::get('/registrasi', Registrasi::class)->name('registrasi');
     }
 
-    Route::namespace('Admin')->middleware(['auth','role:admin'])->prefix('admin')->name('admin.')->group(function(){
+    Route::namespace('Admin')->middleware(['login:admin'])->prefix('admin')->name('admin.')->group(function(){
         Route::get('/', Dashboard::class)->name('dashboard');
         Route::get('/profile', Profile::class)->name('profile');
         Route::get('/prodi', Prodi::class)->name('prodi');
@@ -55,7 +56,7 @@ Route::namespace('App\Livewire\Pages')->group(function(){
         });
     });
 
-    Route::namespace('Alumni')->middleware(['auth','role:alumni'])->prefix('alumni')->name('alumni.')->group(function(){
+    Route::namespace('Pengguna')->middleware(['login:pengguna'])->prefix('pengguna')->name('pengguna.')->group(function(){
         Route::get('/', Dashboard::class)->name('dashboard');
         Route::get('/profile', Profile::class)->name('profile');
         Route::get('/jawab-kuesioner/{id}', JawabKuesioner::class)->name('dashboard.jawab-kuesioner');
