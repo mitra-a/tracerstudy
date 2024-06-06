@@ -22,7 +22,7 @@ class Dashboard extends Component
         $this->kuesioner = Kuesioner::get()->toArray();
 
         foreach($this->kuesioner as $index => $item){
-            $check = KuesionerJawaban::where('kuesioner_id', $item['id'])->first();
+            $check = KuesionerJawaban::where('nim', session('login')?->nim)->where('kuesioner_id', $item['id'])->first();
 
             $this->kuesioner[$index]['selesai'] = $check ? true : false;
             $this->kuesioner[$index]['validasi'] = $check ? ($check->validasi ? true : false) : false;
