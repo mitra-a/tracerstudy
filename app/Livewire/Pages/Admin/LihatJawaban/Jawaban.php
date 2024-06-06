@@ -20,9 +20,7 @@ class Jawaban extends Component
     public function mount($id, $user){
         $this->id = $id;
         $this->user_id = $user;
-
         $this->kuesioner = Kuesioner::findOrFail($id);
-        $this->user = User::findOrFail($user);
     }
     
     public function render()

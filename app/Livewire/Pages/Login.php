@@ -20,27 +20,14 @@ class Login extends Component
         $username = $this->username;
         $password = $this->password;
 
-        $response = Http::withHeaders([
-            'Accept' => 'application/json',
-            'Token' => env('IDS_LOGIN_TOKEN_API')
-        ])->get('http://ids.jtik.ft.unm.ac.id/hub/api?username='.$username.'&password='.$password);
-
-        $response_json = $response->json();
-        $response_json = optional($response_json)['data'];
-
-        if(optional($response_json)['status'] == true){
-            session()->put('login', (object) [
-                "id" => "55",
-                "oto" => "4",
-                "level" => "user",
-                "kode" => "200209501019",
-                "nama" => "MITRA",
-                "last_login" => "2024-01-16 12:07:43",
-                "role" => "pengguna",
-            ]);
-
-            return redirect()->route('pengguna.dashboard');
-        }
+        try{
+            $dataLogin = getDataLogin($username, $password);
+            if($dataLogin){
+                session()->put('login', (object) $dataLogin);
+                return redirect()->route('pengguna.dashboard');
+            }
+        } catch(\Exception $e) {}
+        
 
         if(Auth::attempt([
             'nim' => $this->username,

@@ -43,7 +43,7 @@ class KuesionerJawaban extends Component
 
         $jawaban_value = [];
         $jawaban = ModelsKuesionerJawaban::where('kuesioner_id', $id)
-            ->where('alumni_id', $user_id)
+            ->where('nim', $user_id)
             ->with('jawaban_x')
             ->get();
 

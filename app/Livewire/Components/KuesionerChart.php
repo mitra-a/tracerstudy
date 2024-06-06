@@ -22,24 +22,24 @@ class KuesionerChart extends Component
         $jawaban = KuesionerJawaban::query()
             ->where('validasi', 1)
             ->whereIn('soal_id', array_column($soal, "id"))
-            ->when($prodi, function($query, $value){
-                $query->with(['alumni' => function($e) use ($value) {
-                    $e->where('prodi', $value);
-                }]);
-            })
+            // ->when($prodi, function($query, $value){
+            //     $query->with(['alumni' => function($e) use ($value) {
+            //         $e->where('prodi', $value);
+            //     }]);
+            // })
             ->with('jawaban_x')
             ->get()
             ->toArray();
 
         $jumlahAlumni = KuesionerJawaban::query()
             ->whereIn('soal_id', array_column($soal, "id"))
-            ->when($prodi, function($query, $value){
-                $query->with(['alumni' => function($e) use ($value) {
-                    $e->where('prodi', $value);
-                }]);
-            })
+            // ->when($prodi, function($query, $value){
+            //     $query->with(['alumni' => function($e) use ($value) {
+            //         $e->where('prodi', $value);
+            //     }]);
+            // })
             ->with('jawaban_x')
-            ->groupBy("alumni_id")
+            ->groupBy("nim")
             ->get();
 
         $jumlahAlumni = count($jumlahAlumni);

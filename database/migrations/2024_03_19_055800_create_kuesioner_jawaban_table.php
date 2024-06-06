@@ -13,9 +13,13 @@ return new class extends Migration
     {
         Schema::create('kuesioner_jawaban', function (Blueprint $table) {
             $table->uuid('id')->primary();
+
+            $table->string('nama');
+            $table->string('nim');
+            $table->string('prodi');
+
             $table->string('type');
             $table->string('kuesioner_id');
-            $table->string('alumni_id');
             $table->string('soal_id');
             $table->string('jawaban');
             $table->boolean('validasi')->default(false);

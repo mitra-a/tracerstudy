@@ -6,6 +6,7 @@ use App\Livewire\Traits\WithCachedRows;
 use App\Livewire\Traits\WithPerPagePagination;
 use App\Models\Kuesioner;
 use App\Models\KuesionerJawaban;
+use App\Models\Prodi;
 use Livewire\Component;
 
 class Detail extends Component
@@ -15,24 +16,21 @@ class Detail extends Component
 
     public $id;
     public $search = '';
+    public $prodi;
 
     public function mount($id){
         $this->id = $id;
         Kuesioner::findOrFail($id);
+        $this->prodi = Prodi::all()->keyBy('kode')->toArray();
     }
     
     public function getRowsQueryProperty(){
         return KuesionerJawaban::where('kuesioner_id', $this->id)
-        ->select('users.*')
         ->where('validasi', 1)
-        ->whereNotNull('users.id')
-        ->leftJoin('users', 'users.id', 'kuesioner_jawaban.alumni_id')
-        ->groupBy('alumni_id')
+        ->groupBy('nim')
         ->when($this->search, function($query, $value){
             $query->where('nama', 'LIKE', '%' . $value . '%')
-                ->orWhere('email', 'LIKE', '%' . $value . '%')
-                ->orWhere('nim', 'LIKE', '%' . $value . '%')
-                ->orWhere('nomor_telepon', 'LIKE', '%' . $value . '%');
+                ->orWhere('nim', 'LIKE', '%' . $value . '%');
         });
     }
 

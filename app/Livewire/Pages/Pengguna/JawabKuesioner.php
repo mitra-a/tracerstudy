@@ -74,7 +74,7 @@ class JawabKuesioner extends Component
 
         try{
             KuesionerJawaban::query()
-                ->where('alumni_id', auth()->user()->id)
+                ->where('nim', session('login')?->nim)
                 ->where('kuesioner_id', $this->id)
                 ->delete();
 
@@ -87,7 +87,11 @@ class JawabKuesioner extends Component
 
                     $new = new KuesionerJawaban();
                     $new->kuesioner_id = $this->id;
-                    $new->alumni_id = auth()->user()->id;
+
+                    $new->prodi = session('login')?->prodi;
+                    $new->nama = session('login')?->nama;
+                    $new->nim = session('login')?->nim;
+
                     $new->soal_id = $item->id;
                     $new->type = $item->type;
                     $new->validasi = true;
@@ -149,7 +153,7 @@ class JawabKuesioner extends Component
                 }
             }
 
-            return redirect()->route('alumni.dashboard');
+            return redirect()->route('pengguna.dashboard');
         } catch(\Exception $error){
         }
     }

@@ -43,6 +43,9 @@ class Profile extends Component
 
             $save->save();
 
+            $data = $save->toArray();
+            session()->put('login', (object) $data);
+
             session()->flash('message', [
                 'color' => 'success',
                 'title' => 'Berhasil!',

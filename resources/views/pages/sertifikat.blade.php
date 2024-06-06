@@ -57,7 +57,7 @@
                             <tr>
                                 <td style="white-space: nowrap">Program Studi</td>
                                 <td class="p-0">: </td>
-                                <td>{{ $akun->prodi_data->nama }}</td>
+                                <td>{{ optional($prodi)['nama'] }}</td>
                             </tr>
                         </tbody>
                     </table>

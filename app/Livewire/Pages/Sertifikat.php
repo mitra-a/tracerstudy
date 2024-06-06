@@ -4,6 +4,7 @@ namespace App\Livewire\Pages;
 
 use App\Models\Kuesioner;
 use App\Models\KuesionerJawaban;
+use App\Models\Prodi;
 use App\Models\User;
 use chillerlan\QRCode\QRCode;
 use Livewire\Component;
@@ -16,6 +17,7 @@ class Sertifikat extends Component
     public $tanggal_jawab;
     public $waktu_jawab;
     public $route;
+    public $prodi;
 
     public function mount($id){
         $string = explode('@', $id);
@@ -25,9 +27,16 @@ class Sertifikat extends Component
         $id_alumni = $string[1];
 
         $this->id = $id;
-        $this->akun = User::findOrFail($id_alumni);
+
+        try {
+            $akun = getDataProfile(session('login')->nim);
+        } catch (\Exception $e){
+            abort(300);
+        }
+
+        $this->akun = $akun;
         $this->kuesioner = Kuesioner::findOrFail($id);
-        $jawaban = KuesionerJawaban::where('kuesioner_id', $id)->where('alumni_id', $id_alumni)->where('validasi',1)->get();
+        $jawaban = KuesionerJawaban::where('kuesioner_id', $id)->where('nim', $id_alumni)->where('validasi',1)->get();
         
         if(count($jawaban) < 1){
             abort(404);
@@ -52,6 +61,7 @@ class Sertifikat extends Component
         $tanggal_jawab = $jawaban[0]->created_at->format('d');
         $tahun_jawab = $jawaban[0]->created_at->format('Y');
 
+        $this->prodi = Prodi::where('kode', $this->akun?->prodi)->first()->toArray();
         $this->tanggal_jawab = $tanggal_jawab . ' ' . $bulan[$bulan_jawab] . ' ' . $tahun_jawab;
         $this->waktu_jawab = $jawaban[0]->created_at->format('H:i');
     }

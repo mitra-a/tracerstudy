@@ -26,8 +26,6 @@
                     <tr>
                         <th>NIM</th>
                         <th>Nama</th>
-                        <th>Email</th>
-                        <th>Nomor Telepon</th>
                         <th>Program Studi</th>
                         <th style="width: 1px;">Jawaban</th>
                     </tr>
@@ -48,13 +46,11 @@
                         <tr>
                             <td>{{ $row->nim }}</td>
                             <td>{{ $row->nama }}</td>
-                            <td>{{ $row->email }}</td>
-                            <td>{{ $row->nomor_telepon ?? '-' }}</td>
-                            <td>{{ $row->prodi }}</td>
+                            <td>{{ optional($prodi[$row->prodi])['nama'] }}</td>
                             <td>
                                 <div class="d-flex">
                                     <a href="{{ route('admin.lihat-jawaban.jawaban', [
-                                        'user' => $row->id,
+                                        'user' => $row->nim,
                                         'id' => $id,
                                     ]) }}" class="btn btn-sm btn-dark d-flex align-items-center">
                                         <i class="bx bx-clipboard me-2" style="font-size: 15px"></i>

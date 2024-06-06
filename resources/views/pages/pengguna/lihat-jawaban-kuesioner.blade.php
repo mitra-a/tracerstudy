@@ -19,7 +19,7 @@
                 </div>
             </div>
 
-            <livewire:components.kuesioner-jawaban :$id :user_id="session('login')?->id" />
+            <livewire:components.kuesioner-jawaban :$id :user_id="session('login')?->nim" />
         </div>
     </div>
 </div>

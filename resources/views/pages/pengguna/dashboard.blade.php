@@ -3,15 +3,6 @@
         <span class="text-muted fw-light">Alumni /</span> Dashboard
     </h4>
 
-    @if($belum_lengkap)
-    <div class="alert bg-white border-2 border-danger">
-        <div>
-            <h6 class="mb-0 text-danger fw-bold">Ubah Password 😊</h6>
-            <p class="mb-0">Password yang anda gunakan masih <b>default</b> segera lakukan pengubahan data pada <a href="{{ route('pengguna.profile') }}">menu profile</a></p>
-          </div>
-    </div>
-    @endif
-    
     <div class="row">
         <div class="col-lg-8">
             <div class="card mb-3 mb-lg-0">

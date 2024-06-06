@@ -108,7 +108,7 @@
 				<td></td>
 				<td>Program Studi</td>
 				<td>: </td>
-				<td>{{ session('login')?->prodi_data->nama }}</td>
+				<td>{{ optional($prodi)['nama'] }}</td>
 			</tr>
 		</tbody>
 	</table>
