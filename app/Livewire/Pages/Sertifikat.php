@@ -23,13 +23,13 @@ class Sertifikat extends Component
         $string = explode('.', request()->get('id'));
         if(count($string) != 2) abort(404);
         
-        $id = $string[1];
-        $id_alumni = $string[0];
+        $id = $string[0];
+        $id_alumni = $string[1];
 
         $this->id = $id;
 
         try {
-            $akun = getDataProfile(session('login')->nim);
+            $akun = getDataProfile($id_alumni);
         } catch (\Exception $e){
             abort(300);
         }
