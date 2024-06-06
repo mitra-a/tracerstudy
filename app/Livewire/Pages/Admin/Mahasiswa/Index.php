@@ -24,7 +24,7 @@ class Index extends Component
         // https://ids.jtik.ft.unm.ac.id/hub/api?kd_prodi=&nim=&q=
         $response = Http::withHeaders([
             'Accept' => 'application/json',
-            'Token' => env('IDS_TOKEN_API')
+            'Token' => env('IDS_MAHASISWA_TOKEN_API')
         ])->get('https://ids.jtik.ft.unm.ac.id/hub/api?kd_prodi=&nim=&q=');
 
         $response_json = $response->json();
