@@ -47,7 +47,7 @@ class Sertifikat extends Component
         $this->tanggal_jawab = $tanggal_jawab . ' ' . $bulan[$bulan_jawab] . ' ' . $tahun_jawab;
         $this->prodi = Prodi::where('kode', session('login')->prodi)->first()->toArray();
         
-        $route = route('sertifikat', $id . '@' . session('login')?->nim);
+        $route = route('sertifikat', $id . '--' . session('login')?->nim);
         $this->route = (new QRCode())->render($route);
     }
 

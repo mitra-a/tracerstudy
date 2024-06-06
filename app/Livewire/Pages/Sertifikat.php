@@ -20,7 +20,7 @@ class Sertifikat extends Component
     public $prodi;
 
     public function mount($id){
-        $string = explode('@', $id);
+        $string = explode('--', $id);
         if(count($string) != 2) abort(404);
         
         $id = $string[0];
