@@ -19,8 +19,8 @@ class Sertifikat extends Component
     public $route;
     public $prodi;
 
-    public function mount($id){
-        $string = explode('--', $id);
+    public function mount(){
+        $string = explode('--', request()->get('id'));
         if(count($string) != 2) abort(404);
         
         $id = $string[0];

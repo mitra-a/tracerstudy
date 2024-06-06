@@ -45,7 +45,6 @@
                     <a href="{{ route('welcome') }}" class="nav-item nav-link">Home</a>
                     <a href="{{ route('welcome') }}#alur-pengisian" class="nav-item nav-link">Alur Pengisian</a>
                     <a href="{{ route('welcome') }}#tentang-kami" class="nav-item nav-link">Tentang Kami</a>
-                    <a href="{{ route('registrasi') }}" class="nav-item nav-link">Daftar</a>
                 </div>
                 <div class="ms-auto d-block mt-3 mt-lg-0 d-lg-block">
                     @if(auth()->check())
