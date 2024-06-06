@@ -20,11 +20,11 @@ class Sertifikat extends Component
     public $prodi;
 
     public function mount(){
-        $string = explode('--', request()->get('id'));
+        $string = explode('.', request()->get('id'));
         if(count($string) != 2) abort(404);
         
-        $id = $string[0];
-        $id_alumni = $string[1];
+        $id = $string[1];
+        $id_alumni = $string[0];
 
         $this->id = $id;
 
