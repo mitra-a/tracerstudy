@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Pages;
 
+use App\Models\LoginHistory;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
@@ -17,6 +18,7 @@ class Login extends Component
             'password' => ['required'],
         ]);
 
+        $error = false;
         $username = $this->username;
         $password = $this->password;
 
@@ -24,9 +26,22 @@ class Login extends Component
             $dataLogin = getDataLogin($username, $password);
             if($dataLogin){
                 session()->put('login', (object) $dataLogin);
+
+                LoginHistory::updateOrCreate([
+                    'kode' => $dataLogin->nim,
+                ],[
+                    'nama' => $dataLogin->nama,
+                    'role' => 'pengguna',
+                    'prodi' => $dataLogin->prodi,
+                    'last_login_at' => Carbon::now()->toDateTimeString(),
+                    'last_login_ip' => request()->getClientIp(),
+                ]);
+
                 return redirect()->route('pengguna.dashboard');
             }
-        } catch(\Exception $e) {}
+        } catch(\Exception $e) {
+            $error = true;
+        }
         
 
         if(Auth::attempt([
@@ -35,16 +50,27 @@ class Login extends Component
             'aktif' => 1,
         ])){
             $data = auth()->user();
-            $data->last_login_at = Carbon::now()->toDateTimeString();
-            $data->last_login_ip = request()->getClientIp();
-            $data->save();
+
+            LoginHistory::updateOrCreate([
+                'kode' => $data->id,
+            ],[
+                'nama' => $data->nama,
+                'role' => 'admin',
+                'prodi' => null,
+                'last_login_at' => Carbon::now()->toDateTimeString(),
+                'last_login_ip' => request()->getClientIp(),
+            ]);
 
             $data = $data->toArray();
             session()->put('login', (object) $data);
 
             return redirect()->route('admin.dashboard');
         } else {
-            session()->flash('warning-auth', true);
+            if($error){
+                session()->flash('danger-auth', true);
+            } else {
+                session()->flash('warning-auth', true);
+            }
         }
     }
 

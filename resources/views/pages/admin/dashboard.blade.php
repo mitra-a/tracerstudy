@@ -35,9 +35,9 @@
             <div class="card">
                 <div class="card-body text-center">
                     <div class="mb-3">
-                        <h1 class="text-primary font-weight-bold">{{ $arrayData['alumni'] }}</h1>
+                        <h1 class="text-primary font-weight-bold">{{ $arrayData['mahasiswa'] }}</h1>
                     </div>
-                    <h5 class="h3 font-weight-bolder mb-3">Alumni</h5><span class="d-block text-sm text-muted">Jumlah Alumni Terdaftar <br> dalam Database</span>
+                    <h5 class="h3 font-weight-bolder mb-3">Mahasiswa</h5><span class="d-block text-sm text-muted">Jumlah Mahasiswa Terdaftar <br> dalam Database</span>
                     </div>
             </div>
         </div>
@@ -45,7 +45,7 @@
             <div class="card">
                 <div class="card-body text-center">
                     <div class="mb-3">
-                        <h1 class="text-primary font-weight-bold">{{ $arrayData['prodi'] }}</h1>
+                        <h1 class="text-primary font-weight-bold">{{ $arrayData['kuesioner'] }}</h1>
                     </div>
                     <h5 class="h3 font-weight-bolder mb-3">Kuesioner</h5><span class="d-block text-sm text-muted">Jumlah Kuesioner <br> dalam Database</span>
                     </div>
@@ -55,9 +55,9 @@
             <div class="card">
                 <div class="card-body text-center">
                     <div class="mb-3">
-                        <h1 class="text-primary font-weight-bold">{{ $arrayData['periode'] }}</h1>
+                        <h1 class="text-primary font-weight-bold">{{ $arrayData['prodi'] }}</h1>
                     </div>
-                    <h5 class="h3 font-weight-bolder mb-3">Periode Wisuda</h5><span class="d-block text-sm text-muted">Jumlah Periode Wisuda <br> dalam Database</span>
+                    <h5 class="h3 font-weight-bolder mb-3">Program Studi</h5><span class="d-block text-sm text-muted">Jumlah Program Studi <br> dalam Database</span>
                     </div>
             </div>
         </div>

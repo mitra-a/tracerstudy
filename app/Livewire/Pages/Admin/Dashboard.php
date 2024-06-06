@@ -3,6 +3,8 @@
 namespace App\Livewire\Pages\Admin;
 
 use App\Models\Kuesioner;
+use App\Models\LoginHistory;
+use App\Models\Pengguna;
 use App\Models\Pengunjung;
 use App\Models\Periode;
 use App\Models\Prodi;
@@ -15,14 +17,16 @@ class Dashboard extends Component
     public $arrayData = [];
 
     public function mount(){
-        $this->arrayData['alumni'] = User::where('role','alumni')->count();
-        $this->arrayData['prodi'] = Kuesioner::count();
-        $this->arrayData['periode'] = Periode::count();
+        $this->arrayData['mahasiswa'] = Pengguna::count();
+        $this->arrayData['kuesioner'] = Kuesioner::count();
+        $this->arrayData['prodi'] = Prodi::count();
         
         $pengunjung = Pengunjung::selectRaw('sum(jumlah) as jumlah')->get();
         $this->arrayData['pengunjung'] = $pengunjung[0]->jumlah;
 
-        $this->arrayData['login'] = User::whereNotNull('last_login_at')->orderBy('last_login_at', 'DESC')->limit(9)->get();
+        $this->arrayData['login'] = LoginHistory::orderBy('last_login_at', 'DESC')
+        ->limit(9)
+        ->get();
 
         $week = Carbon::now();
         $this->arrayData['pekan'] = [];

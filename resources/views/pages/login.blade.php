@@ -54,7 +54,13 @@
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
                     @endif
-    
+
+                    @if(session()->has('danger-auth'))
+                    <div class="alert alert-warning alert-dismissible border-3 bg-white">
+                        Terjadi kesalahan ketika login, silahkan coba lagi atau beberapa saat lagi.
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    @endif
                     
                     <form class="mb-3" wire:submit.prevent="login">
                         <div class="mb-3">

@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Pengguna;
 use Illuminate\Support\Facades\Http;
 
 function getDataLogin($username, $password){
@@ -12,7 +13,12 @@ function getDataLogin($username, $password){
     $response_json = optional($response_json)['data'];
 
     if(optional($response_json)['status'] == true){
-        $data = getDataProfile($response_json['kode']);
+        $data = Pengguna::where('nim', $response_json['kode'])->first();
+        if($data){
+            $data = (object) $data->toArray();
+        } else {
+            $data = getDataProfile($response_json['kode']);
+        }
 
         if($data){
             $data->role = "pengguna";

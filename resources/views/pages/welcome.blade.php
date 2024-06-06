@@ -63,9 +63,9 @@
                                         src="{{ asset('img/landing-page-mobile.webp') }}"
                                         alt="Image">
 
-                                    @if(auth()->check())
+                                    @if(session()->has('login'))
                                         <a 
-                                            href="{{ route(auth()->user()->role . '.dashboard') }}"
+                                            href="{{ route(session('login')?->role . '.dashboard') }}"
                                             class="btn btn-primary rounded-pill py-3 px-5 mt-3 mt-md-5 w-md-0 w-100 me-2 animated slideInRight">
                                             Dashboard
                                         </a>

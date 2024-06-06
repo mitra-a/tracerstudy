@@ -4,6 +4,7 @@ namespace App\Livewire\Pages\Pengguna;
 
 use App\Models\Kuesioner;
 use App\Models\KuesionerJawaban;
+use App\Models\LoginHistory;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
@@ -29,8 +30,7 @@ class Dashboard extends Component
 
         $this->rows = $this->kuesioner;
 
-        $this->login = User::whereNotNull('last_login_at')
-            ->where('role', 'alumni')
+        $this->login = LoginHistory::where('role', 'pengguna')
             ->orderBy('last_login_at', 'DESC')
             ->limit(9)
             ->get();
