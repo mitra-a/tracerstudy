@@ -47,7 +47,6 @@ class Login extends Component
         if(Auth::attempt([
             'nim' => $this->username,
             'password' => $this->password,
-            'aktif' => 1,
         ])){
             $data = auth()->user();
 
