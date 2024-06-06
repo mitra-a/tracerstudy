@@ -24,12 +24,9 @@ Route::namespace('App\Livewire\Pages')->group(function(){
         Route::get('/prodi', Prodi::class)->name('prodi');
         Route::get('/periode', Periode::class)->name('periode');
 
-        Route::namespace('Alumni')->prefix('alumni')->name('alumni.')->group(function(){
+        Route::namespace('Mahasiswa')->prefix('mahasiswa')->name('mahasiswa.')->group(function(){
             Route::get('/', Index::class)->name('index');
-            Route::get('/tambah', Create::class)->name('create');
-            Route::get('/edit/{id}', Update::class)->name('update');
-            Route::get('/validasi', Validasi::class)->name('validasi');
-            Route::get('/hapus', Delete::class)->name('delete');
+            Route::get('/{id}', Detail::class)->name('detail');
         });
 
         Route::namespace('Akun')->prefix('akun')->name('akun.')->group(function(){

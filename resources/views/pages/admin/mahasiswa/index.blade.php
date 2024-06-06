@@ -1,23 +1,44 @@
 <div>
-    <div class="d-flex">
-        <h4 class="fw-bold py-3 mb-4">
-            <span class="text-muted fw-light">Master Data /</span> Alumni / Hapus Akun
-        </h4>
-
-        <div class="ms-auto">
-            <a href="{{ route('admin.alumni.create') }}" class="btn btn-primary">Tambah</a>
+    @teleport('#loading-layout')
+    <div
+        wire:loading.block
+        wire:target="import"
+    >
+        <div
+            class="position-fixed w-100 h-100 d-flex align-items-center justify-content-center"
+            style="z-index: 2024; background-color: #43597185"
+        >
+            <div class="spinner-border spinner-border-lg text-white me-3" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div> 
         </div>
     </div>
+    @endteleport
+
+    <div class="d-flex">
+        <h4 class="fw-bold py-3 mb-4">
+            <span class="text-muted fw-light">Master Data /</span> Alumni
+        </h4>
+    </div>
+
     
-    <div class="alert alert-dismissible bg-white border-warning border" role="alert">
-        <div class="d-flex">
-          <div>
-            <h6 class="mb-0 text-warning">Peringatan!</h6>
-            <p class="mb-0">Menghapus akun berarti menghapus data <b>jawaban kuesioner</b> dari alumni</p>
-          </div>
+
+    <div class="px-4 alert bg-white border border-primary d-flex justify-content-between align-items-center">
+        <div>
+            <h6 class="mb-2 text-primary fw-bold">Menampilkan data Mahasiswa 😊</h6>
+            <p class="mb-0">data yang ditampilkan merupakan data yang tersimpan pada <b>database</b> lakukan import data <br> dari Integrated Data System (IDS) JTIK untuk menampilkan data yang lebih baru</p>
         </div>
-    
-        <a class="btn-close" type="button" data-bs-dismiss="alert" aria-label="close"></a>
+
+        <div>
+            <button 
+                class="btn btn-primary" 
+                wire:confirm="Anda akan melakukan import data dari IDS, proses akan memerlukan waktu apakah anda ingin melanjutkan?"
+                wire:click="import"
+                type="button">
+                    <span class="bx bx-file me-2 mb-1"></span>
+                    Import Data IDS
+                </button>
+        </div>
     </div>
 
     <x-alert />
@@ -37,7 +58,6 @@
                     <tr>
                         <th>NIM</th>
                         <th>Nama</th>
-                        <th>Email</th>
                         <th>Nomor Telepon</th>
                         <th>Program Studi</th>
                         <th style="width: 1px;"></th>
@@ -59,32 +79,12 @@
                         <tr>
                             <td>{{ $row->nim }}</td>
                             <td>{{ $row->nama }}</td>
-                            <td>{{ $row->email == '' ? 'Tidak ada akun' : $row->email  }}</td>
                             <td>{{ $row->nomor_telepon == '' ? '-' : $row->nomor_telepon  }}</td>
-                            <td>{{ $row->prodi }}</td>
+                            <td>{{ $row->prodi_data?->nama }}</td>
                             <td>
-                                <div x-data="{ open: false }">
-                                    <div x-show="!open">
-                                        <i class="bx bx-trash mx-1" type="button"  x-on:click="open = !open"></i>  
-                                    </div>
-
-                                    <div x-show="open" x-cloak>
-                                        <div class="d-flex gap-2">
-                                            <button 
-                                                type="submit" 
-                                                x-on:click="open = !open" 
-                                                wire:click="delete('{{ $row->id }}')" 
-                                                wire:loading.attr="disabled" 
-                                                class="btn btn-danger btn-sm shadow">Hapus Akun</button>
-
-                                            <button 
-                                                type="submit" 
-                                                wire:loading.attr="disabled" 
-                                                class="btn btn-secondary btn-sm shadow" 
-                                                x-on:click="open = !open">Batal</button>
-                                        </div>
-                                    </div>
-                                </div>
+                                <div>
+                                    <a class="bx bx-file mx-1 text-secondary" href="{{ route('admin.mahasiswa.detail', $row->id) }}"></a>
+                                </div>    
                             </td>
                         </tr>
                     @empty

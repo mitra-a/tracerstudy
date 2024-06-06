@@ -39,10 +39,10 @@ return [
         'role' => 'admin'
     ],
     [
-        'title' => 'Alumni',
-        'route' => 'admin.alumni.index',
+        'title' => 'Mahasiswa',
+        'route' => 'admin.mahasiswa.index',
         'icon' => 'bx bx-user-check',
-        'active' => 'admin.alumni.*',
+        'active' => 'admin.mahasiswa.*',
         'role' => 'admin',
     ],
     [

@@ -164,39 +164,30 @@ class DatabaseSeeder extends Seeder
         //     \App\Models\Prodi::create($item);
         // }
 
-        $periode = [
-            [
-                'kode' => 'P2018',
-                'nama' => '2018'
-            ],
-            [
-                'kode' => 'P2019',
-                'nama' => '2019'
-            ],
-            [
-                'kode' => 'P2020',
-                'nama' => '2020'
-            ],
-            [
-                'kode' => 'P2021',
-                'nama' => '2021',
-            ],
-        ];
+        // $periode = [
+        //     [
+        //         'kode' => 'P2018',
+        //         'nama' => '2018'
+        //     ],
+        //     [
+        //         'kode' => 'P2019',
+        //         'nama' => '2019'
+        //     ],
+        //     [
+        //         'kode' => 'P2020',
+        //         'nama' => '2020'
+        //     ],
+        //     [
+        //         'kode' => 'P2021',
+        //         'nama' => '2021',
+        //     ],
+        // ];
 
-        foreach($periode as $item){
-            \App\Models\Periode::create($item);
-        }
+        // foreach($periode as $item){
+        //     \App\Models\Periode::create($item);
+        // }
 
-        $alumni = [
-            [
-                'nim' => '200209501019',
-                'nama' => 'Mitra',
-                'username' => 'mitra',
-                'password' => Hash::make('mitra'),
-                'periode' => 'P2020',
-                'prodi' => 'PTIK',
-                'role' => 'alumni',
-            ],
+        $admin = [
             [
                 'nama' => 'Admin',
                 'nim' => 'admin',
@@ -206,7 +197,7 @@ class DatabaseSeeder extends Seeder
             ],
         ];
 
-        foreach ($alumni as $item) {
+        foreach ($admin as $item) {
             \App\Models\User::create($item);
         }
     }

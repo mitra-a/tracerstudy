@@ -1,14 +1,13 @@
 <?php
 
-namespace App\Livewire\Pages\Admin\Alumni;
+namespace App\Livewire\Pages\Admin\Mahasiswa;
 
-use App\Livewire\Pages\Admin\Prodi;
 use App\Livewire\Traits\WithCachedRows;
 use App\Livewire\Traits\WithPerPagePagination;
+use App\Models\Pengguna;
 use App\Models\Prodi as ModelsProdi;
 use App\Models\User;
 use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 
 class Index extends Component
@@ -19,9 +18,6 @@ class Index extends Component
     public $search = '';
 
     public function import(){
-        ini_set('max_execution_time', '300000');
-        set_time_limit(0);
-
         $prodi = ModelsProdi::all()->keyBy('kode')->toArray();
         User::where('role', 'alumni')->delete();
 
@@ -34,29 +30,31 @@ class Index extends Component
         $response_json = $response->json();
         $response_json = $response_json['data'];
 
-        foreach($response_json as $item){
-            if(!isset($prodi[$item['kd_prodi']])){
-                $new = new ModelsProdi;
-                $new->kode = $item['kd_prodi'];
-                $new->nama = $item['nm_prodi'];
-                $new->save();
+        foreach(array_chunk($response_json, 1000) as $arrayChunk){
+            $insertData = [];
 
-                $prodi[$item['kd_prodi']] = true;
+            foreach($arrayChunk as $item){
+                if(!isset($prodi[$item['kd_prodi']])){
+                    $new = new ModelsProdi;
+                    $new->kode = $item['kd_prodi'];
+                    $new->nama = $item['nm_prodi'];
+                    $new->save();
+                    
+                    $prodi[$item['kd_prodi']] = true;
+                }
+    
+                $insertData[] = [
+                    'nim' => $item['nim'],
+                    'nama' => $item['nm_mhs'],
+                    'prodi' => $item['kd_prodi'],
+                    'tanggal_lahir' => $item['tgl_lahir'],
+                    'jenis_kelamin' => $item['jenis_kelamin'] == 'L' ? 'Laki - Laki' : 'Perempuan',
+                    'nomor_hp' => $item['no_hp_mhs'],
+                    'nomor_telepon' => $item['no_telp_mhs'],
+                ];
             }
 
-            $data = [
-                'nim' => $item['nim'],
-                'prodi' => $item['kd_prodi'],
-                'nama' => $item['nm_mhs'],
-                'jenis_kelamin' => $item['jenis_kelamin'] == 'L' ? 'Laki - Laki' : 'Perempuan',
-                'tanggal_lahir' => $item['tgl_lahir'],
-                'alamat' => $item['alamat_asal_mhs'],
-                'nomor_telepon' => $item['no_hp_mhs'],
-                'role' => 'alumni',
-                'password' => bcrypt($item['nim']),
-            ];
-
-            User::create($data);
+            Pengguna::insert($insertData);
         }
 
         session()->flash('message', [
@@ -66,23 +64,10 @@ class Index extends Component
         ]);
     }
 
-    public function delete($id){
-        $delete = User::findOrFail($id);
-        Storage::delete($delete->foto ?? '');
-        $delete->delete();
-
-        session()->flash('message', [
-            'color' => 'warning',
-            'title' => 'Berhasil!',
-            'sub-title' => 'Berhasil melakukan penghapusan data',
-        ]);
-    }
-    
     public function getRowsQueryProperty(){
-        return User::where('role', 'alumni')->when($this->search, function($query, $value){
+        return Pengguna::when($this->search, function($query, $value){
             $query->where('nama', 'LIKE', '%' . $value . '%')
                 ->orWhere('nim', 'LIKE', '%' . $value . '%')
-                ->orWhere('email', 'LIKE', '%' . $value . '%')
                 ->orWhere('nomor_telepon', 'LIKE', '%' . $value . '%');
         });
     }
@@ -97,7 +82,7 @@ class Index extends Component
     
     public function render()
     {
-        return view('pages.admin.alumni.index', [
+        return view('pages.admin.mahasiswa.index', [
             'rows' => $this->rows
         ]);
     }
