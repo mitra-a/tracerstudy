@@ -4,6 +4,7 @@ namespace App\Livewire\Pages;
 
 use App\Models\Kuesioner;
 use App\Models\KuesionerJawaban;
+use App\Models\Pengguna;
 use App\Models\Prodi;
 use App\Models\User;
 use chillerlan\QRCode\QRCode;
@@ -27,12 +28,14 @@ class Sertifikat extends Component
         $id_alumni = $string[1];
 
         $this->id = $id;
+        $akun = Pengguna::where('nim', $id_alumni)->first();
+        if(!$akun) abort(404);
 
-        try {
-            $akun = getDataProfile($id_alumni);
-        } catch (\Exception $e){
-            abort(300);
-        }
+        // try {
+        //     $akun = getDataProfile($id_alumni);
+        // } catch (\Exception $e){
+        //     abort(300);
+        // }
 
         $this->akun = $akun;
         $this->kuesioner = Kuesioner::findOrFail($id);

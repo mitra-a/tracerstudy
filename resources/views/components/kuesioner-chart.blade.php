@@ -47,19 +47,43 @@
     
     @foreach ($data as $soal)
         <div>
-            <div class="card mb-3">
-                <div class="card-body">
-                    <h5 class="card-title text-muted">{{ $soal['pertanyaan'] }}</h5>
-                    <div
-                        class="chart-data"
-                        id="soal-{{ $soal['id'] }}"
-                        label="{{ json_encode($soal['label']) }}"
-                        data="{{ json_encode($soal['data']) }}"
-                        type="{{ $soal['type'] }}"
-                    >
+            @if(in_array($soal['type'], ['jawab-text', 'jawab-angka', 'jawab-tanggal', 'jawab-waktu']))
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title text-muted">{{ $soal['pertanyaan'] }}</h5>
+
+                        <div style="max-height: 300px; min-height: 300px; overflow-y: scroll;" class="d-flex flex-column">
+                            <div class="list-group">
+                                @foreach ($soal['data'] as $item)
+                                    <a 
+                                        href="{{  route('admin.lihat-jawaban.jawaban', [
+                                            'user' => $item['nim'],
+                                            'id' => $id,
+                                        ]) }}"
+                                        style="white-space: nowrap;
+                                        overflow: hidden;
+                                        text-overflow: ellipsis;"
+                                        class="list-group-item list-group-item-action">{{ $item['jawaban'] }}</a>
+                                @endforeach
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
+            @else
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title text-muted">{{ $soal['pertanyaan'] }}</h5>
+                        <div
+                            class="chart-data"
+                            id="soal-{{ $soal['id'] }}"
+                            label="{{ json_encode($soal['label']) }}"
+                            data="{{ json_encode($soal['data']) }}"
+                            type="{{ $soal['type'] }}"
+                        >
+                        </div>
+                    </div>
+                </div>
+            @endif
         </div>
     @endforeach
 </div>

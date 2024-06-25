@@ -46,7 +46,6 @@ class KuesionerChart extends Component
         $hasil = [];
 
         foreach($soal as $s){
-            if(in_array($s['type'], ['jawab-text', 'jawab-angka', 'jawab-tanggal', 'jawab-waktu'])) continue;
             $data = [
                 'id' => $s['id'],
                 'pertanyaan' => $s['pertanyaan'],
@@ -55,12 +54,31 @@ class KuesionerChart extends Component
                 'data' => null,
             ];
 
+            if(in_array($data['type'], ['jawab-text', 'jawab-angka', 'jawab-tanggal', 'jawab-waktu'])){
+                $itemJawaban = [];
+                foreach($jawaban as $indexJawaban => $item){
+                    if(!in_array($item['type'], ['jawab-text', 'jawab-angka', 'jawab-tanggal', 'jawab-waktu'])) continue;
+                    if($item['soal_id'] == $data['id']){
+                        $itemJawaban[] = [
+                            'jawaban' => $item['jawaban'],
+                            'nim' => $item['nim']
+                        ];
+                    }
+                }
+
+                $data["data"] = $itemJawaban;
+            };
+
+
             if($data['type'] == 'dropdown' || $data['type'] == 'pilihan-ganda'){
                 foreach($s["opsi_x"] as $detail){
                     $count = 0;
-                    foreach($jawaban as $item){
+                    foreach($jawaban as $indexJawaban => $item){
                         if($item["type"] != 'dropdown' && $item["type"] != 'pilihan-ganda') continue;
-                        $count += $item["jawaban"] == $detail['id'] ? 1 : 0;
+
+                        if($item["jawaban"] == $detail['id']){
+                            $count += 1;
+                        }
                     }
                     
                     $data["label"][] = $detail['opsi'];
@@ -71,10 +89,13 @@ class KuesionerChart extends Component
             if($data['type'] == 'kotak-centang'){
                 foreach($s["opsi_x"] as $index => $detail){
                     $count = 0;
-                    foreach($jawaban as $item){
+                    foreach($jawaban as $indexJawaban => $item){
                         if($item["type"] != 'kotak-centang') continue;
                         foreach($item["jawaban_x"] as $x){
-                            $count += $x["jawaban"] == $detail['id'] ? 1 : 0;
+                            if($x["jawaban"] == $detail['id']){
+                                $count += 1;
+                                // unset($jawaban[$indexJawaban]);
+                            }
                         }
                     } 
                     
@@ -94,7 +115,7 @@ class KuesionerChart extends Component
                     $index = 0;
                     foreach($labelY as $y){
                         $count = 0;
-                        foreach($jawaban as $item){
+                        foreach($jawaban as $indexJawaban => $item){
                             if($item["type"] != 'petak-pilihan-ganda') continue;
                             foreach($item["jawaban_x"] as $itemX){
                                 if($itemX["key"] == $x['id'] && $itemX["jawaban"] == $y['id']){
@@ -123,7 +144,7 @@ class KuesionerChart extends Component
                     $index = 0;
                     foreach($labelY as $indexY => $y){
                         $count = 0;
-                        foreach($jawaban as $item){
+                        foreach($jawaban as $indexJawaban => $item){
                             if($item["type"] != 'petak-kotak-centang') continue;
                             foreach($item["jawaban_x"] as $itemX){
                                 foreach($itemX["jawaban_y"] as $itemY){
@@ -132,6 +153,8 @@ class KuesionerChart extends Component
                                     }
                                 }
                             }
+                            
+                            // unset($jawaban[$indexJawaban]);
                         }
 
                         $data["data"][$index]["name"] = $y['opsi'];
