@@ -39,7 +39,7 @@
                     </div>
 
                     <h4 class="mb-2">Selamat Datang 👋</h4>
-                    <p class="mb-4">Silahkan registrasi akun untuk melanjutkan</p>
+                    <p class="mb-4">Silahkan login untuk melanjutkan</p>
     
                     @if(session()->has('registrasi'))
                     <div class="alert alert-primary alert-dismissible border-3 bg-white">

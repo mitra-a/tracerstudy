@@ -17,7 +17,7 @@
 
     <div class="d-flex">
         <h4 class="fw-bold py-3 mb-4">
-            <span class="text-muted fw-light">Master Data /</span> Alumni
+            <span class="text-muted fw-light">Master Data /</span> Mahasiswa
         </h4>
     </div>
 
