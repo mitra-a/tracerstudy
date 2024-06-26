@@ -30,7 +30,7 @@
                         class="position-absolute d-none d-md-block"
                         style="
                         width:100%;
-                        background-image: linear-gradient(-90deg, #00000054, #00000091)
+                        background-image: linear-gradient(-90deg, #00000054, #00000091);
                         height:100%;
                         z-index: 1040"
                     ></div>
