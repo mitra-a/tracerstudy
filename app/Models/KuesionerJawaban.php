@@ -20,4 +20,8 @@ class KuesionerJawaban extends Model
     public function alumni(){
         return $this->hasMany(User::class, 'id', 'alumni_id');
     }
+
+    public function prodi_data(){
+        return $this->hasOne(Prodi::class, 'kode', 'prodi');
+    }
 }

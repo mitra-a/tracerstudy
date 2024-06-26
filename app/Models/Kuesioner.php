@@ -16,6 +16,10 @@ class Kuesioner extends Model
         'periode' => 'array',
     ];
 
+    public function halaman(){
+        return $this->hasMany(KuesionerHalaman::class, 'kuesioner_id', 'id');
+    }
+
     public function getPeriodeDataAttribute()
     {
         $result = [];

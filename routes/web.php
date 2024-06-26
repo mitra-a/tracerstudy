@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ExcelExportController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/logout', function(){
@@ -47,6 +48,7 @@ Route::namespace('App\Livewire\Pages')->group(function(){
         Route::namespace('Laporan')->prefix('laporan')->name('laporan.')->group(function(){
             Route::get('/', Index::class)->name('index');
             Route::get('/detail/{id}', Detail::class)->name('detail');
+            Route::get('/excel/{id}', [ExcelExportController::class, 'jawaban'])->name('excel');
         });
     });
 

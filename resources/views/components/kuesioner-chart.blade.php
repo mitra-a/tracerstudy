@@ -48,7 +48,7 @@
     @foreach ($data as $soal)
         <div>
             @if(in_array($soal['type'], ['jawab-text', 'jawab-angka', 'jawab-tanggal', 'jawab-waktu']))
-                <div class="card mb-3">
+                <div class="card mb-3 not-printable">
                     <div class="card-body">
                         <h5 class="card-title text-muted">{{ $soal['pertanyaan'] }}</h5>
 

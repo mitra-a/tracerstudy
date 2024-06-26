@@ -1,6 +1,14 @@
 <div>
     <style>
+        .not-printable{
+            display: block;
+        }
+        
         @media print {
+            .not-printable{
+                display: none;
+            }
+
             body { 
                 -webkit-print-color-adjust: exact; 
             }
@@ -69,6 +77,11 @@
                 </h4>
         
                 <div class="ms-auto">
+                    <a
+                        href="{{ route('admin.laporan.excel', $id) }}"
+                        class="btn btn-success me-2 shadow-none">
+                        <i class="bx bx-table me-2"></i> Excel
+                    </a>
                     <button 
                         onclick="window.print()"
                         class="btn btn-primary me-2 shadow-none">
