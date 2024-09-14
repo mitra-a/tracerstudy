@@ -4,11 +4,12 @@ namespace App\Livewire\Pages\Admin\Mahasiswa;
 
 use App\Livewire\Traits\WithCachedRows;
 use App\Livewire\Traits\WithPerPagePagination;
+use App\Models\KuesionerJawaban;
 use App\Models\User;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 
-class Index extends Component
+class Delete extends Component
 {
     use WithCachedRows;
     use WithPerPagePagination;
@@ -17,20 +18,18 @@ class Index extends Component
 
     public function delete($id)
     {
-        $delete = User::findOrFail($id);
-        Storage::delete($delete->foto ?? '');
-        $delete->delete();
+        $user = User::find($id);
+        $user->email = null;
+        $user->password = '';
+        Storage::delete($user->foto ?? '');
+        KuesionerJawaban::where('alumni_id', $id)->delete();
 
-        session()->flash('message', [
-            'color' => 'warning',
-            'title' => 'Berhasil!',
-            'sub-title' => 'Berhasil melakukan penghapusan data',
-        ]);
+        $user->save();
     }
 
     public function getRowsQueryProperty()
     {
-        return User::where('role', 'alumni')->when($this->search, function ($query, $value) {
+        return User::where('role', 'alumni')->whereNotNull('email')->when($this->search, function ($query, $value) {
             $query->where('nama', 'LIKE', '%'.$value.'%')
                 ->orWhere('nim', 'LIKE', '%'.$value.'%')
                 ->orWhere('email', 'LIKE', '%'.$value.'%')
@@ -45,16 +44,9 @@ class Index extends Component
         });
     }
 
-    public function searchData($value = false)
-    {
-        if ($value) {
-            $this->search = null;
-        }
-    }
-
     public function render()
     {
-        return view('pages.admin.mahasiswa.index', [
+        return view('pages.admin.mahasiswa.delete', [
             'rows' => $this->rows,
         ]);
     }

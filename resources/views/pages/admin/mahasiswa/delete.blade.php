@@ -1,22 +1,41 @@
 <div>
     <div class="d-flex">
         <h4 class="fw-bold py-3 mb-4">
-            <span class="text-muted fw-light">Master Data /</span> Akun Admin
+            <span class="text-muted fw-light">Master Data /</span> Alumni / Hapus Akun
         </h4>
 
         <div class="ms-auto">
             <a
-                href="{{ route('admin.akun.create') }}"
+                href="{{ route('admin.mahasiswa.create') }}"
                 class="btn btn-primary"
             >Tambah</a>
         </div>
+    </div>
+
+    <div
+        class="alert alert-dismissible bg-white border-warning border"
+        role="alert"
+    >
+        <div class="d-flex">
+            <div>
+                <h6 class="mb-0 text-warning">Peringatan!</h6>
+                <p class="mb-0">Menghapus akun berarti menghapus data <b>jawaban kuesioner</b> dari alumni</p>
+            </div>
+        </div>
+
+        <a
+            class="btn-close"
+            type="button"
+            data-bs-dismiss="alert"
+            aria-label="close"
+        ></a>
     </div>
 
     <x-alert />
 
     <div class="card">
         <div class="card-header d-flex justify-content-between">
-            <h5 class="d-none d-lg-block">Data Akun Admin</h5>
+            <h5 class="d-none d-lg-block">Data Alumni</h5>
 
             <div class="d-flex">
                 <input
@@ -36,8 +55,11 @@
             <table class="table table-striped">
                 <thead>
                     <tr>
+                        <th>NIM</th>
                         <th>Nama</th>
                         <th>Email</th>
+                        <th>Nomor Telepon</th>
+                        <th>Program Studi</th>
                         <th style="width: 1px;"></th>
                     </tr>
                 </thead>
@@ -62,15 +84,14 @@
 
                     @forelse ($rows as $row)
                         <tr>
+                            <td>{{ $row->nim }}</td>
                             <td>{{ $row->nama }}</td>
-                            <td>{{ $row->email }}</td>
+                            <td>{{ $row->email == '' ? 'Tidak ada akun' : $row->email }}</td>
+                            <td>{{ $row->nomor_telepon == '' ? '-' : $row->nomor_telepon }}</td>
+                            <td>{{ $row->prodi_data?->nama }}</td>
                             <td>
                                 <div x-data="{ open: false }">
                                     <div x-show="!open">
-                                        <a
-                                            class="bx bx-edit mx-1 text-secondary"
-                                            href="{{ route('admin.akun.update', $row->id) }}"
-                                        ></a>
                                         <i
                                             class="bx bx-trash mx-1"
                                             type="button"
@@ -89,7 +110,7 @@
                                                 wire:click="delete('{{ $row->id }}')"
                                                 wire:loading.attr="disabled"
                                                 class="btn btn-danger btn-sm shadow"
-                                            >Hapus</button>
+                                            >Hapus Akun</button>
 
                                             <button
                                                 type="submit"

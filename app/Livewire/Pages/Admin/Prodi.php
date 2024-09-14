@@ -14,6 +14,7 @@ class Prodi extends Component
     use WithPerPagePagination;
 
     public $search = '';
+
     public $jurusan = [];
 
     public $add_input = [
@@ -26,14 +27,16 @@ class Prodi extends Component
         'row_id' => '',
         'jurusan' => '',
         'prodi' => '',
-        'kode' => ''
+        'kode' => '',
     ];
 
-    public function mount(){
+    public function mount()
+    {
         $this->jurusan = Jurusan::all()->toArray();
     }
 
-    public function delete($id){
+    public function delete($id)
+    {
         $delete = ModelsProdi::findOrFail($id);
         $delete->delete();
 
@@ -44,19 +47,21 @@ class Prodi extends Component
         ]);
     }
 
-    public function edit($id = null){
-        if($id !== null){
+    public function edit($id = null)
+    {
+        if ($id !== null) {
             $this->useCachedRows();
-            if($id == 'reset') {
+            if ($id == 'reset') {
                 $this->reset(['edit_input']);
+
                 return;
             }
-            
+
             $data = $this->rows->toArray()['data'];
             $search = array_search($id, array_column($data, 'kode'));
             $this->edit_input['row_id'] = $id;
 
-            if($search !== false){
+            if ($search !== false) {
                 $this->edit_input['jurusan'] = $data[$search]['jurusan'];
                 $this->edit_input['prodi'] = $data[$search]['nama'];
                 $this->edit_input['kode'] = $data[$search]['kode'];
@@ -82,22 +87,28 @@ class Prodi extends Component
             ]);
 
             $this->reset(['edit_input']);
-        } catch (\Exception $_) { }
+        } catch (\Exception $_) {
+        }
     }
 
-    public function searchData($value = false){ if($value) $this->search = null; }
+    public function searchData($value = false)
+    {
+        if ($value) {
+            $this->search = null;
+        }
+    }
 
-    public function add(){
+    public function add()
+    {
         $this->validate([
             'add_input.kode' => ['required'],
             'add_input.prodi' => ['required'],
-            'add_input.jurusan' => ['required'],
         ]);
 
         try {
             $add = new ModelsProdi();
             $add->kode = $this->add_input['kode'];
-            $add->jurusan = $this->add_input['jurusan'];
+            $add->jurusan = '';
             $add->nama = $this->add_input['prodi'];
             $add->save();
 
@@ -108,17 +119,22 @@ class Prodi extends Component
             ]);
 
             $this->reset(['add_input']);
-        } catch (\Exception $_) { }
+        } catch (\Exception $_) {
+            dd($_);
+
+        }
     }
-    
-    public function getRowsQueryProperty(){
-        return ModelsProdi::when($this->search, function($query, $value){
-            $query->where('nama', 'LIKE', '%' . $value . '%')
-                ->orWhere('kode', 'LIKE', '%' . $value . '%');
+
+    public function getRowsQueryProperty()
+    {
+        return ModelsProdi::when($this->search, function ($query, $value) {
+            $query->where('nama', 'LIKE', '%'.$value.'%')
+                ->orWhere('kode', 'LIKE', '%'.$value.'%');
         });
     }
 
-    public function getRowsProperty(){
+    public function getRowsProperty()
+    {
         return $this->cache(function () {
             return $this->applyPagination($this->rowsQuery);
         });
@@ -127,7 +143,7 @@ class Prodi extends Component
     public function render()
     {
         return view('pages.admin.prodi', [
-            'rows' => $this->rows
+            'rows' => $this->rows,
         ]);
     }
 }

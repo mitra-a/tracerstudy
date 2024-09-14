@@ -191,7 +191,7 @@ class DatabaseSeeder extends Seeder
             [
                 'nama' => 'Admin',
                 'nim' => 'admin',
-                'username' => 'admin',
+                'email' => 'admin@email.com',
                 'password' => Hash::make('admin'),
                 'role' => 'admin',
             ],

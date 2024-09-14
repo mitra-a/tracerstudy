@@ -7,57 +7,74 @@ return [
         'icon' => 'bx bx-home-circle',
         'route' => 'admin.dashboard',
         'active' => 'admin.dashboard',
-        'role' => 'admin'
+        'role' => 'admin',
     ],
     [
         'title-menu' => 'Kuesioner',
-        'role' => 'admin'
+        'role' => 'admin',
     ],
     [
         'title' => 'Kuesioner',
         'icon' => 'bx bx-book-open',
         'route' => 'admin.kuesioner.index',
         'active' => 'admin.kuesioner.*',
-        'role' => 'admin'
+        'role' => 'admin',
     ],
     [
         'title' => 'Lihat Jawaban',
         'icon' => 'bx bx-book',
         'route' => 'admin.lihat-jawaban.index',
         'active' => 'admin.lihat-jawaban.*',
-        'role' => 'admin'
+        'role' => 'admin',
     ],
     [
         'title' => 'Laporan',
         'icon' => 'bx bx-edit',
         'route' => 'admin.laporan.index',
         'active' => 'admin.laporan.*',
-        'role' => 'admin'
+        'role' => 'admin',
     ],
     [
         'title-menu' => 'Master Data',
-        'role' => 'admin'
+        'role' => 'admin',
     ],
     [
         'title' => 'Mahasiswa',
-        'route' => 'admin.mahasiswa.index',
+        'route' => '',
         'icon' => 'bx bx-user-check',
         'active' => 'admin.mahasiswa.*',
         'role' => 'admin',
+        'child' => [
+            [
+                'title' => 'Data Mahasiswa',
+                'route' => 'admin.mahasiswa.index',
+                'active' => ['admin.mahasiswa.index', 'admin.mahasiswa.create', 'admin.mahasiswa.update'],
+            ],
+            [
+                'title' => 'Validasi Akun',
+                'route' => 'admin.mahasiswa.validasi',
+                'active' => 'admin.mahasiswa.validasi',
+            ],
+            [
+                'title' => 'Hapus Akun',
+                'route' => 'admin.mahasiswa.delete',
+                'active' => 'admin.mahasiswa.delete',
+            ],
+        ],
     ],
     [
         'title' => 'Admin',
         'icon' => 'bx bx-user-voice',
         'route' => 'admin.akun.index',
         'active' => 'admin.akun.*',
-        'role' => 'admin'
+        'role' => 'admin',
     ],
     [
         'title' => 'Program Studi',
         'icon' => 'bx bx-copy',
         'route' => 'admin.prodi',
         'active' => 'admin.prodi',
-        'role' => 'admin'
+        'role' => 'admin',
     ],
     // [
     //     'title' => 'Periode Wisuda',
@@ -68,21 +85,21 @@ return [
     // ],
     [
         'title-menu' => 'Profile',
-        'role' => 'admin'
+        'role' => 'admin',
     ],
     [
         'title' => 'Profile',
         'icon' => 'bx bx-user',
         'route' => 'admin.profile',
         'active' => 'admin.profile*',
-        'role' => 'admin'
+        'role' => 'admin',
     ],
     [
         'title' => 'Log Out',
         'icon' => 'bx bx-exit',
         'route' => 'logout',
         'active' => 'admin.admin.*',
-        'role' => 'admin'
+        'role' => 'admin',
     ],
 
     //ALUMNI
@@ -91,31 +108,31 @@ return [
         'icon' => 'bx bx-home-circle',
         'route' => 'pengguna.dashboard',
         'active' => ['pengguna.dashboard*'],
-        'role' => 'pengguna'
+        'role' => 'pengguna',
     ],
     [
         'title' => 'Hasil Survey',
         'icon' => 'bx bx-pie-chart-alt-2',
         'route' => 'pengguna.hasil-survey.index',
         'active' => ['pengguna.hasil-survey.*'],
-        'role' => 'pengguna'
+        'role' => 'pengguna',
     ],
     [
         'title-menu' => 'Profile',
-        'role' => 'pengguna'
+        'role' => 'pengguna',
     ],
     [
         'title' => 'Profile',
         'icon' => 'bx bx-user',
         'route' => 'pengguna.profile',
         'active' => 'pengguna.profile*',
-        'role' => 'pengguna'
+        'role' => 'pengguna',
     ],
     [
         'title' => 'Log Out',
         'icon' => 'bx bx-exit',
         'route' => 'logout',
         'active' => 'pengguna.admin.*',
-        'role' => 'pengguna'
+        'role' => 'pengguna',
     ],
 ];

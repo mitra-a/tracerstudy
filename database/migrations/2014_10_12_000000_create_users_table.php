@@ -15,10 +15,26 @@ return new class extends Migration
             $table->uuid('id')->primary();
             $table->string('nim')->nullable()->unique();
             $table->string('nama');
-            $table->string('username')->nullable()->unique();
+            $table->string('email')->nullable()->unique();
             $table->string('password');
             $table->string('nomor_telepon')->nullable();
+
             $table->string('role');
+
+            $table->string('alamat')->nullable();
+            $table->string('provinsi')->nullable();
+            $table->string('kabupaten_kota')->nullable();
+
+            $table->string('jurusan')->nullable();
+            $table->string('prodi')->nullable();
+            $table->string('periode')->nullable();
+
+            $table->string('tempat_kerja')->nullable();
+            $table->string('alamat_kerja')->nullable();
+            $table->string('foto')->nullable();
+            $table->boolean('aktif')->default(true);
+
+            $table->timestamp('email_verified_at')->nullable();
             $table->timestamp('last_login_at')->nullable();
             $table->string('last_login_ip')->nullable();
             $table->rememberToken();

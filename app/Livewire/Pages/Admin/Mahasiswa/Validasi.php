@@ -5,32 +5,25 @@ namespace App\Livewire\Pages\Admin\Mahasiswa;
 use App\Livewire\Traits\WithCachedRows;
 use App\Livewire\Traits\WithPerPagePagination;
 use App\Models\User;
-use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 
-class Index extends Component
+class Validasi extends Component
 {
     use WithCachedRows;
     use WithPerPagePagination;
 
     public $search = '';
 
-    public function delete($id)
+    public function validasi($id, $value)
     {
-        $delete = User::findOrFail($id);
-        Storage::delete($delete->foto ?? '');
-        $delete->delete();
-
-        session()->flash('message', [
-            'color' => 'warning',
-            'title' => 'Berhasil!',
-            'sub-title' => 'Berhasil melakukan penghapusan data',
-        ]);
+        $user = User::find($id);
+        $user->aktif = $value;
+        $user->save();
     }
 
     public function getRowsQueryProperty()
     {
-        return User::where('role', 'alumni')->when($this->search, function ($query, $value) {
+        return User::where('role', 'alumni')->whereNotNull('email')->when($this->search, function ($query, $value) {
             $query->where('nama', 'LIKE', '%'.$value.'%')
                 ->orWhere('nim', 'LIKE', '%'.$value.'%')
                 ->orWhere('email', 'LIKE', '%'.$value.'%')
@@ -45,16 +38,9 @@ class Index extends Component
         });
     }
 
-    public function searchData($value = false)
-    {
-        if ($value) {
-            $this->search = null;
-        }
-    }
-
     public function render()
     {
-        return view('pages.admin.mahasiswa.index', [
+        return view('pages.admin.mahasiswa.validasi', [
             'rows' => $this->rows,
         ]);
     }

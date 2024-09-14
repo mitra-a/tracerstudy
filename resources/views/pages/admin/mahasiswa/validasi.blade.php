@@ -1,12 +1,12 @@
 <div>
     <div class="d-flex">
         <h4 class="fw-bold py-3 mb-4">
-            <span class="text-muted fw-light">Master Data /</span> Akun Admin
+            <span class="text-muted fw-light">Master Data /</span> Alumni / Validasi Akun
         </h4>
 
         <div class="ms-auto">
             <a
-                href="{{ route('admin.akun.create') }}"
+                href="{{ route('admin.mahasiswa.create') }}"
                 class="btn btn-primary"
             >Tambah</a>
         </div>
@@ -16,7 +16,7 @@
 
     <div class="card">
         <div class="card-header d-flex justify-content-between">
-            <h5 class="d-none d-lg-block">Data Akun Admin</h5>
+            <h5 class="d-none d-lg-block">Data Alumni</h5>
 
             <div class="d-flex">
                 <input
@@ -36,8 +36,12 @@
             <table class="table table-striped">
                 <thead>
                     <tr>
+                        <th>NIM</th>
                         <th>Nama</th>
                         <th>Email</th>
+                        <th>Nomor Telepon</th>
+                        <th>Program Studi</th>
+                        <th>Status</th>
                         <th style="width: 1px;"></th>
                     </tr>
                 </thead>
@@ -62,43 +66,27 @@
 
                     @forelse ($rows as $row)
                         <tr>
+                            <td>{{ $row->nim }}</td>
                             <td>{{ $row->nama }}</td>
-                            <td>{{ $row->email }}</td>
+                            <td>{{ $row->email == '' ? 'Tidak ada akun' : $row->email }}</td>
+                            <td>{{ $row->nomor_telepon == '' ? '-' : $row->nomor_telepon }}</td>
+                            <td>{{ $row->prodi_data?->nama }}</td>
                             <td>
-                                <div x-data="{ open: false }">
-                                    <div x-show="!open">
-                                        <a
-                                            class="bx bx-edit mx-1 text-secondary"
-                                            href="{{ route('admin.akun.update', $row->id) }}"
-                                        ></a>
-                                        <i
-                                            class="bx bx-trash mx-1"
-                                            type="button"
-                                            x-on:click="open = !open"
-                                        ></i>
-                                    </div>
-
-                                    <div
-                                        x-show="open"
-                                        x-cloak
+                                @if ($row->aktif)
+                                    <span class="badge bg-success">Akun Aktif</span>
+                                @else
+                                    <span class="badge bg-danger">Akun Non-Aktif</span>
+                                @endif
+                            </td>
+                            <td>
+                                <div class="form-check form-switch">
+                                    <input
+                                        wire:click="validasi('{{ $row->id }}', '{{ !$row->aktif }}')"
+                                        class="form-check-input float-end"
+                                        type="checkbox"
+                                        role="switch"
+                                        @if ($row->aktif) checked @endif
                                     >
-                                        <div class="d-flex gap-2">
-                                            <button
-                                                type="submit"
-                                                x-on:click="open = !open"
-                                                wire:click="delete('{{ $row->id }}')"
-                                                wire:loading.attr="disabled"
-                                                class="btn btn-danger btn-sm shadow"
-                                            >Hapus</button>
-
-                                            <button
-                                                type="submit"
-                                                wire:loading.attr="disabled"
-                                                class="btn btn-secondary btn-sm shadow"
-                                                x-on:click="open = !open"
-                                            >Batal</button>
-                                        </div>
-                                    </div>
                                 </div>
                             </td>
                         </tr>
